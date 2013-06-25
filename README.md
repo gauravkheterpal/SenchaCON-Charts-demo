@@ -1,7 +1,7 @@
-ReplayAnalytics
+SenchaCON Charts Demo
 ================
 
-### Build Instructions - `SenchaCON-Demo-App`
+### Build Instructions - `SenchaCON-Charts-Demo-App`
 
 
 #### Pre-requisites
