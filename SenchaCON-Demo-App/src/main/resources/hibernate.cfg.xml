@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>		
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.User"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DemoData"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.Role"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.UserSession"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DashboardSettings"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.UserDashboard"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.GlobalSettings"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.ManualIM"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.SharedDashboards"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.FilterSettings"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DatabaseTable"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DatabaseTableFields"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DataSources"/>
+    </session-factory>
+</hibernate-configuration>

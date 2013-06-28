@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.base}/logs/replayanalytics.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+  
+  	<!--<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+    	<smtpHost>smtp.gmail.com</smtpHost>
+    	<smtpPort>465</smtpPort>
+    	<SSL>true</SSL>
+   		<username>YOUR_USERNAME@gmail.com</username>
+    	<password>YOUR_GMAIL_PASSWORD</password>
+    	<to>sameer.sharma@metacube.com</to>
+    	<to>sandeep.agarwal@metacube.com</to>
+    	<from>donotreply@replayanalytics.com</from>
+    	<subject>ReplayAnalytics Logs: %logger{20} - %m</subject>
+    	<encoder>
+     		<pattern>%date %d{HH:mm:ss.SSS} %-5level %logger{35} - %message%n</pattern>
+    	</encoder>       
+	</appender>-->
+ 
+ 	
+	
+	<logger name="com.metacube.sageclarity.replayanalytics" level="DEBUG" />
+	
+	<root level="OFF">
+		<appender-ref ref="FILE" />	
+		<appender-ref ref="STDOUT" />	
+	</root>
+</configuration>
