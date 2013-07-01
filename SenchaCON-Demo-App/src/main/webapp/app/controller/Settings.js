@@ -342,10 +342,12 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	},
 	
 	showSettingsPanel: function() {
+		
 		this.getApplication().getController('DatabaseTable').getAllDatabaseTables();
 	},
 	
 	configureSettingsPanel: function(){
+		debugger;
 		this.getDatabaseSetting().setOptions(ReplayAnalytics.app.DatabaseTableFieldStore);
 		this.getDatabaseSetting().setValue(ReplayAnalytics.app.databaseSetting[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.getChartTypeSetting().setValue(ReplayAnalytics.app.chartTypes[ReplayAnalytics.app.currentActivePanelIndex]);

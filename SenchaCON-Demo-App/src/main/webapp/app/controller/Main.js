@@ -163,7 +163,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 			this.getApplication().getController('Login').getSaveDashboardButton().hide();
 			this.getApplication().getController('Login').getGoBackButton().hide();
 			this.getApplication().getController('Login').getShareDashboardButton().hide();
-			this.getApplication().getController('Login').getLoginRedirectButton().show();	
+			//this.getApplication().getController('Login').getLoginRedirectButton().show();	
 			this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
 			this.getApplication().getController('InterestingMoment').getManualIMButton().hide();
 		} else if (ReplayAnalytics.app.currentDashboard != undefined && ReplayAnalytics.app.currentUserSession.userId != ReplayAnalytics.app.currentDashboard.userId){

@@ -1,5 +1,5 @@
-var developerMode = false;
-var showAllLogs = false;
+var developerMode = true;
+var showAllLogs = true;
 
 var infoString = 'Last updated June 25th, 2013';
 

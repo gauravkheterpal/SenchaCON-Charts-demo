@@ -8,7 +8,7 @@ Ext.define('ReplayAnalytics.view.TopTwoPanelLayout', {
 	config: {
 		layout: {type: 'hbox', pack: 'center', align: 'stretch'},
 		flex: 1,
-		style: "background-color: black; color:white",
+		style: "background-color: white; color:white",
 		items: [
 		        {
 		        	xtype: 'panel1'

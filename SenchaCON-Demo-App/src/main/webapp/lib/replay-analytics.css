@@ -101,12 +101,12 @@ div#logocontainer > div > div > div > div.x-innerhtml{
 	margin: 10px;
 }
 
-.button-toolbar-bg {
+/* .button-toolbar-bg {
 	background-color: #cccccc;
 	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #dedede), color-stop(100%, #bababa));
 	background-image: -webkit-linear-gradient(#ffffff, #dedede 2%, #bababa);
 	background-image: linear-gradient(#ffffff, #dedede 2%, #bababa); 	
-}
+} */
 
 #usernamefield > .x-form-label > span, #passwordfield > .x-form-label > span, #remembermecheck > .x-form-label > span {
 	float: right;
@@ -174,20 +174,20 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	background-color: transparent;
 }
 
-.x-button .x-button-icon.x-shown{
+ .x-button .x-button-icon.x-shown{
 	background-color: #fff;
 	width: 1.1em;
 	height: 1.1em;
 	-webkit-mask-size: 1.1em;
-}
+} 
 
-.x-button .x-button-icon.x-shown.delete, .x-button .x-button-icon.x-shown.settings, .x-button .x-button-icon.x-shown.add,
+ .x-button .x-button-icon.x-shown.delete, .x-button .x-button-icon.x-shown.settings, .x-button .x-button-icon.x-shown.add,
  .x-button .x-button-icon.x-shown.arrow_left,  .x-button .x-button-icon.x-shown.arrow_right, .x-button .x-button-icon.x-shown.reply{
 	background-color: transparent;
 	width: 1.5em;
 	height: 1.5em;
 	-webkit-mask-size: 0;	
-}
+} 
 
 .x-button .x-button-icon.x-shown.callout {
 	-webkit-mask-image: url(images/chat2.png);	
@@ -305,7 +305,7 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	display: none;
 }
 
-.x-toolbar-dark{
+/* .x-toolbar-dark{
 	background-color: rgb(20, 104, 162);
 	background-image: -webkit-linear-gradient(top, white, rgb(50, 73, 81) 1%, black);
 	border-bottom-color: rgb(0, 0, 0);
@@ -316,7 +316,7 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	border-top-color: rgb(0, 0, 0);
 	box-sizing: border-box;
 	display: -webkit-box;
-}
+} */
 
 .x-toolbar-dark .x-button{
 	background-color: rgb(17, 89, 140);
@@ -385,8 +385,8 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 }
 
 .unselected-panel{
-	background-color:black; 
-	border: 2px solid black;
+	background-color:white; 
+	border: 2px solid white;
 	border-radius: 10px;
 }
 

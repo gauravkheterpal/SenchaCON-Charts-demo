@@ -1,6 +1,7 @@
 var databaseTableController;
 Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	extend : 'Ext.app.Controller',
+	
 	xtype: 'databasetablecontroller',
 	config: {
 		refs: {

@@ -96,8 +96,9 @@ Ext.define('ReplayAnalytics.controller.Login', {
 		$mainController = loginController.getApplication().getController('Main');
 		loginController.handleButtonTextsForScreenSize();
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });	
-		this.checkForURLQUeryString();
-		this.checkForUserSession();
+		//this.checkForURLQUeryString();
+		//this.checkForUserSession();
+		this.showMainScreen();
 	},
 	
 	checkForURLQUeryString: function(){

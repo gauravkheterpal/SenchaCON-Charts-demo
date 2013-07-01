@@ -192,13 +192,13 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		if (chartIndex == 5){
 			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].add(ReplayAnalytics.app.newChart[chartIndex]);						
 		} else {
-			Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].add(ReplayAnalytics.app.newChart[chartIndex]);
-			var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
+			Ext.ComponentQuery.query('Panel'+chartIndex)[0].add(ReplayAnalytics.app.newChart[chartIndex]);
+			/*var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
 			playbackController.getApplication().getController('Main').clearCarousel();					
 			playbackController.getApplication().getController('InterestingMoment').addChartDataTableToCarousel(chartIndex);
 			playbackController.getApplication().getController('InterestingMoment').addIMCommentListToCarousel(chartIndex);	
 			playbackController.getApplication().getController('InterestingMoment').addIMListToCarousel(chartIndex);					
-			carousel.setActiveItem(0);
+			carousel.setActiveItem(0);*/
 		}
 		hideLoadingMask();
 	},

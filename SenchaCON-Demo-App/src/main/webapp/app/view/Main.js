@@ -9,7 +9,7 @@ Ext.define('ReplayAnalytics.view.Main', {
 	config: {
 		fullscreen: true,
 		hidden: true,
-		style: 'background: black;',
+		style: 'background: white;',
 		layout: {type: 'vbox'},
 		items: [
 		        {

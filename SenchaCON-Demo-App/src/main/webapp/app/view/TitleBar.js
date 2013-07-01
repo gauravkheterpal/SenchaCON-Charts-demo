@@ -5,7 +5,8 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 	           'Ext.TitleBar'
 	],
 	config: {
-		title: 'Replay Analytics &#153;',
+		//title: 'Replay Analytics &#153;',
+		title:'SenchaCON-Charts-Demo',
 		docked: 'top',
 		layout: 'hbox',
 		height: '60px',
@@ -18,6 +19,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 					docked: 'left',
                     width: '130px',
                     height: '100%',
+                    hidden: true,
                     cls: 'replayanalyticslogo',
 					src:'lib/images/mind-over-metrics-logo.png'
 		        },
@@ -25,6 +27,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 		        	xtype: 'label',
 		        	id: 'usernamelabel',
 		        	docked: 'left',
+		        	hidden: true,
 		        	cls: 'usernamelabel',
 		        	html: 'Welcome',
 		        },
@@ -32,6 +35,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 		        	xtype:'button',
 		        	id: 'helpbutton',
 		        	align: 'right',
+		        	hidden: true,
 		        	iconCls: 'help',
 		        },				
 				{
@@ -39,6 +43,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 					id: 'sharedashboardbutton',
 					align: 'right',
 					text: 'Share',
+					hidden: true,
 					iconCls: 'share',
 				},
 				{
@@ -52,12 +57,14 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 					xtype:'button',
 					id: 'globalsettingsbutton',
 					align: 'right',
+					hidden: true,
 					text: 'Global Settings',
 					iconCls: 'globe',
 				},
 				{
 		        	xtype: 'button',
 		        	id: 'savedashboardbutton',
+		        	hidden: true,
 		        	iconCls: 'save',
 		        	align: 'right',
 		        	text: 'Save',
@@ -81,6 +88,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 				{
 					xtype:'button',
 					id: 'gobackbutton',
+					hidden: true,
 					align: 'right',
 					text: 'My Replays',
 					iconCls: 'rightbig',

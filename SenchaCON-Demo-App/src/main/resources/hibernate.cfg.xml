@@ -4,7 +4,7 @@
 
 <hibernate-configuration>
 	<session-factory>		
-		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.User"/>
+		<!-- <mapping class="com.metacube.sageclarity.replayanalytics.model.entity.User"/>
 		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DemoData"/>
 		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.Role"/>
 		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.UserSession"/>
@@ -14,8 +14,9 @@
 		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.ManualIM"/>
 		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.SharedDashboards"/>
 		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.FilterSettings"/>
+		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DataSources"/> -->
 		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DatabaseTable"/>
 		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DatabaseTableFields"/>
-		<mapping class="com.metacube.sageclarity.replayanalytics.model.entity.DataSources"/>
+		
     </session-factory>
 </hibernate-configuration>
