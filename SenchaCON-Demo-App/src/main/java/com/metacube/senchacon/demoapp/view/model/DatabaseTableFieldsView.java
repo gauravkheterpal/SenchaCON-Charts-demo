@@ -8,8 +8,6 @@ public class DatabaseTableFieldsView
 	private Date dateCreated;
 	private Date dateModified;
 	private DatabaseTableView databaseTable;
-	private DataSourcesView dataSource;
-	private Long dataSourceRowColumnNumber;
 	private String fieldName;
 	private String fieldLabel;
 	private String fieldType;
@@ -35,16 +33,6 @@ public class DatabaseTableFieldsView
 	public DatabaseTableView getDatabaseTable()
 	{
 		return databaseTable;
-	}
-
-	public DataSourcesView getDataSource()
-	{
-		return dataSource;
-	}
-
-	public Long getDataSourceRowColumnNumber()
-	{
-		return dataSourceRowColumnNumber;
 	}
 
 	public String getFieldName()
@@ -95,16 +83,6 @@ public class DatabaseTableFieldsView
 	public void setDatabaseTable(DatabaseTableView databaseTable)
 	{
 		this.databaseTable = databaseTable;
-	}
-
-	public void setDataSource(DataSourcesView dataSource)
-	{
-		this.dataSource = dataSource;
-	}
-
-	public void setDataSourceRowColumnNumber(Long dataSourceRowColumnNumber)
-	{
-		this.dataSourceRowColumnNumber = dataSourceRowColumnNumber;
 	}
 
 	public void setFieldName(String fieldName)

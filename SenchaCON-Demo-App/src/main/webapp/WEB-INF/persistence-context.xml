@@ -55,7 +55,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<aop:config>
-		<aop:pointcut id="webMethods" expression="execution(* com.metacube.sageclarity.replayanalytics.view.controller.*.*(..))" />
+		<aop:pointcut id="webMethods" expression="execution(* com.metacube.senchacon.demoapp.view.controller.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="webMethods" />
 	</aop:config>
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

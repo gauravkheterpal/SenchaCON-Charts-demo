@@ -9,7 +9,6 @@ public class DatabaseTableView
 	private Date dateCreated;
 	private Date dateModified;
 	private Boolean isActive;
-	private UserView user;
 	private String tableName;
 	private String name;
 	private String description;
@@ -33,11 +32,6 @@ public class DatabaseTableView
 	public Boolean getIsActive()
 	{
 		return isActive;
-	}
-
-	public UserView getUser()
-	{
-		return user;
 	}
 
 	public String getTableName()
@@ -78,11 +72,6 @@ public class DatabaseTableView
 	public void setIsActive(Boolean isActive)
 	{
 		this.isActive = isActive;
-	}
-
-	public void setUser(UserView user)
-	{
-		this.user = user;
 	}
 
 	public void setTableName(String tableName)

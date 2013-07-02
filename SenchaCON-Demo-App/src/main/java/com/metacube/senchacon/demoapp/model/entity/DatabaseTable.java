@@ -2,14 +2,10 @@ package com.metacube.senchacon.demoapp.model.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,10 +30,6 @@ public class DatabaseTable extends BaseEntity
 
 	@Column(name = "is_active")
 	private Boolean isActive;
-
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "user_id")
-	private User user;
 
 	@Column(name = "table_name")
 	private String tableName;
@@ -68,10 +60,6 @@ public class DatabaseTable extends BaseEntity
 		return isActive;
 	}
 
-	public User getUser()
-	{
-		return user;
-	}
 
 	public String getTableName()
 	{
@@ -106,11 +94,6 @@ public class DatabaseTable extends BaseEntity
 	public void setIsActive(Boolean isActive)
 	{
 		this.isActive = isActive;
-	}
-
-	public void setUser(User user)
-	{
-		this.user = user;
 	}
 
 	public void setTableName(String tableName)

@@ -35,14 +35,7 @@ public class DatabaseTableFields extends BaseEntity
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "database_table_id")
 	private DatabaseTable databaseTable;
-
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "data_source_id")
-	private DataSources dataSource;
 	
-	@Column(name = "data_source_row_column_number")
-	private Long dataSourceRowColumnNumber;
-
 	@Column(name = "field_name")
 	private String fieldName;
 
@@ -79,16 +72,6 @@ public class DatabaseTableFields extends BaseEntity
 	public DatabaseTable getDatabaseTable()
 	{
 		return databaseTable;
-	}
-
-	public DataSources getDataSource()
-	{
-		return dataSource;
-	}
-
-	public Long getDataSourceRowColumnNumber()
-	{
-		return dataSourceRowColumnNumber;
 	}
 
 	public String getFieldName()
@@ -139,16 +122,6 @@ public class DatabaseTableFields extends BaseEntity
 	public void setDatabaseTable(DatabaseTable databaseTable)
 	{
 		this.databaseTable = databaseTable;
-	}
-
-	public void setDataSource(DataSources dataSource)
-	{
-		this.dataSource = dataSource;
-	}
-
-	public void setDataSourceRowColumnNumber(Long dataSourceRowColumnNumber)
-	{
-		this.dataSourceRowColumnNumber = dataSourceRowColumnNumber;
 	}
 
 	public void setFieldName(String fieldName)

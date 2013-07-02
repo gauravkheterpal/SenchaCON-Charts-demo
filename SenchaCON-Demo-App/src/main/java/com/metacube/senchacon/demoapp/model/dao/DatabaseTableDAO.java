@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.metacube.senchacon.demoapp.common.enums.DatabaseFieldTypes;
-import com.metacube.senchacon.demoapp.model.entity.DataSources;
 import com.metacube.senchacon.demoapp.model.entity.DatabaseTable;
 import com.metacube.senchacon.demoapp.model.entity.DatabaseTableFields;
 
@@ -92,29 +91,6 @@ public class DatabaseTableDAO
 			logger.debug("Hibernate Exception in DatabaseTableDAO for getAllDatabaseTables-" + he);
 		}
 		return databaseTables;
-	}
-	
-	public ArrayList<DataSources> getAllConfiguredDataSources()
-	{
-		ArrayList<DataSources> dataSources = new ArrayList<DataSources>();
-		try
-		{
-			Session session = sessionFactory.getCurrentSession();
-			Criteria criteria = session.createCriteria(DataSources.class);
-			criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
-			criteria.add(Restrictions.eq("isProcessed", true));
-			criteria.add(Restrictions.eq("isActive", true));
-			dataSources = (ArrayList<DataSources>) criteria.list();
-			for (DataSources entity : dataSources)
-			{
-				session.evict(entity);
-			}
-		}
-		catch (HibernateException he)
-		{
-			logger.debug("Hibernate Exception in DatabaseTableDAO for getAllConfiguredDataSources-" + he);
-		}
-		return dataSources;
 	}
 	
 	public ArrayList<DatabaseTableFields> getAllDatabaseTableFieldsForDatabaseTable(Long databaseTableId)
@@ -267,70 +243,4 @@ public class DatabaseTableDAO
 		}
 		return databaseTableField;
 	}
-	
-	public DataSources getDataSourceById(Long dataSourceId)
-	{
-		DataSources dataSource = null;
-		try
-		{
-			Session session = sessionFactory.getCurrentSession();
-			Criteria criteria = session.createCriteria(DataSources.class);
-			criteria.add(Restrictions.eq("id", dataSourceId));
-			List<DataSources> dataSources = criteria.list();
-			if (dataSources != null && !dataSources.isEmpty())
-			{
-				dataSource = dataSources.get(0);
-			}
-		}
-		catch (HibernateException he)
-		{
-			logger.error("Failed to find DataSource By Id=" + dataSourceId, he);
-		}
-		return dataSource;
-	}
-	
-	public Boolean saveDataSource(DataSources entity)
-	{
-		try
-		{
-			Session session = sessionFactory.getCurrentSession();
-			session.saveOrUpdate(entity);
-		}
-		catch (HibernateException he)
-		{
-			logger.error("Failed to save DataSource for entity." + entity, he);
-			return false;
-		}
-		return true;
-	}
-	
-	public Boolean deleteDataSource(DataSources entity)
-	{
-		try
-		{
-			Session session = sessionFactory.getCurrentSession();
-			session.delete(entity);
-		}
-		catch (HibernateException he)
-		{
-			logger.error("Failed to delete DataSource for entity." + entity.getId(), he);
-			return false;
-		}
-		return true;
-	}
-	
-	public Boolean executePreparedSQL(String sql)
-	{
-		try
-		{
-			Session session = sessionFactory.getCurrentSession();
-			session.createSQLQuery(sql).executeUpdate();
-		}
-		catch (HibernateException he)
-		{
-			logger.error("Failed to execute sql=" + sql, he);
-			return false;
-		}
-		return true;
-	} 
 }
