@@ -33,7 +33,7 @@ Ext.define('ReplayAnalytics.controller.Scatter', {
 		        position: 'bottom',
 		        fields: [xfield],
 		        style: {
-	    	   		strokeStyle: 'white',
+	    	   		strokeStyle: 'black',
 	    	   		shadowColor: 'black',    	    	   	
 	       		},
 	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -51,7 +51,7 @@ Ext.define('ReplayAnalytics.controller.Scatter', {
 		        position: 'left',
 		        fields: [yfield],
 		        style: {
-	    	   		strokeStyle: 'white',
+	    	   		strokeStyle: 'black',
 	    	   		shadowColor: 'black',    	    	   	
 	       		},
 	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},

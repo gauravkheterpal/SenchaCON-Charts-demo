@@ -347,12 +347,12 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	},
 	
 	configureSettingsPanel: function(){
-		debugger;
+		
 		this.getDatabaseSetting().setOptions(ReplayAnalytics.app.DatabaseTableFieldStore);
 		this.getDatabaseSetting().setValue(ReplayAnalytics.app.databaseSetting[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.getChartTypeSetting().setValue(ReplayAnalytics.app.chartTypes[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.manageDimensions();
-		this.getGraphTitleSetting().setValue(ReplayAnalytics.app.graphTitle[ReplayAnalytics.app.currentActivePanelIndex]);
+		//this.getGraphTitleSetting().setValue(ReplayAnalytics.app.graphTitle[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.getXAxisSetting().setValue(ReplayAnalytics.app.xs[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.getYAxisSetting().setValue(ReplayAnalytics.app.ys[ReplayAnalytics.app.currentActivePanelIndex]);		
 		this.getGranularitySetting().setValue(ReplayAnalytics.app.granularities[ReplayAnalytics.app.currentActivePanelIndex]);
@@ -418,7 +418,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 				carousel.remove(temp);
 			}
 		}
-		Ext.ComponentQuery.query('textfield[label=Graph Title:]')[0].setValue('Title');
+		//Ext.ComponentQuery.query('textfield[label=Graph Title:]')[0].setValue('Title');
 		Ext.ComponentQuery.query('selectfield[label=Accumulate:]')[0].setValue('Off');
 		this.manageDimensions();
 		this.getApplication().getController('Main').checkForConfiguredGraphPanels();

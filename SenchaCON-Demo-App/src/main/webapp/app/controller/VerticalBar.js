@@ -50,7 +50,7 @@ Ext.define('ReplayAnalytics.controller.VerticalBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -70,7 +70,7 @@ Ext.define('ReplayAnalytics.controller.VerticalBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {
@@ -118,7 +118,7 @@ Ext.define('ReplayAnalytics.controller.VerticalBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -138,7 +138,7 @@ Ext.define('ReplayAnalytics.controller.VerticalBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {

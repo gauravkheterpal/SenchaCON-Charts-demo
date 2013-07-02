@@ -42,7 +42,7 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 		    flipXY: true,
 		    flex: 1,
 		    store: store,
-		    shadow: true,
+		    //shadow: true,
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 		    //interactions: ['panzoom'],
@@ -51,8 +51,8 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'bottom',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
-	    	    	   		shadowColor: 'black',    	    	   	
+	    	    	   		strokeStyle: 'black',
+	    	    	   		//shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
@@ -60,9 +60,9 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	title: {
 	   						text: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	   						strokeStyle: '#4270A2',
+	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
-	   						shadowColor: 'black',
+	   						//shadowColor: 'black',
 	   					},	   					
 	    	       },
 	    	       {
@@ -71,14 +71,14 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
-	    	    	   		shadowColor: 'black',
+	    	    	   		strokeStyle: 'black',
+	    	    	   		//shadowColor: 'black',
 	    	       		},
 	    	       		title: {
 	   						text: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	   						strokeStyle: '#4270A2',
+	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
-	   						shadowColor: 'black',	    	    	   	
+	   						//shadowColor: 'black',	    	    	   	
 	   					},
 	    	       }
 	    	    ],
@@ -90,7 +90,7 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	            	 axis: 'left',
 	    	            	 highlight: true,
 	    	            	 showInLegend: false,
-	    	            	 shadow: true,
+	    	            	// shadow: true,
 	    	            	 style: {
 	    	            	 		stroke: 'rgb(40,40,40)',
 	    	             	 },
@@ -108,7 +108,7 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 			flipXY: true,
 			flex: 1,
 			store: store,
-			shadow: true,
+			//shadow: true,
 			insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
 			//interactions: ['panzoom'],
 			legend: {
@@ -119,8 +119,8 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'bottom',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
-	    	    	   		shadowColor: 'black',    	    	   	
+	    	    	   		strokeStyle: 'black',
+	    	    	   		//shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		//fields: groupByBarArray,
@@ -128,25 +128,24 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	title: {
 	   						text: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	   						strokeStyle: '#4270A2',
+	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
-	   						shadowColor: 'black',
+	   						//shadowColor: 'black',
 	   					},	   					
 	    	       },
-	    	       {
-	    	    	   	type: 'category',
+	    	       { type: 'category',
 	    	    	   	position: 'left',
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
-	    	    	   		shadowColor: 'black',
+	    	    	   		strokeStyle: 'black',
+	    	    	   		//shadowColor: 'black',
 	    	       		},
 	    	       		title: {
 	   						text: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	   						strokeStyle: '#4270A2',
+	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
-	   						shadowColor: 'black',	    	    	   	
+	   						//shadowColor: 'black',	    	    	   	
 	   					},
 	    	       }
 	    	    ],
@@ -158,8 +157,8 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	            	 title: groupByBarArray,
 	    	            	 axis: 'left',
 	    	            	 highlight: true,
-	    	            	 showInLegend: true,
-	    	            	 shadow: true,
+	    	            	 //showInLegend: true,
+	    	            	// shadow: true,
 	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 	    	            	 style: {
 	    	            	 		stroke: 'rgb(40,40,40)',

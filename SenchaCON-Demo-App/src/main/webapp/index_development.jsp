@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="lib/sencha-touch-2.2.0.css" type="text/css">
     <link rel="stylesheet" href="lib/replay-analytics.css" type="text/css">        
 
-    <title>Replay Analytics</title>   
+    <title> SenchaCON 2013 Demo</title>   
     
     <script type="text/javascript" src="lib/sencha-touch-all-debug-2.2.0.js"></script> 
     <script type="text/javascript" src="lib/Format.js"></script> 

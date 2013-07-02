@@ -318,10 +318,10 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	display: -webkit-box;
 } */
 
-.x-toolbar-dark .x-button{
+/*.x-toolbar-dark .x-button{
 	background-color: rgb(17, 89, 140);
 	background-image: -webkit-linear-gradient(top, white, rgb(50, 73, 81) 1%, rgb(51, 51, 51));
-}
+}*/
 
 .x-legend .x-legend-inner .x-legend-container .x-legend-item{
 	white-space: normal;

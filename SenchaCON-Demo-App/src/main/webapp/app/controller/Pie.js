@@ -30,7 +30,7 @@ Ext.define('ReplayAnalytics.controller.Pie', {
 		    },
 		    innerPadding: {top: 15, left: 0, right: 0, bottom: 25},
 		    colors: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"],
-		    shadow: true,
+		    //shadow: true,
 		    series: [{
 				        type: 'pie',
 				        labelField: categoryField,
@@ -43,7 +43,7 @@ Ext.define('ReplayAnalytics.controller.Pie', {
 				        	field: categoryField,
 				        	display: 'rotate',
 				        	contrast: true,
-						    fill: 'white',
+						    //fill: 'black',
 						},	
 						labelOverflowPadding: 10,
 			}],			

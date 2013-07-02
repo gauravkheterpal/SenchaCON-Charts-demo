@@ -117,11 +117,11 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		}		
 		if (chartIndex != 0 && chartIndex != 5){
 			var graphTitle = ReplayAnalytics.app.graphTitle[chartIndex];
-			caption = '<h1 style="text-align:center; color: white; z-index: 10; font-size: 20px">'+graphTitle+'</h1><h1 style="text-align:center; color: white; z-index: 10; font-size: 14px">'+currentDate+'</h1>';
-			Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].setHtml(caption);
+			caption = '<h1 style="text-align:center; color: black; z-index: 10; font-size: 14px; padding:10px"><b>'+currentDate+'</b></h1>';
+			Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml(caption);
 			//Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml(caption);
 		} else if (chartIndex == 5){
-			caption = "<h1 style='text-align:center; color: white; z-index: 10; font-size: 14px; padding: 5px;'>"+currentDate+"</h1>";
+			caption = "<h1 style='text-align:center; color: black; z-index: 10; font-size: 14px; padding: 5px;'>"+currentDate+"</h1>";
 			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].setHtml(caption);
 		}				
 		return caption;
@@ -192,7 +192,7 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		if (chartIndex == 5){
 			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].add(ReplayAnalytics.app.newChart[chartIndex]);						
 		} else {
-			Ext.ComponentQuery.query('Panel'+chartIndex)[0].add(ReplayAnalytics.app.newChart[chartIndex]);
+			Ext.ComponentQuery.query('panel'+chartIndex)[0].add(ReplayAnalytics.app.newChart[chartIndex]);
 			/*var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
 			playbackController.getApplication().getController('Main').clearCarousel();					
 			playbackController.getApplication().getController('InterestingMoment').addChartDataTableToCarousel(chartIndex);
@@ -433,15 +433,6 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 	},
 	
 	moveCarouselToGraphItem: function(){
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if (chartIndex != 0 && chartIndex != 5){
-			var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-			carousel.setActiveItem(0);
-		} else if (chartIndex == 0) {
-			for (i = 1; i < 5; i++){
-				var carouselItem = Ext.ComponentQuery.query('carousel[id=carousel'+ i +']')[0];
-				carouselItem.setActiveItem(0);
-			}
-		}		
+				
 	},
 });

@@ -129,7 +129,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 				obj.destroy();
 			}
 		}
-		for (var j = 1; j < 5; j++){
+		/*for (var j = 1; j < 5; j++){
 			Ext.ComponentQuery.query('addchartpanel'+j)[0].setHtml('');
 			var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ j +']')[0];
 			for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
@@ -138,78 +138,12 @@ Ext.define('ReplayAnalytics.controller.Main', {
 					carousel.remove(temp);
 				}
 			}
-		}
+		}*/
 	},
 	
 	handleTitleBarButtons: function(){
 		this.getSettingsButton().setDisabled(false);
-		this.getGlobalSettingsButton().setDisabled(false);
-		var cookie = readCookie(ReplayAnalytics.app.sessionCookie);
-		if (cookie != null){
-			var cookieData = Ext.JSON.decode(cookie);
-			if (cookieData != null){
-				if (ReplayAnalytics.app.currentUserSession == undefined){
-					ReplayAnalytics.app.currentUserSession = cookieData;
-				}
-			}
-		}
-		if (ReplayAnalytics.app.currentUserSession == undefined){
-			this.getSettingsButton().hide();
-			this.getApplication().getController('Settings').getNumberActivePanelsSetting().hide();
-			this.getApplication().getController('Settings').getImType1Setting().hide();
-			this.getApplication().getController('Settings').getImType2Setting().hide();
-			this.getApplication().getController('Settings').getImType3Setting().hide();
-			this.getApplication().getController('Settings').getImType4Setting().hide();
-			this.getApplication().getController('Login').getSaveDashboardButton().hide();
-			this.getApplication().getController('Login').getGoBackButton().hide();
-			this.getApplication().getController('Login').getShareDashboardButton().hide();
-			//this.getApplication().getController('Login').getLoginRedirectButton().show();	
-			this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
-			this.getApplication().getController('InterestingMoment').getManualIMButton().hide();
-		} else if (ReplayAnalytics.app.currentDashboard != undefined && ReplayAnalytics.app.currentUserSession.userId != ReplayAnalytics.app.currentDashboard.userId){
-			this.getSettingsButton().hide();
-			this.getApplication().getController('Settings').getNumberActivePanelsSetting().hide();
-			this.getApplication().getController('Settings').getImType1Setting().hide();
-			this.getApplication().getController('Settings').getImType2Setting().hide();
-			this.getApplication().getController('Settings').getImType3Setting().hide();
-			this.getApplication().getController('Settings').getImType4Setting().hide();
-			this.getApplication().getController('Login').getSaveDashboardButton().hide();
-			this.getApplication().getController('Login').getGoBackButton().show();
-			this.getApplication().getController('Login').getShareDashboardButton().hide();
-			this.getApplication().getController('Login').getLoginRedirectButton().hide();
-			this.getApplication().getController('Login').getBookmarkDashboardButton().show();
-			this.getApplication().getController('InterestingMoment').getManualIMButton().show();
-		} else if ((ReplayAnalytics.app.currentDashboard == undefined) || (ReplayAnalytics.app.currentDashboard != undefined 
-				&& ReplayAnalytics.app.currentUserSession.userId == ReplayAnalytics.app.currentDashboard.userId)){
-			this.getSettingsButton().show();
-			this.getApplication().getController('Settings').getNumberActivePanelsSetting().show();
-			this.getApplication().getController('Settings').getImType1Setting().show();
-			this.getApplication().getController('Settings').getImType2Setting().show();
-			this.getApplication().getController('Settings').getImType3Setting().show();
-			this.getApplication().getController('Settings').getImType4Setting().show();
-			this.getApplication().getController('Login').getSaveDashboardButton().show();
-			this.getApplication().getController('Login').getGoBackButton().show();
-			this.getApplication().getController('Login').getShareDashboardButton().show();
-			this.getApplication().getController('Login').getLoginRedirectButton().hide();	
-			this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
-			this.getApplication().getController('InterestingMoment').getManualIMButton().show();
-		}
-		if (ReplayAnalytics.app.userDashboards != undefined && ReplayAnalytics.app.userDashboards.length > 0 
-				&& ReplayAnalytics.app.currentDashboard != undefined){
-			for ( i = 0; i < ReplayAnalytics.app.userDashboards.length; i++){
-				if (ReplayAnalytics.app.userDashboards[i].isBookmarkedDashboard 
-						&& (ReplayAnalytics.app.userDashboards[i].dashboardId == ReplayAnalytics.app.currentDashboard.dashboardId)){
-					this.getApplication().getController('Login').getShareDashboardButton().show();
-					this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
-					break;
-				}
-			}
-		} else if (ReplayAnalytics.app.currentUserSession != undefined && ReplayAnalytics.app.currentDashboard != undefined 
-				&& ReplayAnalytics.app.currentDashboard.isBookmarkedDashboard && 
-				(ReplayAnalytics.app.currentDashboard.userId != ReplayAnalytics.app.currentUserSession.userId)){
-			this.getApplication().getController('Login').getShareDashboardButton().show();
-			this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
-		}
+		this.getSettingsButton().show();
 	},
 	
 	loadStores: function() {
@@ -232,6 +166,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 		var loopIndex = 1;
 		for(;loopIndex <= ReplayAnalytics.app.numberActivePanels; loopIndex++){
 			Ext.getStore('UserSettings'+loopIndex).load();
+			
 			if(Ext.getStore('UserSettings'+loopIndex).getData().items[0] != undefined) {
 				Ext.get('chart'+loopIndex+'Button').hide();
 				Ext.get('chart'+loopIndex+'Image').hide();
@@ -264,6 +199,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 4;
 					break;
 				}
+				debugger;
 				showLoadingMask();
 				this.chartSetUp();
 			} else {				
@@ -349,30 +285,14 @@ Ext.define('ReplayAnalytics.controller.Main', {
 		if (chartIndex == 5){
 			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].setHtml('');
 		} else {
-			Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].setHtml('');
-		}
-		
-		this.clearCarousel();
+			Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml('');
+		}		
 		var chartObject = Ext.ComponentQuery.query('chart[id=chart'+chartIndex+']')[0];
 		if(chartObject != undefined){
 			chartObject.destroy();
 		}
 		ReplayAnalytics.app.chartCreated[ReplayAnalytics.app.currentActivePanelIndex] = false;
 		mainController.configureGranularities(ReplayAnalytics.app.currentActivePanelIndex,ReplayAnalytics.app.startDate[ReplayAnalytics.app.currentActivePanelIndex],ReplayAnalytics.app.currentEndDate[ReplayAnalytics.app.currentActivePanelIndex]);	
-	},
-	
-	clearCarousel: function(){
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if (chartIndex == 5 || chartIndex == 0){
-			return;
-		}
-		var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-		for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
-			var temp = carousel.getAt(carouselIndex - 1);
-			if (temp != undefined){
-				carousel.remove(temp);
-			}
-		}		
 	},
 	
 	getModelTypeForField: function(field){

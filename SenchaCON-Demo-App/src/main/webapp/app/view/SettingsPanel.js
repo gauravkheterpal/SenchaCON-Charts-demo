@@ -34,7 +34,8 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 		        {
 		        	xtype: 'textfield',
 		        	id: 'graphtitlefield',
-					label: 'Graph Title:',								
+					label: 'Graph Title:',		
+					hidden:true,
 		        },		 
 		        {
 		        	xtype:'selectfield',
