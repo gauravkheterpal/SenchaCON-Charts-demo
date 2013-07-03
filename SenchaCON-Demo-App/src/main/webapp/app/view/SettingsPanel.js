@@ -25,6 +25,7 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 		        	xtype: 'selectfield',
 		        	id: 'databaseselectfield',
 		        	label: 'Database:',
+		        	hidden: true,
 		        	value: 'None',
 		        	options: [
 		        	    {text: '+ Import Excel File', value: 'add_new_data_source'},
@@ -95,6 +96,7 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 					xtype: 'selectfield',
 					id: 'accumfield',
 					label: 'Accumulate:',
+					hidden: true,
 					value: 'On',
 					options: [
 						{text: 'On', value: 'On'},

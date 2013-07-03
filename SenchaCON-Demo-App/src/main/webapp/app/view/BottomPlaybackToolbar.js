@@ -92,9 +92,10 @@ Ext.define('ReplayAnalytics.view.BottomPlaybackToolbar', {
 		        	xtype: 'container', 
 		        	id: 'daterangelabel',
 		        },
-		        {
+		        /*{
 		        	xtype: 'button',
 		        	id: 'manualimbutton',
+		        	hidden:true,
 		        	iconCls: 'callout',
 		        },
 		        {
@@ -109,7 +110,7 @@ Ext.define('ReplayAnalytics.view.BottomPlaybackToolbar', {
 		        	        	iconCls: 'sync',
 		        	        },
 		        	]
-		        },
+		        },*/
 		]
 	}
 })

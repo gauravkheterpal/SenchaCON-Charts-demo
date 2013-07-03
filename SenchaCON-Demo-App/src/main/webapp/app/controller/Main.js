@@ -504,12 +504,12 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	
 	setFocusOnPanel: function(index) {
 		if (index != 0){
-			if (this.getGlobalSyncButton().getPressedButtons().length != 0){
+			/*if (this.getGlobalSyncButton().getPressedButtons().length != 0){
 				this.getSettingsButton().setDisabled(false);
 				this.getGlobalSettingsButton().setDisabled(false);
 			}
 			this.getGlobalSyncButton().setPressedButtons([false]);
-			this.getFourPanelLayout().setCls('unselected-panel');
+*/			this.getFourPanelLayout().setCls('unselected-panel');
 			this.getPanel1().setCls('unselected-panel');
 			this.getPanel2().setCls('unselected-panel');
 			this.getPanel3().setCls('unselected-panel');

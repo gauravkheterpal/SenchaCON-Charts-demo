@@ -205,12 +205,12 @@ Ext.application({
 		
 		this.setDefaultValues = function(){
 			for(i = 0; i < 6; i++) {
-				this.databaseSetting[i] = 'none';
+				this.databaseSetting[i] = 'demo_data';
 				this.filterToggle[i] = 'Off';
 				this.granularities[i] = 'Daily';
 				this.valueGranularities[i] = 2;
-				this.chartTypes[i] = 'none';
-				this.xs[i] = 'none';
+				this.chartTypes[i] = 'pie';
+				this.xs[i] = 'downtime_hours';
 				this.ys[i] = 'none';
 				this.chartCreated[i] = false;
 				this.startDate[i] = new Date();
@@ -223,7 +223,7 @@ Ext.application({
 				this.accumulate[i] = 'Off';
 				this.graphTitle[i] = 'Title';
 				this.sizeBys[i] = 'none';
-				this.groupBys[i] = 'none';
+				this.groupBys[i] = 'reason';
 				this.XmaxReceived[i] = false;
 				this.YmaxReceived[i] = false;
 				this.InformanceUserFilter[i] = '';

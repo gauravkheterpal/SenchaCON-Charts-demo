@@ -141,20 +141,20 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			categoryFieldValuesWithTime = ReplayAnalytics.app.PanelCategoryFieldStoreWithTime[selectedPanel];
 		}		
 		this.getGranularitySetting().setOptions(granularityFieldValues);
-		this.getGranularitySetting().setValue('None');
+		//this.getGranularitySetting().setValue('None');
 		switch(this.getChartTypeSetting().getValue()) {
 		case 'scatter':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
-			this.getGroupBySetting().setOptions(categoryFieldValues);
+			this.getGroupBySetting().hide();
 			this.getXAxisSetting().setOptions(dataFieldValues);
 			this.getYAxisSetting().setOptions(dataFieldValues);
 			break;
 		case 'horizontalbar':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
 			this.getYAxisSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getXAxisSetting().setOptions(dataFieldValues);
@@ -163,7 +163,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			break;
 		case 'verticalbar':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getYAxisSetting().setOptions(dataFieldValues);
@@ -172,7 +172,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			break;
 		case 'line':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getYAxisSetting().setOptions(dataFieldValues);
@@ -181,7 +181,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			break;
 		case 'pie':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().hide('fadeOut');
+			//this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
 			this.getGroupBySetting().setOptions(categoryFieldValues);
@@ -189,16 +189,16 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			break;
 		case 'none':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().hide('fadeOut');
+			//this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
 			this.getGroupBySetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);
 			this.getXAxisSetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);	
 			this.getYAxisSetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);
 		}
-		this.getGroupBySetting().setValue('none');
-		this.getXAxisSetting().setValue('none');
-		this.getYAxisSetting().setValue('none');
+		//this.getGroupBySetting().setValue('none');
+		//this.getXAxisSetting().setValue('none');
+		//this.getYAxisSetting().setValue('none');
 	},
 	
 	manageFieldValueChangeForyAxisField: function(){
@@ -344,12 +344,19 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	showSettingsPanel: function() {
 		
 		this.getApplication().getController('DatabaseTable').getAllDatabaseTables();
+		debugger;
 	},
 	
 	configureSettingsPanel: function(){
 		
 		this.getDatabaseSetting().setOptions(ReplayAnalytics.app.DatabaseTableFieldStore);
 		this.getDatabaseSetting().setValue(ReplayAnalytics.app.databaseSetting[ReplayAnalytics.app.currentActivePanelIndex]);
+		this.getApplication().getController('DatabaseTable').getDatabaseTableFieldsForDatabase();
+		
+		
+	},
+	
+	showConfiguredSettingsPanel: function(){
 		this.getChartTypeSetting().setValue(ReplayAnalytics.app.chartTypes[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.manageDimensions();
 		//this.getGraphTitleSetting().setValue(ReplayAnalytics.app.graphTitle[ReplayAnalytics.app.currentActivePanelIndex]);
@@ -412,12 +419,12 @@ Ext.define('ReplayAnalytics.controller.Settings', {
         var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
         Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].setHtml('');
 		var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-		for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
+		/*for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
 			var temp = carousel.getAt(carouselIndex-1);
 			if (temp != undefined){
 				carousel.remove(temp);
 			}
-		}
+		}*/
 		//Ext.ComponentQuery.query('textfield[label=Graph Title:]')[0].setValue('Title');
 		Ext.ComponentQuery.query('selectfield[label=Accumulate:]')[0].setValue('Off');
 		this.manageDimensions();

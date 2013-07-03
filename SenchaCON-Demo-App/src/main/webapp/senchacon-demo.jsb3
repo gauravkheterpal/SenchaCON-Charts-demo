@@ -1,6 +1,6 @@
 {
-    "projectName": "Replay Analytics",
-    "licenseText": "Copyright(c) 2013 Mind Over Metrics",
+    "projectName": " SenchaCON 2013 Demo",
+    "licenseText": "Copyright(c) 2013",
     "builds": [
         {
             "name": "All Classes",

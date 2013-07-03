@@ -255,9 +255,9 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		if (chartIndex != 0){
 			this.setPanelDateCaption(chartIndex, value);
 			ReplayAnalytics.app.newChart[chartIndex].bindStore(ReplayAnalytics.app.jsonstore[chartIndex][value]);
-		} else if (chartIndex == 0) {
+		}/* else if (chartIndex == 0) {
 			this.getApplication().getController('GlobalSync').globalSyncSliderFunctionChange(sliderValue, chartIndex);
-		}
+		}*/
 	},	
 	
 	resetBackwardFunction: function() {	

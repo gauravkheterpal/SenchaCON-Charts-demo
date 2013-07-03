@@ -1,5 +1,5 @@
 /*
-Copyright(c) 2013 Mind Over Metrics
+Copyright(c) 2013
 */
 /**
  * A Javascript object to encode and/or decode html characters using HTML or Numeric entities that handles double or partial encoding
@@ -244,5 +244,4 @@ Encoder = {
 	}
 
 }
-
 

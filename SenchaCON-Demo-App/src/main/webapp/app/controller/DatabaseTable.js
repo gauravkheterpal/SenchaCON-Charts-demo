@@ -107,7 +107,7 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	},
 	
 	getDatabaseTableFieldsForDatabase: function(){
-		this.getChartTypeSetting().setValue('none');
+		//this.getChartTypeSetting().setValue('none');
 		var selectedDatabaseTable = this.getDatabaseSetting().getValue();
 		if (selectedDatabaseTable == 'add_new_data_source'){
 			//this.getApplication().getController('Admin').showAdminPanel();
@@ -161,7 +161,9 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 				timeFieldStore.push(temp);
 			}
 		}
-		categoryFieldStoreWithTime = categoryFieldStore;
+		for (var index = 0; index < categoryFieldStore.length; index++){
+			categoryFieldStoreWithTime.push(categoryFieldStore[index]);
+		}
 		for (var index = 0; index < timeFieldStore.length; index++){
 			categoryFieldStoreWithTime.push(timeFieldStore[index]);
 		}
@@ -170,6 +172,7 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 		ReplayAnalytics.app.PanelDataFieldStore[selectedPanel] = dataFieldStore;
 		ReplayAnalytics.app.PanelCategoryFieldStore[selectedPanel] = categoryFieldStore;
 		ReplayAnalytics.app.PanelCategoryFieldStoreWithTime[selectedPanel] = categoryFieldStoreWithTime;
+		this.getApplication().getController('Settings').showConfiguredSettingsPanel();
 	},
 	
 	cacheDatabaseTableDataForDashboard: function(databasesToCache){

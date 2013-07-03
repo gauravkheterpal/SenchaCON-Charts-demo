@@ -1,5 +1,5 @@
 /*
-Copyright(c) 2013 Mind Over Metrics
+Copyright(c) 2013
 */
 Ext.define('ReplayAnalytics.view.FilterFieldsPanel', {
 	extend: 'Ext.Panel',
@@ -755,6 +755,7 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 		        	xtype: 'selectfield',
 		        	id: 'databaseselectfield',
 		        	label: 'Database:',
+		        	hidden: true,
 		        	value: 'None',
 		        	options: [
 		        	    {text: '+ Import Excel File', value: 'add_new_data_source'},
@@ -764,7 +765,8 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 		        {
 		        	xtype: 'textfield',
 		        	id: 'graphtitlefield',
-					label: 'Graph Title:',								
+					label: 'Graph Title:',		
+					hidden:true,
 		        },		 
 		        {
 		        	xtype:'selectfield',
@@ -824,6 +826,7 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 					xtype: 'selectfield',
 					id: 'accumfield',
 					label: 'Accumulate:',
+					hidden: true,
 					value: 'On',
 					options: [
 						{text: 'On', value: 'On'},
@@ -949,7 +952,8 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 	           'Ext.TitleBar'
 	],
 	config: {
-		title: 'Replay Analytics &#153;',
+		//title: 'Replay Analytics &#153;',
+		title:'SenchaCON-Charts-Demo',
 		docked: 'top',
 		layout: 'hbox',
 		height: '60px',
@@ -962,6 +966,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 					docked: 'left',
                     width: '130px',
                     height: '100%',
+                    hidden: true,
                     cls: 'replayanalyticslogo',
 					src:'lib/images/mind-over-metrics-logo.png'
 		        },
@@ -969,6 +974,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 		        	xtype: 'label',
 		        	id: 'usernamelabel',
 		        	docked: 'left',
+		        	hidden: true,
 		        	cls: 'usernamelabel',
 		        	html: 'Welcome',
 		        },
@@ -976,6 +982,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 		        	xtype:'button',
 		        	id: 'helpbutton',
 		        	align: 'right',
+		        	hidden: true,
 		        	iconCls: 'help',
 		        },				
 				{
@@ -983,6 +990,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 					id: 'sharedashboardbutton',
 					align: 'right',
 					text: 'Share',
+					hidden: true,
 					iconCls: 'share',
 				},
 				{
@@ -996,12 +1004,14 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 					xtype:'button',
 					id: 'globalsettingsbutton',
 					align: 'right',
+					hidden: true,
 					text: 'Global Settings',
 					iconCls: 'globe',
 				},
 				{
 		        	xtype: 'button',
 		        	id: 'savedashboardbutton',
+		        	hidden: true,
 		        	iconCls: 'save',
 		        	align: 'right',
 		        	text: 'Save',
@@ -1025,6 +1035,7 @@ Ext.define('ReplayAnalytics.view.TitleBar', {
 				{
 					xtype:'button',
 					id: 'gobackbutton',
+					hidden: true,
 					align: 'right',
 					text: 'My Replays',
 					iconCls: 'rightbig',
@@ -1524,22 +1535,29 @@ Ext.define('ReplayAnalytics.view.Panel1', {
 		id: 'Panel1',
 		layout: {type: 'vbox', pack: 'center'},
     	flex: 1,
-    	style: 'padding-bottom:20px;',
+    	style: 'padding-bottom:20px; background-color: white; color:black',
     	items: [
-    	        {
+{
+	xtype: 'addchartpanel1',
+	fullscreen: true,
+	width:'100%',
+	height:'100%',
+},
+    	       /*{
     	        	xtype: 'carousel',
     	        	id: 'carousel1',
     	        	direction: 'horizontal',
     	        	fullscreen: true,
     	        	cls: 'carousel-style',
     	        	width: '100%',
+    	        	 hidden: true,
     	        	height: '100%',
     	        	items: [
     	        	        {
     	        	        	xtype: 'addchartpanel1',
     	        	        },    	        	        
     	        	       ]
-    	        }
+    	        }*/
     	]
 	}
 });
@@ -1549,13 +1567,20 @@ Ext.define('ReplayAnalytics.view.Panel2', {
 	config: {
 		layout: {type: 'vbox', pack: 'center'},
     	flex: 1,
-    	style: "background-color: black; color:white",
+    	style: "background-color: white; color:black",
     	items: [
-    	        {
+{
+	xtype: 'addchartpanel2',
+	fullscreen: true,
+	width:'100%',
+	height:'100%',
+},
+    	       /* {
     	        	xtype: 'carousel',
     	        	id: 'carousel2',
     	        	direction: 'horizontal',
     	        	fullscreen: true,
+    	        	 hidden: true,
     	        	width: '100%',
     	        	height: '100%',
     	        	items: [
@@ -1563,7 +1588,7 @@ Ext.define('ReplayAnalytics.view.Panel2', {
     	        	        	xtype: 'addchartpanel2',
     	        	        },    	        	        
     	        	       ]
-    	        }
+    	        }*/
     	]
 	}
 });
@@ -1573,21 +1598,28 @@ Ext.define('ReplayAnalytics.view.Panel3', {
 	config: {
 		layout: {type: 'vbox', pack: 'center'},
     	flex: 1,
-    	style: "background-color: black; color:white",
+    	style: "background-color: white; color:black",
     	items: [
-    	        {
+{
+	xtype: 'addchartpanel3',
+	fullscreen: true,
+	width:'100%',
+	height:'100%',
+}, 
+    	        /*{
     	        	xtype: 'carousel',
     	        	id: 'carousel3',
     	        	direction: 'horizontal',
     	        	fullscreen: true,
     	        	width: '100%',
+    	        	 hidden: true,
     	        	height: '100%',
     	        	items: [
     	        	        {
     	        	        	xtype: 'addchartpanel3',
     	        	        },    	        	        
     	        	       ]
-    	        }
+    	        }*/
     	]
 	}
 });
@@ -1597,21 +1629,28 @@ Ext.define('ReplayAnalytics.view.Panel4', {
 	config: {
 		layout: {type: 'vbox', pack: 'center'},
     	flex: 1,
-    	style: "background-color: black; color:white",
+    	style: "background-color: white; color:black",
     	items: [
-    	        {
+{
+	xtype: 'addchartpanel4',
+	fullscreen: true,
+	width:'100%',
+	height:'100%',
+},
+    	        /*{
     	        	xtype: 'carousel',
     	        	id: 'carousel4',
     	        	direction: 'horizontal',
     	        	fullscreen: true,
     	        	width: '100%',
+    	        	 hidden: true,
     	        	height: '100%',
     	        	items: [
     	        	        {
     	        	        	xtype: 'addchartpanel4',
     	        	        },    	        	        
-    	        	       ]
-    	        }
+    	        	      ]
+    	        }*/
     	]
 	}
 });
@@ -2093,11 +2132,13 @@ Ext.define('ReplayAnalytics.controller.Login', {
 	
 	launch: function(){
 		loginController = this;
+		clearAllStores();
 		$mainController = loginController.getApplication().getController('Main');
 		loginController.handleButtonTextsForScreenSize();
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });	
-		this.checkForURLQUeryString();
-		this.checkForUserSession();
+		//this.checkForURLQUeryString();
+		//this.checkForUserSession();
+		this.showMainScreen();
 	},
 	
 	checkForURLQUeryString: function(){
@@ -2145,7 +2186,7 @@ Ext.define('ReplayAnalytics.controller.Login', {
 		} else {
 			loginController.getApplication().getController('Main').getSettingsButton().setText('Settings');
 			loginController.getApplication().getController('Main').getGlobalSettingsButton().setText('Global Settings');
-			loginController.getApplication().getController('Main').getGlobalSyncButton().items.items[0].setText('Global Sync');
+			//loginController.getApplication().getController('Main').getGlobalSyncButton().items.items[0].setText('Global Sync');
 			loginController.getSaveDashboardButton().setText('Save');
 			loginController.getGoBackButton().setText('My Replays');
 			loginController.getShareDashboardButton().setText('Share');
@@ -2911,7 +2952,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 				obj.destroy();
 			}
 		}
-		for (var j = 1; j < 5; j++){
+		/*for (var j = 1; j < 5; j++){
 			Ext.ComponentQuery.query('addchartpanel'+j)[0].setHtml('');
 			var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ j +']')[0];
 			for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
@@ -2920,78 +2961,12 @@ Ext.define('ReplayAnalytics.controller.Main', {
 					carousel.remove(temp);
 				}
 			}
-		}
+		}*/
 	},
 	
 	handleTitleBarButtons: function(){
 		this.getSettingsButton().setDisabled(false);
-		this.getGlobalSettingsButton().setDisabled(false);
-		var cookie = readCookie(ReplayAnalytics.app.sessionCookie);
-		if (cookie != null){
-			var cookieData = Ext.JSON.decode(cookie);
-			if (cookieData != null){
-				if (ReplayAnalytics.app.currentUserSession == undefined){
-					ReplayAnalytics.app.currentUserSession = cookieData;
-				}
-			}
-		}
-		if (ReplayAnalytics.app.currentUserSession == undefined){
-			this.getSettingsButton().hide();
-			this.getApplication().getController('Settings').getNumberActivePanelsSetting().hide();
-			this.getApplication().getController('Settings').getImType1Setting().hide();
-			this.getApplication().getController('Settings').getImType2Setting().hide();
-			this.getApplication().getController('Settings').getImType3Setting().hide();
-			this.getApplication().getController('Settings').getImType4Setting().hide();
-			this.getApplication().getController('Login').getSaveDashboardButton().hide();
-			this.getApplication().getController('Login').getGoBackButton().hide();
-			this.getApplication().getController('Login').getShareDashboardButton().hide();
-			this.getApplication().getController('Login').getLoginRedirectButton().show();	
-			this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
-			this.getApplication().getController('InterestingMoment').getManualIMButton().hide();
-		} else if (ReplayAnalytics.app.currentDashboard != undefined && ReplayAnalytics.app.currentUserSession.userId != ReplayAnalytics.app.currentDashboard.userId){
-			this.getSettingsButton().hide();
-			this.getApplication().getController('Settings').getNumberActivePanelsSetting().hide();
-			this.getApplication().getController('Settings').getImType1Setting().hide();
-			this.getApplication().getController('Settings').getImType2Setting().hide();
-			this.getApplication().getController('Settings').getImType3Setting().hide();
-			this.getApplication().getController('Settings').getImType4Setting().hide();
-			this.getApplication().getController('Login').getSaveDashboardButton().hide();
-			this.getApplication().getController('Login').getGoBackButton().show();
-			this.getApplication().getController('Login').getShareDashboardButton().hide();
-			this.getApplication().getController('Login').getLoginRedirectButton().hide();
-			this.getApplication().getController('Login').getBookmarkDashboardButton().show();
-			this.getApplication().getController('InterestingMoment').getManualIMButton().show();
-		} else if ((ReplayAnalytics.app.currentDashboard == undefined) || (ReplayAnalytics.app.currentDashboard != undefined 
-				&& ReplayAnalytics.app.currentUserSession.userId == ReplayAnalytics.app.currentDashboard.userId)){
-			this.getSettingsButton().show();
-			this.getApplication().getController('Settings').getNumberActivePanelsSetting().show();
-			this.getApplication().getController('Settings').getImType1Setting().show();
-			this.getApplication().getController('Settings').getImType2Setting().show();
-			this.getApplication().getController('Settings').getImType3Setting().show();
-			this.getApplication().getController('Settings').getImType4Setting().show();
-			this.getApplication().getController('Login').getSaveDashboardButton().show();
-			this.getApplication().getController('Login').getGoBackButton().show();
-			this.getApplication().getController('Login').getShareDashboardButton().show();
-			this.getApplication().getController('Login').getLoginRedirectButton().hide();	
-			this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
-			this.getApplication().getController('InterestingMoment').getManualIMButton().show();
-		}
-		if (ReplayAnalytics.app.userDashboards != undefined && ReplayAnalytics.app.userDashboards.length > 0 
-				&& ReplayAnalytics.app.currentDashboard != undefined){
-			for ( i = 0; i < ReplayAnalytics.app.userDashboards.length; i++){
-				if (ReplayAnalytics.app.userDashboards[i].isBookmarkedDashboard 
-						&& (ReplayAnalytics.app.userDashboards[i].dashboardId == ReplayAnalytics.app.currentDashboard.dashboardId)){
-					this.getApplication().getController('Login').getShareDashboardButton().show();
-					this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
-					break;
-				}
-			}
-		} else if (ReplayAnalytics.app.currentUserSession != undefined && ReplayAnalytics.app.currentDashboard != undefined 
-				&& ReplayAnalytics.app.currentDashboard.isBookmarkedDashboard && 
-				(ReplayAnalytics.app.currentDashboard.userId != ReplayAnalytics.app.currentUserSession.userId)){
-			this.getApplication().getController('Login').getShareDashboardButton().show();
-			this.getApplication().getController('Login').getBookmarkDashboardButton().hide();
-		}
+		this.getSettingsButton().show();
 	},
 	
 	loadStores: function() {
@@ -3014,6 +2989,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 		var loopIndex = 1;
 		for(;loopIndex <= ReplayAnalytics.app.numberActivePanels; loopIndex++){
 			Ext.getStore('UserSettings'+loopIndex).load();
+			
 			if(Ext.getStore('UserSettings'+loopIndex).getData().items[0] != undefined) {
 				Ext.get('chart'+loopIndex+'Button').hide();
 				Ext.get('chart'+loopIndex+'Image').hide();
@@ -3046,6 +3022,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 4;
 					break;
 				}
+				debugger;
 				showLoadingMask();
 				this.chartSetUp();
 			} else {				
@@ -3131,30 +3108,14 @@ Ext.define('ReplayAnalytics.controller.Main', {
 		if (chartIndex == 5){
 			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].setHtml('');
 		} else {
-			Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].setHtml('');
-		}
-		
-		this.clearCarousel();
+			Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml('');
+		}		
 		var chartObject = Ext.ComponentQuery.query('chart[id=chart'+chartIndex+']')[0];
 		if(chartObject != undefined){
 			chartObject.destroy();
 		}
 		ReplayAnalytics.app.chartCreated[ReplayAnalytics.app.currentActivePanelIndex] = false;
 		mainController.configureGranularities(ReplayAnalytics.app.currentActivePanelIndex,ReplayAnalytics.app.startDate[ReplayAnalytics.app.currentActivePanelIndex],ReplayAnalytics.app.currentEndDate[ReplayAnalytics.app.currentActivePanelIndex]);	
-	},
-	
-	clearCarousel: function(){
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if (chartIndex == 5 || chartIndex == 0){
-			return;
-		}
-		var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-		for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
-			var temp = carousel.getAt(carouselIndex - 1);
-			if (temp != undefined){
-				carousel.remove(temp);
-			}
-		}		
 	},
 	
 	getModelTypeForField: function(field){
@@ -3366,12 +3327,12 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	
 	setFocusOnPanel: function(index) {
 		if (index != 0){
-			if (this.getGlobalSyncButton().getPressedButtons().length != 0){
+			/*if (this.getGlobalSyncButton().getPressedButtons().length != 0){
 				this.getSettingsButton().setDisabled(false);
 				this.getGlobalSettingsButton().setDisabled(false);
 			}
 			this.getGlobalSyncButton().setPressedButtons([false]);
-			this.getFourPanelLayout().setCls('unselected-panel');
+*/			this.getFourPanelLayout().setCls('unselected-panel');
 			this.getPanel1().setCls('unselected-panel');
 			this.getPanel2().setCls('unselected-panel');
 			this.getPanel3().setCls('unselected-panel');
@@ -3463,7 +3424,7 @@ Ext.define('ReplayAnalytics.controller.Pie', {
 		    },
 		    innerPadding: {top: 15, left: 0, right: 0, bottom: 25},
 		    colors: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"],
-		    shadow: true,
+		    //shadow: true,
 		    series: [{
 				        type: 'pie',
 				        labelField: categoryField,
@@ -3476,7 +3437,7 @@ Ext.define('ReplayAnalytics.controller.Pie', {
 				        	field: categoryField,
 				        	display: 'rotate',
 				        	contrast: true,
-						    fill: 'white',
+						    //fill: 'black',
 						},	
 						labelOverflowPadding: 10,
 			}],			
@@ -3527,7 +3488,7 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 		    flipXY: true,
 		    flex: 1,
 		    store: store,
-		    shadow: true,
+		    //shadow: true,
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 		    //interactions: ['panzoom'],
@@ -3536,8 +3497,8 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'bottom',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
-	    	    	   		shadowColor: 'black',    	    	   	
+	    	    	   		strokeStyle: 'black',
+	    	    	   		//shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
@@ -3545,9 +3506,9 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	title: {
 	   						text: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	   						strokeStyle: '#4270A2',
+	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
-	   						shadowColor: 'black',
+	   						//shadowColor: 'black',
 	   					},	   					
 	    	       },
 	    	       {
@@ -3556,14 +3517,14 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
-	    	    	   		shadowColor: 'black',
+	    	    	   		strokeStyle: 'black',
+	    	    	   		//shadowColor: 'black',
 	    	       		},
 	    	       		title: {
 	   						text: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	   						strokeStyle: '#4270A2',
+	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
-	   						shadowColor: 'black',	    	    	   	
+	   						//shadowColor: 'black',	    	    	   	
 	   					},
 	    	       }
 	    	    ],
@@ -3575,7 +3536,7 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	            	 axis: 'left',
 	    	            	 highlight: true,
 	    	            	 showInLegend: false,
-	    	            	 shadow: true,
+	    	            	// shadow: true,
 	    	            	 style: {
 	    	            	 		stroke: 'rgb(40,40,40)',
 	    	             	 },
@@ -3593,7 +3554,7 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 			flipXY: true,
 			flex: 1,
 			store: store,
-			shadow: true,
+			//shadow: true,
 			insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
 			//interactions: ['panzoom'],
 			legend: {
@@ -3604,8 +3565,8 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'bottom',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
-	    	    	   		shadowColor: 'black',    	    	   	
+	    	    	   		strokeStyle: 'black',
+	    	    	   		//shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		//fields: groupByBarArray,
@@ -3613,25 +3574,24 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	title: {
 	   						text: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	   						strokeStyle: '#4270A2',
+	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
-	   						shadowColor: 'black',
+	   						//shadowColor: 'black',
 	   					},	   					
 	    	       },
-	    	       {
-	    	    	   	type: 'category',
+	    	       { type: 'category',
 	    	    	   	position: 'left',
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
-	    	    	   		shadowColor: 'black',
+	    	    	   		strokeStyle: 'black',
+	    	    	   		//shadowColor: 'black',
 	    	       		},
 	    	       		title: {
 	   						text: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	   						strokeStyle: '#4270A2',
+	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
-	   						shadowColor: 'black',	    	    	   	
+	   						//shadowColor: 'black',	    	    	   	
 	   					},
 	    	       }
 	    	    ],
@@ -3643,8 +3603,8 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	            	 title: groupByBarArray,
 	    	            	 axis: 'left',
 	    	            	 highlight: true,
-	    	            	 showInLegend: true,
-	    	            	 shadow: true,
+	    	            	 //showInLegend: true,
+	    	            	// shadow: true,
 	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 	    	            	 style: {
 	    	            	 		stroke: 'rgb(40,40,40)',
@@ -3717,7 +3677,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -3737,7 +3697,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {
@@ -3790,7 +3750,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -3810,7 +3770,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {
@@ -3889,7 +3849,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -3909,7 +3869,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {
@@ -4011,7 +3971,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -4031,7 +3991,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {
@@ -4156,7 +4116,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -4176,7 +4136,7 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {
@@ -4342,7 +4302,7 @@ Ext.define('ReplayAnalytics.controller.Scatter', {
 		        position: 'bottom',
 		        fields: [xfield],
 		        style: {
-	    	   		strokeStyle: 'white',
+	    	   		strokeStyle: 'black',
 	    	   		shadowColor: 'black',    	    	   	
 	       		},
 	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -4360,7 +4320,7 @@ Ext.define('ReplayAnalytics.controller.Scatter', {
 		        position: 'left',
 		        fields: [yfield],
 		        style: {
-	    	   		strokeStyle: 'white',
+	    	   		strokeStyle: 'black',
 	    	   		shadowColor: 'black',    	    	   	
 	       		},
 	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -4451,7 +4411,7 @@ Ext.define('ReplayAnalytics.controller.VerticalBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -4471,7 +4431,7 @@ Ext.define('ReplayAnalytics.controller.VerticalBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {
@@ -4519,7 +4479,7 @@ Ext.define('ReplayAnalytics.controller.VerticalBar', {
 	    	    	   	type: 'numeric',
 	    	    	   	position: 'left',
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
@@ -4539,7 +4499,7 @@ Ext.define('ReplayAnalytics.controller.VerticalBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	style: {
-	    	    	   		strokeStyle: 'white',
+	    	    	   		strokeStyle: 'black',
 	    	    	   		shadowColor: 'black',
 	    	       		},
 	    	       		title: {
@@ -6125,20 +6085,20 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			categoryFieldValuesWithTime = ReplayAnalytics.app.PanelCategoryFieldStoreWithTime[selectedPanel];
 		}		
 		this.getGranularitySetting().setOptions(granularityFieldValues);
-		this.getGranularitySetting().setValue('None');
+		//this.getGranularitySetting().setValue('None');
 		switch(this.getChartTypeSetting().getValue()) {
 		case 'scatter':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
-			this.getGroupBySetting().setOptions(categoryFieldValues);
+			this.getGroupBySetting().hide();
 			this.getXAxisSetting().setOptions(dataFieldValues);
 			this.getYAxisSetting().setOptions(dataFieldValues);
 			break;
 		case 'horizontalbar':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
 			this.getYAxisSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getXAxisSetting().setOptions(dataFieldValues);
@@ -6147,7 +6107,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			break;
 		case 'verticalbar':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getYAxisSetting().setOptions(dataFieldValues);
@@ -6156,7 +6116,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			break;
 		case 'line':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getYAxisSetting().setOptions(dataFieldValues);
@@ -6165,7 +6125,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			break;
 		case 'pie':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().hide('fadeOut');
+			//this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
 			this.getGroupBySetting().setOptions(categoryFieldValues);
@@ -6173,16 +6133,16 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			break;
 		case 'none':
 			this.getGroupBySetting().show('fadeIn');
-			this.getAccumulateSetting().hide('fadeOut');
+			//this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
 			this.getGroupBySetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);
 			this.getXAxisSetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);	
 			this.getYAxisSetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);
 		}
-		this.getGroupBySetting().setValue('none');
-		this.getXAxisSetting().setValue('none');
-		this.getYAxisSetting().setValue('none');
+		//this.getGroupBySetting().setValue('none');
+		//this.getXAxisSetting().setValue('none');
+		//this.getYAxisSetting().setValue('none');
 	},
 	
 	manageFieldValueChangeForyAxisField: function(){
@@ -6326,15 +6286,24 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	},
 	
 	showSettingsPanel: function() {
+		
 		this.getApplication().getController('DatabaseTable').getAllDatabaseTables();
+		debugger;
 	},
 	
 	configureSettingsPanel: function(){
+		
 		this.getDatabaseSetting().setOptions(ReplayAnalytics.app.DatabaseTableFieldStore);
 		this.getDatabaseSetting().setValue(ReplayAnalytics.app.databaseSetting[ReplayAnalytics.app.currentActivePanelIndex]);
+		this.getApplication().getController('DatabaseTable').getDatabaseTableFieldsForDatabase();
+		
+		
+	},
+	
+	showConfiguredSettingsPanel: function(){
 		this.getChartTypeSetting().setValue(ReplayAnalytics.app.chartTypes[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.manageDimensions();
-		this.getGraphTitleSetting().setValue(ReplayAnalytics.app.graphTitle[ReplayAnalytics.app.currentActivePanelIndex]);
+		//this.getGraphTitleSetting().setValue(ReplayAnalytics.app.graphTitle[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.getXAxisSetting().setValue(ReplayAnalytics.app.xs[ReplayAnalytics.app.currentActivePanelIndex]);
 		this.getYAxisSetting().setValue(ReplayAnalytics.app.ys[ReplayAnalytics.app.currentActivePanelIndex]);		
 		this.getGranularitySetting().setValue(ReplayAnalytics.app.granularities[ReplayAnalytics.app.currentActivePanelIndex]);
@@ -6394,13 +6363,13 @@ Ext.define('ReplayAnalytics.controller.Settings', {
         var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
         Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].setHtml('');
 		var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-		for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
+		/*for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
 			var temp = carousel.getAt(carouselIndex-1);
 			if (temp != undefined){
 				carousel.remove(temp);
 			}
-		}
-		Ext.ComponentQuery.query('textfield[label=Graph Title:]')[0].setValue('Title');
+		}*/
+		//Ext.ComponentQuery.query('textfield[label=Graph Title:]')[0].setValue('Title');
 		Ext.ComponentQuery.query('selectfield[label=Accumulate:]')[0].setValue('Off');
 		this.manageDimensions();
 		this.getApplication().getController('Main').checkForConfiguredGraphPanels();
@@ -6689,11 +6658,11 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		}		
 		if (chartIndex != 0 && chartIndex != 5){
 			var graphTitle = ReplayAnalytics.app.graphTitle[chartIndex];
-			caption = '<h1 style="text-align:center; color: white; z-index: 10; font-size: 20px">'+graphTitle+'</h1><h1 style="text-align:center; color: white; z-index: 10; font-size: 14px">'+currentDate+'</h1>';
-			Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].setHtml(caption);
+			caption = '<h1 style="text-align:center; color: black; z-index: 10; font-size: 14px; padding:10px"><b>'+currentDate+'</b></h1>';
+			Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml(caption);
 			//Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml(caption);
 		} else if (chartIndex == 5){
-			caption = "<h1 style='text-align:center; color: white; z-index: 10; font-size: 14px; padding: 5px;'>"+currentDate+"</h1>";
+			caption = "<h1 style='text-align:center; color: black; z-index: 10; font-size: 14px; padding: 5px;'>"+currentDate+"</h1>";
 			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].setHtml(caption);
 		}				
 		return caption;
@@ -6764,13 +6733,13 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		if (chartIndex == 5){
 			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].add(ReplayAnalytics.app.newChart[chartIndex]);						
 		} else {
-			Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].add(ReplayAnalytics.app.newChart[chartIndex]);
-			var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
+			Ext.ComponentQuery.query('panel'+chartIndex)[0].add(ReplayAnalytics.app.newChart[chartIndex]);
+			/*var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
 			playbackController.getApplication().getController('Main').clearCarousel();					
 			playbackController.getApplication().getController('InterestingMoment').addChartDataTableToCarousel(chartIndex);
 			playbackController.getApplication().getController('InterestingMoment').addIMCommentListToCarousel(chartIndex);	
 			playbackController.getApplication().getController('InterestingMoment').addIMListToCarousel(chartIndex);					
-			carousel.setActiveItem(0);
+			carousel.setActiveItem(0);*/
 		}
 		hideLoadingMask();
 	},
@@ -6827,9 +6796,9 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		if (chartIndex != 0){
 			this.setPanelDateCaption(chartIndex, value);
 			ReplayAnalytics.app.newChart[chartIndex].bindStore(ReplayAnalytics.app.jsonstore[chartIndex][value]);
-		} else if (chartIndex == 0) {
+		}/* else if (chartIndex == 0) {
 			this.getApplication().getController('GlobalSync').globalSyncSliderFunctionChange(sliderValue, chartIndex);
-		}
+		}*/
 	},	
 	
 	resetBackwardFunction: function() {	
@@ -7005,16 +6974,7 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 	},
 	
 	moveCarouselToGraphItem: function(){
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if (chartIndex != 0 && chartIndex != 5){
-			var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-			carousel.setActiveItem(0);
-		} else if (chartIndex == 0) {
-			for (i = 1; i < 5; i++){
-				var carouselItem = Ext.ComponentQuery.query('carousel[id=carousel'+ i +']')[0];
-				carouselItem.setActiveItem(0);
-			}
-		}		
+				
 	},
 });
 Ext.define('ReplayAnalytics.controller.Help', {
@@ -8092,6 +8052,7 @@ Ext.define('ReplayAnalytics.controller.InterestingMoment', {
 var databaseTableController;
 Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	extend : 'Ext.app.Controller',
+	
 	xtype: 'databasetablecontroller',
 	config: {
 		refs: {
@@ -8197,7 +8158,7 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	},
 	
 	getDatabaseTableFieldsForDatabase: function(){
-		this.getChartTypeSetting().setValue('none');
+		//this.getChartTypeSetting().setValue('none');
 		var selectedDatabaseTable = this.getDatabaseSetting().getValue();
 		if (selectedDatabaseTable == 'add_new_data_source'){
 			//this.getApplication().getController('Admin').showAdminPanel();
@@ -8251,7 +8212,9 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 				timeFieldStore.push(temp);
 			}
 		}
-		categoryFieldStoreWithTime = categoryFieldStore;
+		for (var index = 0; index < categoryFieldStore.length; index++){
+			categoryFieldStoreWithTime.push(categoryFieldStore[index]);
+		}
 		for (var index = 0; index < timeFieldStore.length; index++){
 			categoryFieldStoreWithTime.push(timeFieldStore[index]);
 		}
@@ -8260,6 +8223,7 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 		ReplayAnalytics.app.PanelDataFieldStore[selectedPanel] = dataFieldStore;
 		ReplayAnalytics.app.PanelCategoryFieldStore[selectedPanel] = categoryFieldStore;
 		ReplayAnalytics.app.PanelCategoryFieldStoreWithTime[selectedPanel] = categoryFieldStoreWithTime;
+		this.getApplication().getController('Settings').showConfiguredSettingsPanel();
 	},
 	
 	cacheDatabaseTableDataForDashboard: function(databasesToCache){
@@ -8917,9 +8881,10 @@ Ext.define('ReplayAnalytics.view.BottomPlaybackToolbar', {
 		        	xtype: 'container', 
 		        	id: 'daterangelabel',
 		        },
-		        {
+		        /*{
 		        	xtype: 'button',
 		        	id: 'manualimbutton',
+		        	hidden:true,
 		        	iconCls: 'callout',
 		        },
 		        {
@@ -8934,7 +8899,7 @@ Ext.define('ReplayAnalytics.view.BottomPlaybackToolbar', {
 		        	        	iconCls: 'sync',
 		        	        },
 		        	]
-		        },
+		        },*/
 		]
 	}
 })
@@ -8959,7 +8924,7 @@ Ext.define('ReplayAnalytics.view.TopTwoPanelLayout', {
 	config: {
 		layout: {type: 'hbox', pack: 'center', align: 'stretch'},
 		flex: 1,
-		style: "background-color: black; color:white",
+		style: "background-color: white; color:white",
 		items: [
 		        {
 		        	xtype: 'panel1'
@@ -8980,7 +8945,7 @@ Ext.define('ReplayAnalytics.view.BottomTwoPanelLayout', {
 	config: {
 		layout: 'hbox',
 		flex: 1,
-		style: "background-color: black; color:white",
+		style: "background-color: white; color:white",
 		items: [
 		        {
 		        	xtype: 'panel3'
@@ -9107,7 +9072,7 @@ Ext.define('ReplayAnalytics.view.Main', {
 	config: {
 		fullscreen: true,
 		hidden: true,
-		style: 'background: black;',
+		style: 'background: white;',
 		layout: {type: 'vbox'},
 		items: [
 		        {
@@ -9123,5 +9088,4 @@ Ext.define('ReplayAnalytics.view.Main', {
 		        }]
 	},
 });
-
 
