@@ -2168,7 +2168,7 @@ Ext.define('ReplayAnalytics.controller.Login', {
 	},
 	
 	handleButtonTextsForScreenSize: function(){
-		var windowWidth = Ext.Viewport.windowWidth;
+		/*var windowWidth = Ext.Viewport.windowWidth;
 		if (windowWidth >= 769 && windowWidth <= 1024 ){
 			loginController.getApplication().getController('Main').getSettingsButton().setText('');
 			loginController.getApplication().getController('Main').getGlobalSettingsButton().setText('Global');
@@ -2186,11 +2186,11 @@ Ext.define('ReplayAnalytics.controller.Login', {
 		} else {
 			loginController.getApplication().getController('Main').getSettingsButton().setText('Settings');
 			loginController.getApplication().getController('Main').getGlobalSettingsButton().setText('Global Settings');
-			//loginController.getApplication().getController('Main').getGlobalSyncButton().items.items[0].setText('Global Sync');
+			loginController.getApplication().getController('Main').getGlobalSyncButton().items.items[0].setText('Global Sync');
 			loginController.getSaveDashboardButton().setText('Save');
 			loginController.getGoBackButton().setText('My Replays');
 			loginController.getShareDashboardButton().setText('Share');
-		}
+		}*/
 	},
 	
 	submitLogin: function(){
@@ -3022,7 +3022,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 4;
 					break;
 				}
-				debugger;
+				
 				showLoadingMask();
 				this.chartSetUp();
 			} else {				
@@ -3327,12 +3327,12 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	
 	setFocusOnPanel: function(index) {
 		if (index != 0){
-			/*if (this.getGlobalSyncButton().getPressedButtons().length != 0){
+			if (this.getGlobalSyncButton().getPressedButtons().length != 0){
 				this.getSettingsButton().setDisabled(false);
 				this.getGlobalSettingsButton().setDisabled(false);
 			}
 			this.getGlobalSyncButton().setPressedButtons([false]);
-*/			this.getFourPanelLayout().setCls('unselected-panel');
+			this.getFourPanelLayout().setCls('unselected-panel');
 			this.getPanel1().setCls('unselected-panel');
 			this.getPanel2().setCls('unselected-panel');
 			this.getPanel3().setCls('unselected-panel');
@@ -4117,10 +4117,10 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	position: 'left',
 	    	    	   	style: {
 	    	    	   		strokeStyle: 'black',
-	    	    	   		shadowColor: 'black',    	    	   	
+	    	    	   		//shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
-	    	       		//fields: groupByBarArray,
+	    	       		fields: groupByBarArray,
 	    	       		minimum: 0,
 	    	    	   	maximum: ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	title: {
@@ -6093,6 +6093,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getGroupBySetting().hide();
+			this.getGroupBySetting().setValue('none');
 			this.getXAxisSetting().setOptions(dataFieldValues);
 			this.getYAxisSetting().setOptions(dataFieldValues);
 			break;
@@ -6288,7 +6289,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	showSettingsPanel: function() {
 		
 		this.getApplication().getController('DatabaseTable').getAllDatabaseTables();
-		debugger;
+		
 	},
 	
 	configureSettingsPanel: function(){
@@ -6796,9 +6797,9 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		if (chartIndex != 0){
 			this.setPanelDateCaption(chartIndex, value);
 			ReplayAnalytics.app.newChart[chartIndex].bindStore(ReplayAnalytics.app.jsonstore[chartIndex][value]);
-		}/* else if (chartIndex == 0) {
+		} else if (chartIndex == 0) {
 			this.getApplication().getController('GlobalSync').globalSyncSliderFunctionChange(sliderValue, chartIndex);
-		}*/
+		}
 	},	
 	
 	resetBackwardFunction: function() {	
@@ -8661,7 +8662,6 @@ Ext.define('ReplayAnalytics.controller.Admin', {
                 			}
             			});
             			listObject.on('itemtap', function(list, index, item, record, e, opts){
-            				//debugger;
             		        var active,chkBox = item.bodyElement.down('input').dom;
             		        if ( e.target.tagName.toUpperCase() != 'INPUT' ){
             		            chkBox.checked = !chkBox.checked;
@@ -8886,20 +8886,20 @@ Ext.define('ReplayAnalytics.view.BottomPlaybackToolbar', {
 		        	id: 'manualimbutton',
 		        	hidden:true,
 		        	iconCls: 'callout',
-		        },
+		        },*/
 		        {
 		        	xtype: 'segmentedbutton',
 		        	id: 'globalsynctogglebutton',
 		        	allowDepress: true,
 		        	items: [
 		        	        {
-		        	        	text: 'Global Sync',
+		        	        	text: 'Play All',
 		        	        	pressed: false,
 		        	        	id: 'globalsyncon',
 		        	        	iconCls: 'sync',
 		        	        },
 		        	]
-		        },*/
+		        },
 		]
 	}
 })
@@ -8967,6 +8967,7 @@ Ext.define('ReplayAnalytics.view.FourPanelLayout', {
 		layout: {type: 'vbox',},
 		autoShow: true,
 		id: 'fourpanellayout',
+		style:'margin:10px;',
 		align: 'stretch',
 		flex: 1,
 		items: [

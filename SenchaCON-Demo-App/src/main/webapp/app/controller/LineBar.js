@@ -498,10 +498,10 @@ Ext.define('ReplayAnalytics.controller.LineBar', {
 	    	    	   	position: 'left',
 	    	    	   	style: {
 	    	    	   		strokeStyle: 'black',
-	    	    	   		shadowColor: 'black',    	    	   	
+	    	    	   		//shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
-	    	       		//fields: groupByBarArray,
+	    	       		fields: groupByBarArray,
 	    	       		minimum: 0,
 	    	    	   	maximum: ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex],
 	    	    	   	title: {

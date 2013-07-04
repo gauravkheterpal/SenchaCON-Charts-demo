@@ -391,7 +391,6 @@ Ext.define('ReplayAnalytics.controller.Admin', {
                 			}
             			});
             			listObject.on('itemtap', function(list, index, item, record, e, opts){
-            				//debugger;
             		        var active,chkBox = item.bodyElement.down('input').dom;
             		        if ( e.target.tagName.toUpperCase() != 'INPUT' ){
             		            chkBox.checked = !chkBox.checked;

@@ -256,6 +256,46 @@ Ext.application({
 	    	this.dataFieldValues = new Array();
 			this.categoryFieldValues = new Array();
 	    	this.currentSelectedFilterCategory = '';
+	    	
+	    	// Panel 1
+	    	this.granularities[1] = 'Monthly';
+			this.valueGranularities[1] = 4;
+			this.chartTypes[1] = 'pie';
+			this.xs[1] = 'downtime_hours';
+			this.ys[1] = 'none';
+			this.groupBys[1] = 'reason';
+			this.startDate[1] = new Date('2011-01-01');
+			this.currentEndDate[1] = new Date('2011-06-30');
+
+			// Panel 2
+			this.granularities[2] = 'Daily';
+			this.valueGranularities[2] = 2;
+			this.chartTypes[2] = 'verticalbar';
+			this.xs[2] = 'date';
+			this.ys[2] = 'production_counts';
+			this.groupBys[2] = 'part';
+			this.startDate[2] = new Date('2011-02-01');
+			this.currentEndDate[2] = new Date('2011-02-10');
+			
+			// Panel 3
+			this.granularities[3] = 'Daily';
+			this.valueGranularities[3] = 2;
+			this.chartTypes[3] = 'scatter';
+			this.xs[3] = 'downtime_hours';
+			this.ys[3] = 'downtime_events';
+			this.groupBys[3] = 'none';
+			this.startDate[3] = new Date('2011-02-01');
+			this.currentEndDate[3] = new Date('2011-02-10');
+			
+			// Panel 4
+			this.granularities[4] = 'Weekly';
+			this.valueGranularities[4] = 3;
+			this.chartTypes[4] = 'line';
+			this.xs[4] = 'user';
+			this.ys[4] = 'production_counts';
+			this.groupBys[4] = 'set';
+			this.startDate[4] = new Date('2011-01-01');
+			this.currentEndDate[4] = new Date('2011-03-28');
 		};
 		this.setDefaultValues();
 		

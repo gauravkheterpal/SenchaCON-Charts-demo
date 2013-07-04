@@ -129,7 +129,7 @@ Ext.define('ReplayAnalytics.controller.Login', {
 	},
 	
 	handleButtonTextsForScreenSize: function(){
-		var windowWidth = Ext.Viewport.windowWidth;
+		/*var windowWidth = Ext.Viewport.windowWidth;
 		if (windowWidth >= 769 && windowWidth <= 1024 ){
 			loginController.getApplication().getController('Main').getSettingsButton().setText('');
 			loginController.getApplication().getController('Main').getGlobalSettingsButton().setText('Global');
@@ -147,11 +147,11 @@ Ext.define('ReplayAnalytics.controller.Login', {
 		} else {
 			loginController.getApplication().getController('Main').getSettingsButton().setText('Settings');
 			loginController.getApplication().getController('Main').getGlobalSettingsButton().setText('Global Settings');
-			//loginController.getApplication().getController('Main').getGlobalSyncButton().items.items[0].setText('Global Sync');
+			loginController.getApplication().getController('Main').getGlobalSyncButton().items.items[0].setText('Global Sync');
 			loginController.getSaveDashboardButton().setText('Save');
 			loginController.getGoBackButton().setText('My Replays');
 			loginController.getShareDashboardButton().setText('Share');
-		}
+		}*/
 	},
 	
 	submitLogin: function(){

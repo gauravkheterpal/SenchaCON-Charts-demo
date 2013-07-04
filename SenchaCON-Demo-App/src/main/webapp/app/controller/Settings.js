@@ -149,6 +149,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getGroupBySetting().hide();
+			this.getGroupBySetting().setValue('none');
 			this.getXAxisSetting().setOptions(dataFieldValues);
 			this.getYAxisSetting().setOptions(dataFieldValues);
 			break;
@@ -344,7 +345,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	showSettingsPanel: function() {
 		
 		this.getApplication().getController('DatabaseTable').getAllDatabaseTables();
-		debugger;
+		
 	},
 	
 	configureSettingsPanel: function(){

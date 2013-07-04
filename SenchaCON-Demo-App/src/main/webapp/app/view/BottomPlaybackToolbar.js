@@ -97,20 +97,20 @@ Ext.define('ReplayAnalytics.view.BottomPlaybackToolbar', {
 		        	id: 'manualimbutton',
 		        	hidden:true,
 		        	iconCls: 'callout',
-		        },
+		        },*/
 		        {
 		        	xtype: 'segmentedbutton',
 		        	id: 'globalsynctogglebutton',
 		        	allowDepress: true,
 		        	items: [
 		        	        {
-		        	        	text: 'Global Sync',
+		        	        	text: 'Play All',
 		        	        	pressed: false,
 		        	        	id: 'globalsyncon',
 		        	        	iconCls: 'sync',
 		        	        },
 		        	]
-		        },*/
+		        },
 		]
 	}
 })
