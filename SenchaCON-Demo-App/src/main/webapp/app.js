@@ -5,7 +5,7 @@ Ext.Loader.setPath({
 Ext.application({
 	name : 'ReplayAnalytics',
 	stores : ['GlobalSettingsStore','UserSettings1','UserSettings2','UserSettings3','UserSettings4','TempStore'],
-	controllers: ['Admin', 'DatabaseTable', 'Pie','LineBar','Scatter','VerticalBar','HorizontalBar', 'Main', 'Login', 'GlobalSync', 'Help', 'Filter', 'InterestingMoment', 'Playback', 'Settings'],
+	controllers: ['Admin', 'DatabaseTable', 'Pie','LineBar','Scatter','VerticalBar','HorizontalBar', 'Main', 'Login', 'GlobalSync', 'Help', 'InterestingMoment', 'Playback', 'Settings'],
 	views: ['Main', 'AdminPanel', 'DataSourceUploadPanel', 'DataSourceDeletePanel', 'DataSourceManagePanel', 'DataSourceConfigurationPanel', 'DataSourceTypeSelectionPanel', 'LoginScreen', 'SaveDashboardDialog', 'ShareDashboardDialog', 'ManualIMDialog', 'ManualIMCallout', 'FilterFieldsPanel', 'FilterListPanel', 'DashboardGridRow', 'AddDashboardThumbnail', 'DashboardThumbnail', 'DashboardScreen', 'InterestingMomentGraphPanel', 'InterestingMomentFoundDialog', 'SettingsPanel','GlobalSettingsPanel','AddChartPanel1','AddChartPanel2','AddChartPanel3','AddChartPanel4','HelpPanel','SettingsHelpPanel','PlaybackHelpPanel','GlobalSyncHelpPanel','ChartHelpPanel','GestureHelpPanel','SliderHelpPanel', 'Slider5'],
     launch : function() {
     	this.publicMode = false;
@@ -42,29 +42,6 @@ Ext.application({
     	this.PanelDataFieldStore = new Array();
     	this.PanelCategoryFieldStore = new Array();
     	this.PanelCategoryFieldStoreWithTime = new Array();
-    	
-    	this.InformanceDataFieldStore = undefined;
-    	this.InformanceCategoryFieldStore = undefined;
-    	this.InformanceCategoryFieldStoreWithTime = undefined;
-    	this.InformanceGroupByFieldStore = undefined;
-    	this.InformanceFilterFieldsStore = undefined;
-    	this.InfinityQSDataFieldStore = undefined;
-    	this.InfinityQSCategoryFieldStore = undefined;
-    	this.InfinityQSCategoryFieldStoreWithTime = undefined;
-    	this.InfinityQSGroupByFieldStore = undefined;
-    	this.InfinityQSFilterFieldsStore = undefined;
-    	
-    	this.InformanceUserFilter = new Array();
-    	this.InformanceReasonFilter = new Array();
-    	this.InformanceSetFilter = new Array();
-    	this.InformanceSKUFilter = new Array();
-    	this.InfinityQSUserFilter = new Array();
-    	this.InfinityQSProcessFilter = new Array();
-    	this.InfinityQSQPMFilter = new Array();
-    	this.InfinityQSSKUFilter = new Array();
-    	this.InfinityQSTestFilter = new Array();
-    	this.currentSelectedFilterCategory = '';
-    	this.filterListSelectUnselectFlag = true;
     	
     	this.databaseSetting = new Array();
     	this.filterToggle = new Array();
@@ -150,7 +127,7 @@ Ext.application({
 
 		// Single Global Setting Non Array Variables
 		this.currentActivePanelIndex = 1; //Keeps track of which panel is currently selected/tapped
-		this.replaySpeed = 2000; //Value for speed of playing charts
+		this.replaySpeed = 1000; //Value for speed of playing charts
 		this.graphMaxValueMargin = .10;
 		this.animateSpeed = this.replaySpeed - 100;
 
@@ -210,7 +187,7 @@ Ext.application({
 				this.granularities[i] = 'Daily';
 				this.valueGranularities[i] = 2;
 				this.chartTypes[i] = 'pie';
-				this.xs[i] = 'downtime_hours';
+				this.xs[i] = 'none';
 				this.ys[i] = 'none';
 				this.chartCreated[i] = false;
 				this.startDate[i] = new Date();
@@ -222,20 +199,9 @@ Ext.application({
 				this.currentEndDate[i].setFullYear(this.currentEndDate[i].getFullYear() - 2);
 				this.accumulate[i] = 'Off';
 				this.graphTitle[i] = 'Title';
-				this.sizeBys[i] = 'none';
-				this.groupBys[i] = 'reason';
+				this.groupBys[i] = 'none';
 				this.XmaxReceived[i] = false;
 				this.YmaxReceived[i] = false;
-				this.InformanceUserFilter[i] = '';
-		    	this.InformanceReasonFilter[i] = '';
-		    	this.InformanceSetFilter[i] = '';
-		    	this.InformanceSKUFilter[i] = '';
-		    	this.InfinityQSUserFilter[i] = '';
-		    	this.InfinityQSProcessFilter[i] = '';
-		    	this.InfinityQSQPMFilter[i] = '';
-		    	this.InfinityQSSKUFilter[i] = '';
-		    	this.InfinityQSTestFilter[i] = '';
-		    	this.filterListSelectUnselectFlag = true;
 			}
 			this.interestingMoments = 'Off';
 			this.replayCommentsSetting = 'Off';
@@ -258,22 +224,22 @@ Ext.application({
 	    	this.currentSelectedFilterCategory = '';
 	    	
 	    	// Panel 1
-	    	this.granularities[1] = 'Monthly';
-			this.valueGranularities[1] = 4;
+	    	this.granularities[1] = 'Daily';
+			this.valueGranularities[1] = 2;
 			this.chartTypes[1] = 'pie';
-			this.xs[1] = 'downtime_hours';
+			this.xs[1] = 'data_3';
 			this.ys[1] = 'none';
-			this.groupBys[1] = 'reason';
-			this.startDate[1] = new Date('2011-01-01');
-			this.currentEndDate[1] = new Date('2011-06-30');
+			this.groupBys[1] = 'category_c';
+			this.startDate[1] = new Date('2011-02-01');
+			this.currentEndDate[1] = new Date('2011-02-28');
 
 			// Panel 2
 			this.granularities[2] = 'Daily';
 			this.valueGranularities[2] = 2;
 			this.chartTypes[2] = 'verticalbar';
 			this.xs[2] = 'date';
-			this.ys[2] = 'production_counts';
-			this.groupBys[2] = 'part';
+			this.ys[2] = 'data_1';
+			this.groupBys[2] = 'category_b';
 			this.startDate[2] = new Date('2011-02-01');
 			this.currentEndDate[2] = new Date('2011-02-10');
 			
@@ -281,21 +247,21 @@ Ext.application({
 			this.granularities[3] = 'Daily';
 			this.valueGranularities[3] = 2;
 			this.chartTypes[3] = 'scatter';
-			this.xs[3] = 'downtime_hours';
-			this.ys[3] = 'downtime_events';
+			this.xs[3] = 'data_3';
+			this.ys[3] = 'data_4';
 			this.groupBys[3] = 'none';
 			this.startDate[3] = new Date('2011-02-01');
-			this.currentEndDate[3] = new Date('2011-02-10');
+			this.currentEndDate[3] = new Date('2011-02-28');
 			
 			// Panel 4
-			this.granularities[4] = 'Weekly';
-			this.valueGranularities[4] = 3;
+			this.granularities[4] = 'Daily';
+			this.valueGranularities[4] = 2;
 			this.chartTypes[4] = 'line';
-			this.xs[4] = 'user';
-			this.ys[4] = 'production_counts';
-			this.groupBys[4] = 'set';
-			this.startDate[4] = new Date('2011-01-01');
-			this.currentEndDate[4] = new Date('2011-03-28');
+			this.xs[4] = 'category_b';
+			this.ys[4] = 'data_1';
+			this.groupBys[4] = 'category_d';
+			this.startDate[4] = new Date('2011-02-01');
+			this.currentEndDate[4] = new Date('2011-02-28');
 		};
 		this.setDefaultValues();
 		

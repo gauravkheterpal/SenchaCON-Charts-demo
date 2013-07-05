@@ -49,15 +49,4 @@ public class UnifiedController
 				+ request.getQueryString() + "\n& RESPONSE=  " + responseString + "\n\n");
 		return responseString;
 	}
-
-	@RequestMapping(value = "/getFilterFields.do", method = RequestMethod.GET, produces = "text/plain")
-	@ResponseBody
-	public String getFilterFields(HttpServletRequest request, @RequestParam(value = "databaseName", required = false) String databaseName,
-			@RequestParam(value = "filterCategory", required = false) String filterCategory)
-	{
-		String response = unifiedManager.getFilterListForCategory(databaseName, filterCategory);
-		// logger.debug("\nINCOMING REQUEST for UnifiedController for FilterFields at date/time " + new Date(System.currentTimeMillis())
-		//		+ " ->  " + request.getQueryString() + "\n& RESPONSE=  " + response + "\n\n");
-		return response;
-	}
 }

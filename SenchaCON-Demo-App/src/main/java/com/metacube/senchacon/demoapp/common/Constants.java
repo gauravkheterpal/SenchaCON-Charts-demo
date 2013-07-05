@@ -7,9 +7,6 @@ public class Constants
 	public static final Integer MAX_GROUP_BY = 4;
 	public static final String OTHERS = "others";
 	
-	public static final String UPLOADED_FILE_PATH = "/home/ec2-user/replay-analytics/uploaded-data-sources/";
-	//public static final String UPLOADED_FILE_PATH = "/Users/nikhil/replay/";
-	
 	/* Time Field Tables */
 	public static String DAY_OF_WEEK_TABLE = "day_of_week_table";
 	public static String HOUR_TABLE = "hour_table";

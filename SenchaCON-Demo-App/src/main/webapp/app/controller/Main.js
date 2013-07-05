@@ -476,14 +476,10 @@ Ext.define('ReplayAnalytics.controller.Main', {
 		var imType2Setting = ReplayAnalytics.app.interestingMomentType2Setting;
 		var imType3Setting = ReplayAnalytics.app.interestingMomentType3Setting;
 		var imType4Setting = ReplayAnalytics.app.interestingMomentType4Setting;
-		var filterString  = this.getApplication().getController('Filter').getFilterStringForChart();
 		var url = 'getUnifiedData.do?databaseName=' + databaseName + '&chartType=' + chartType + '&absStartDate=' + absStartDate +
 		'&absEndDate='+ absEndDate + '&differential=' + difference + '&granularity='+ granularity + '&x_axis='+ x_axis + 
 		'&y_axis=' + y_axis + '&groupBy=' + groupBy + '&accum=' + accum + '&imType1Setting=' + imType1Setting +
-		'&imType2Setting=' + imType2Setting + '&imType3Setting=' + imType3Setting + '&imType4Setting=' + imType4Setting;		
-		if (filterString != "" && this.getFilterSetting().getValue() == 'On'){
-			url = url + "&filterString=" + filterString;
-		}
+		'&imType2Setting=' + imType2Setting + '&imType3Setting=' + imType3Setting + '&imType4Setting=' + imType4Setting;
 		this.getUnifiedData(url, i, instancestore);
 	},
 	

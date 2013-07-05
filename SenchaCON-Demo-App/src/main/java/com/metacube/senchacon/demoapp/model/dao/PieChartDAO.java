@@ -10,8 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.metacube.senchacon.demoapp.common.Constants;
-import com.metacube.senchacon.demoapp.common.enums.DataField;
 import com.metacube.senchacon.demoapp.common.util.DAOUtils;
 import com.metacube.senchacon.demoapp.common.util.Utilities;
 import com.metacube.senchacon.demoapp.view.model.DatabaseTableFieldsView;
@@ -51,16 +49,9 @@ public class PieChartDAO
 			}
 
 			/* Hard-coded Fix */
-			if (dataField.getFieldName().equalsIgnoreCase(DataField.DOWNTIME_EVENTS.toString())
-					|| dataField.getFieldName().equalsIgnoreCase(DataField.PROCESS_EVENTS.toString()))
+			if (dataField.getFieldName().equalsIgnoreCase("data_4"))
 			{
 				selectClause = "count(`" + categoryField.getFieldName() + "`)";
-			}
-			else if (dataField.getFieldName().equalsIgnoreCase(DataField.PERCENT_OUT_OF_SPEC.toString()))
-			{
-				selectClause = "avg(`" + dataField.getFieldName() + "`)";
-				outerSelectClause = dataField.getFieldSelection();
-				tableName = Constants.INFINITY_PERCENT_OUT_OF_SPEC_TABLE;
 			}
 			/* Hard-coded Fix End */
 

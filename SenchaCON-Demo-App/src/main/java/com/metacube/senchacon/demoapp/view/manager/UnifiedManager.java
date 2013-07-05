@@ -7,10 +7,8 @@ import org.springframework.stereotype.Component;
 
 import com.metacube.senchacon.demoapp.common.enums.CategoryField;
 import com.metacube.senchacon.demoapp.common.enums.ChartType;
-import com.metacube.senchacon.demoapp.common.enums.Database;
 import com.metacube.senchacon.demoapp.common.util.Utilities;
 import com.metacube.senchacon.demoapp.service.BarChartService;
-import com.metacube.senchacon.demoapp.service.FilterFieldsService;
 import com.metacube.senchacon.demoapp.service.GetMaxService;
 import com.metacube.senchacon.demoapp.service.PieChartService;
 import com.metacube.senchacon.demoapp.service.ScatterChartService;
@@ -24,9 +22,6 @@ import com.metacube.senchacon.demoapp.view.model.DatabaseTableView;
 public class UnifiedManager
 {
 	final static Logger logger = LoggerFactory.getLogger(UnifiedManager.class);
-
-	@Autowired
-	private FilterFieldsService filterFieldService;
 
 	@Autowired
 	PieChartService pieChartService;
@@ -94,11 +89,6 @@ public class UnifiedManager
 			categoryField = groupByField;
 		}
 
-		if (database.getName().equalsIgnoreCase(Database.INFINITYQS.toString()))
-		{
-			unifiedFixOrderService.createPercentOutOfSpecTableForIQS(database, timeField, absStartDate, absEndDate, filterString);
-		}
-
 		if (!chartType.equalsIgnoreCase(ChartType.SCATTER.toString()))
 		{
 			fixOrderString = unifiedFixOrderService.getFixOrderString(database, timeField, absStartDate, absEndDate, granularity,
@@ -130,11 +120,5 @@ public class UnifiedManager
 					dataField, categoryField, groupByField, differential);
 		}
 		return responseString;
-	}
-
-	public String getFilterListForCategory(String databaseName, String filterCategory)
-	{
-		DatabaseTableView database = databaseTableManager.findDatabaseTableViewForDatabaseName(databaseName);
-		return filterFieldService.getFilterFieldListForCategory(database, filterCategory);
 	}
 }

@@ -2,7 +2,6 @@ package com.metacube.senchacon.demoapp.common.util;
 
 import com.metacube.senchacon.demoapp.common.Constants;
 import com.metacube.senchacon.demoapp.common.enums.CategoryField;
-import com.metacube.senchacon.demoapp.common.enums.DataField;
 import com.metacube.senchacon.demoapp.common.enums.DatabaseFieldTypes;
 import com.metacube.senchacon.demoapp.common.enums.Granularity;
 import com.metacube.senchacon.demoapp.common.enums.TempTableType;
@@ -49,10 +48,6 @@ public class DAOUtils
 		{
 			datePart = ", " + timeField.getFieldSelection();
 		}
-		if (dataField.getFieldName().equalsIgnoreCase(DataField.PERCENT_OUT_OF_SPEC.toString()))
-		{
-			outerSelectDataField = "round(avg(value),0)";
-		}
 		if (groupByField == null)
 		{
 			outerSelectClause = "`" + categoryField.getFieldName() + "`" + datePart + ", " + outerSelectDataField + " as `"
@@ -77,18 +72,13 @@ public class DAOUtils
 			innerSelectClauseDatePart = ", " + categoryField.getFieldCalculation() + " as '" + timeField.getFieldName() + "'";
 		}
 		/* Hard-coded Code */
-		if (dataField.getFieldName().equalsIgnoreCase(DataField.DOWNTIME_EVENTS.toString())
-				|| dataField.getFieldName().equalsIgnoreCase(DataField.PROCESS_EVENTS.toString()))
+		if (dataField.getFieldName().equalsIgnoreCase("data_4"))
 		{
 			dataField.setFieldSelection("count(`" + categoryField.getFieldName() + "`)");
 			if (categoryField.getFieldType().equalsIgnoreCase(DatabaseFieldTypes.TIME_CATEGORY_FIELD.toString()))
 			{
 				dataField.setFieldSelection("count(`" + timeField.getFieldSelection() + "`)");
 			}
-		}
-		else if (dataField.getFieldName().equalsIgnoreCase(DataField.PERCENT_OUT_OF_SPEC.toString()))
-		{
-			dataField.setFieldSelection("avg(`" + dataField.getFieldName() + "`)");
 		}
 
 		if (categoryField.getFieldType().equalsIgnoreCase(DatabaseFieldTypes.CATEGORY_FIELD.toString()))
@@ -162,10 +152,6 @@ public class DAOUtils
 		{
 			unionSelectInnerQuery = "";
 		}
-		if (dataField.getFieldName().equalsIgnoreCase(DataField.PERCENT_OUT_OF_SPEC.toString()))
-		{
-			tableName = Constants.INFINITY_PERCENT_OUT_OF_SPEC_TABLE;
-		}
 		if (tableType.equals(TempTableType.TEMP))
 		{
 			tempTableName = TempTableType.TEMP.toString().toLowerCase();
@@ -202,10 +188,6 @@ public class DAOUtils
 			String granularity, String absStartDate, String absEndDate, String filterString)
 	{
 		String tableName = database.getTableName();
-		if (dataField.getFieldName().equalsIgnoreCase(DataField.PERCENT_OUT_OF_SPEC.toString()))
-		{
-			tableName = Constants.INFINITY_PERCENT_OUT_OF_SPEC_TABLE;
-		}
 		String queryString = null;
 		String unionSelectInnerQuery = "select * from item union";
 		if (Utilities.verifyString(filterString))

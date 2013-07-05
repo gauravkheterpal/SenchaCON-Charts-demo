@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.metacube.senchacon.demoapp.common.Constants;
 import com.metacube.senchacon.demoapp.common.enums.CategoryField;
-import com.metacube.senchacon.demoapp.common.enums.DataField;
 import com.metacube.senchacon.demoapp.common.enums.DatabaseFieldTypes;
 import com.metacube.senchacon.demoapp.common.enums.Granularity;
 import com.metacube.senchacon.demoapp.common.util.DAOUtils;
@@ -63,20 +62,13 @@ public class FixOrderGroupByDAO
 			String itemWhereClause = "";
 
 			/* Hard-coded Fix */
-			if (dataField.getFieldName().equalsIgnoreCase(DataField.DOWNTIME_EVENTS.toString())
-					|| dataField.getFieldName().equalsIgnoreCase(DataField.PROCESS_EVENTS.toString()))
+			if (dataField.getFieldName().equalsIgnoreCase("data_4"))
 			{
 				selectClause = "count(`" + categoryField.getFieldName() + "`)";
 				if (categoryField.getFieldType().equalsIgnoreCase(DatabaseFieldTypes.TIME_CATEGORY_FIELD.toString()))
 				{
 					selectClause = "count(`" + timeField.getFieldSelection() + "`)";
 				}
-			}
-			else if (dataField.getFieldName().equalsIgnoreCase(DataField.PERCENT_OUT_OF_SPEC.toString()))
-			{
-				selectClause = "avg(`" + dataField.getFieldName() + "`)";
-				outerSelectClause = dataField.getFieldSelection();
-				tableName = Constants.INFINITY_PERCENT_OUT_OF_SPEC_TABLE;
 			}
 
 			if (Utilities.verifyString(filterString))
@@ -168,46 +160,5 @@ public class FixOrderGroupByDAO
 			e.printStackTrace();
 		}
 		return;
-	}
-
-	public void createPercentOutOfSpecTable(DatabaseTableView database, DatabaseTableFieldsView timeField,
-			String startDate, String endDate, String filterString)
-	{
-		Session session = sessionFactory.getCurrentSession();
-		try
-		{
-			String whereClause = null;
-			if (startDate.equalsIgnoreCase(endDate))
-			{
-				endDate = DateUtils.DateIncrement(startDate, 1);
-			}
-			whereClause = DAOUtils.getTimeWhereClause(timeField, Granularity.DAILY.toString(), startDate, endDate, filterString);
-
-			if (Utilities.verifyString(filterString))
-			{
-				whereClause = whereClause + " AND " + filterString;
-			}
-
-			String sql;
-			sql = "DROP TEMPORARY TABLE IF EXISTS " + Constants.INFINITY_PERCENT_OUT_OF_SPEC_TABLE;
-			session.createSQLQuery(sql).executeUpdate();
-			sql = "CREATE TEMPORARY TABLE " + Constants.INFINITY_PERCENT_OUT_OF_SPEC_TABLE
-					+ " select `event_time`, `name`, `test`, `process`, `user`, `part`, count(`name`)/count(`part`)*100 as "
-					+ "`percent_out_of_spec`, count(`name`) as `process_events` from (select `sgrp_time` as `event_time`, `name`, "
-					+ "`part`, `process`, `test`, `user` from (select " + Constants.IQS_SUBGROUP_TABLE + ".* from "
-					+ Constants.IQS_SUBGROUP_TABLE + " inner join " + database.getTableName() + " on " + Constants.IQS_SUBGROUP_TABLE
-					+ ".`user` = " + database.getTableName() + ".`user` and " + Constants.IQS_SUBGROUP_TABLE + ".`test` = "
-					+ database.getTableName() + ".`test` and " + Constants.IQS_SUBGROUP_TABLE + ".`process` = " + database.getTableName()
-					+ ".`process` and " + Constants.IQS_SUBGROUP_TABLE + ".`part` = " + database.getTableName()
-					+ ".`part`) as t union all select `event_time`, `name`, `part`, `process`, `test`, `user` from "
-					+ database.getTableName() + " where " + whereClause + ") as test where " + whereClause
-					+ " group by `test`, `part`, `process`, `user`";
-			logger.debug("Query is ==" + sql);
-			session.createSQLQuery(sql).executeUpdate();
-		}
-		catch (HibernateException e)
-		{
-			logger.debug("Hibernate exception in createPercentOutOfSpecTable" + e);
-		}
 	}
 }

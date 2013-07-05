@@ -77,10 +77,4 @@ public class UnifiedFixOrderService
 		}
 		return fixOrderString;
 	}
-	
-	public void createPercentOutOfSpecTableForIQS(DatabaseTableView database, DatabaseTableFieldsView timeField,
-			String startDate, String endDate, String filterString)
-	{
-		fixOrderGroupByDAO.createPercentOutOfSpecTable(database, timeField, startDate, endDate, filterString);
-	}
 }
