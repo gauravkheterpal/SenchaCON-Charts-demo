@@ -779,7 +779,8 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 						{text: 'Horizontal Bar', value: 'horizontalbar'},
 						{text: 'Vertical Bar', value: 'verticalbar'},
 						{text: 'Line', value: 'line'},
-						{text: 'Pie', value: 'pie'}
+						{text: 'Pie', value: 'pie'},
+						{text: 'Radar', value: 'radar'},
 					]
 		        },
 		        {
@@ -4801,6 +4802,7 @@ Ext.define('ReplayAnalytics.controller.GlobalSync', {
 		//ReplayAnalytics.app.globalSync();
 		this.globalSync();
 		var sum = 0;
+		debugger;
 		for(i = 0; i < ReplayAnalytics.app.chartSection.length; i++) {
 			if (!isNaN(ReplayAnalytics.app.chartLengths[i])){
 				sum = sum + ReplayAnalytics.app.chartLengths[i];
@@ -5734,6 +5736,14 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			this.getGroupBySetting().setOptions(categoryFieldValues);
 			this.getXAxisSetting().setOptions(dataFieldValues);				
 			break;
+		case 'radar':
+			this.getGroupBySetting().show('fadeIn');
+			//this.getAccumulateSetting().hide('fadeOut');
+			this.getXAxisSetting().setLabel('Data Value:');
+			this.getYAxisSetting().hide('fadeOut');
+			this.getGroupBySetting().setOptions(categoryFieldValues);
+			this.getXAxisSetting().setOptions(dataFieldValues);
+			break;
 		case 'none':
 			this.getGroupBySetting().show('fadeIn');
 			//this.getAccumulateSetting().hide('fadeOut');
@@ -6322,7 +6332,10 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 			}
 		}
 		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'pie') {
-			this.getApplication().getController('Pie').createPieChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex)						
+			this.getApplication().getController('Pie').createPieChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex);						
+		}
+		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'radar') {
+			this.getApplication().getController('Radar').createRadarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex);						
 		}
 		ReplayAnalytics.app.chartCreated[chartIndex] = true;
 		if(ReplayAnalytics.app.dateSet[chartIndex] == true) {
@@ -8342,6 +8355,82 @@ Ext.define('ReplayAnalytics.controller.Admin', {
 			           },
 					});			  
 			  }
+		});
+	},
+});
+Ext.define('ReplayAnalytics.controller.Radar', {
+	extend : 'Ext.app.Controller',
+	xtype: 'radarcontroller',
+	config: {
+		refs: {
+			'loginController': 'logincontroller',
+			'mainController': 'maincontroller',
+		},
+	},
+	
+	launch: function(){
+	
+	},
+	
+	createRadarChart: function(store, dataField, categoryField, chartIndex){
+		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
+		if (obj != undefined){
+			if (obj.getLegend() != undefined){
+				obj.getLegend().destroy();
+			}		
+			obj.destroy();
+		}
+		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create('Ext.chart.PolarChart', {
+			id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
+			store: store,
+			flex: 1,
+			interactions: ['rotate'],
+			//legend: {
+		      //  position: 'right',		        
+		    //},
+		    innerPadding: {top: 15, left: 0, right: 0, bottom: 25},
+		    //colors: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"],
+		    //shadow: true,
+	    axes: [
+	           {
+	               type: 'numeric',
+	               position: 'radial',
+	               fields: dataField,
+	               grid: true,
+	               style: {
+	                   estStepSize: 20
+	               },
+	               label: {
+	                   fill: 'black',
+	                  // y: -8
+	               }
+	           },
+	           {
+	               type: 'category',
+	               position: 'angular',
+	               fields: categoryField,
+	               grid: true,
+	               style: {
+	                   estStepSize: 2
+	               },
+	               label: {
+	                   fill: 'black'
+	               }
+	           }
+	       ],
+	       series: [
+	                {
+	                    type: 'radar',
+	                    xField: categoryField,
+	                    yField: dataField,
+	                    style: {
+	                        fillStyle: 'rgba(0,255,0,0.2)',
+	                        strokeStyle: 'rgba(0,0,0,0.8)',
+	                        lineWidth: 1
+	                    }
+	                }
+	            ],
+		   
 		});
 	},
 });

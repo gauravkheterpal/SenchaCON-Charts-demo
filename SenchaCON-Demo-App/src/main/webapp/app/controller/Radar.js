@@ -12,7 +12,7 @@ Ext.define('ReplayAnalytics.controller.Radar', {
 	
 	},
 	
-	createRadarChart: function(store, dataField, categoryField, chartIndex){	
+	createRadarChart: function(store, dataField, categoryField, chartIndex){
 		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
@@ -35,7 +35,7 @@ Ext.define('ReplayAnalytics.controller.Radar', {
 	           {
 	               type: 'numeric',
 	               position: 'radial',
-	               fields: 'categoryField',
+	               fields: dataField,
 	               grid: true,
 	               style: {
 	                   estStepSize: 20
@@ -48,7 +48,7 @@ Ext.define('ReplayAnalytics.controller.Radar', {
 	           {
 	               type: 'category',
 	               position: 'angular',
-	               fields: 'dataField',
+	               fields: categoryField,
 	               grid: true,
 	               style: {
 	                   estStepSize: 2
@@ -61,8 +61,8 @@ Ext.define('ReplayAnalytics.controller.Radar', {
 	       series: [
 	                {
 	                    type: 'radar',
-	                    xField: 'dataField',
-	                    yField: 'categoryField',
+	                    xField: categoryField,
+	                    yField: dataField,
 	                    style: {
 	                        fillStyle: 'rgba(0,255,0,0.2)',
 	                        strokeStyle: 'rgba(0,0,0,0.8)',
@@ -70,22 +70,7 @@ Ext.define('ReplayAnalytics.controller.Radar', {
 	                    }
 	                }
 	            ],
-		    /*series: [{
-				        type: 'pie',
-				        labelField: categoryField,
-				        xField: dataField,
-				        donut: 0,
-				        showInLegend: true,
-				        contrast: true,
-				        animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
-				        label: {
-				        	field: categoryField,
-				        	display: 'rotate',
-				        	contrast: true,
-						    //fill: 'black',
-						},	
-						labelOverflowPadding: 10,
-			}],		*/	
+		   
 		});
 	},
 });
