@@ -34,7 +34,7 @@
  
  	
 	
-	<logger name="com.metacube.sageclarity.replayanalytics" level="DEBUG" />
+	<logger name="com.metacube.senchacon.demoapp" level="DEBUG" />
 	
 	<root level="OFF">
 		<appender-ref ref="FILE" />	
