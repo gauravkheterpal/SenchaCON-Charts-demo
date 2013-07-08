@@ -178,7 +178,10 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 			}
 		}
 		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'pie') {
-			this.getApplication().getController('Pie').createPieChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex)						
+			this.getApplication().getController('Pie').createPieChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex);						
+		}
+		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'radar') {
+			this.getApplication().getController('radar').createRadarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex);						
 		}
 		ReplayAnalytics.app.chartCreated[chartIndex] = true;
 		if(ReplayAnalytics.app.dateSet[chartIndex] == true) {

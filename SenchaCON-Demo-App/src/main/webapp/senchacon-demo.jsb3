@@ -314,6 +314,11 @@
                     "name": "Admin.js",
                     "path": "app/controller/"
                 },
+                 {
+                    "clsName": "ReplayAnalytics.controller.Radar",
+                    "name": "Radar.js",
+                    "path": "app/controller/"
+                },
                 {
                     "clsName": "ReplayAnalytics.store.TempStore",
                     "name": "TempStore.js",

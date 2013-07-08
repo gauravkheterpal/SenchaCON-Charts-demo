@@ -103,7 +103,7 @@ public class UnifiedManager
 					dataField, groupByField, filterString);
 		}
 
-		if (chartType.equalsIgnoreCase(ChartType.PIE.toString()))
+		if (chartType.equalsIgnoreCase(ChartType.PIE.toString()) || chartType.equalsIgnoreCase(ChartType.RADAR.toString()))
 		{
 			responseString = pieChartService.getUnifiedPieChartData(database, timeField, absStartDate, absEndDate, granularity, dataField,
 					categoryField, fixOrderString, differential, accum, filterString);

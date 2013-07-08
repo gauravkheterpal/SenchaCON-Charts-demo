@@ -9,7 +9,7 @@ Ext.define('ReplayAnalytics.view.FourPanelLayout', {
 		layout: {type: 'vbox',},
 		autoShow: true,
 		id: 'fourpanellayout',
-		style:'margin:10px;',
+		style:'margin:10px; border-radius:10px;',
 		align: 'stretch',
 		flex: 1,
 		items: [

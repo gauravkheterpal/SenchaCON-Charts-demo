@@ -49,7 +49,8 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 						{text: 'Horizontal Bar', value: 'horizontalbar'},
 						{text: 'Vertical Bar', value: 'verticalbar'},
 						{text: 'Line', value: 'line'},
-						{text: 'Pie', value: 'pie'}
+						{text: 'Pie', value: 'pie'},
+						{text: 'Radar', value: 'radar'},
 					]
 		        },
 		        {
@@ -109,6 +110,10 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 					label: 'Start Date:',
 					name: 'startdate',
 					dateFormat: 'm/d/y',
+					picker: {
+					      yearFrom: 2009,
+					      yearTo: 2011,
+					     }
 				},				
 				{
 					xtype: 'datepickerfield',
@@ -116,6 +121,10 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 					label: 'End Date:',
 					name: 'enddate',
 					dateFormat: 'm/d/y',
+					picker: {
+					      yearFrom: 2009,
+					      yearTo: 2011,
+					     }
 				},						   
 				{
 					xtype: 'toolbar',
