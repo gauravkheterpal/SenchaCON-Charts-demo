@@ -57,8 +57,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    interactions: ['panzoom'],
 		    legend: {
 		        position: 'right',
-		        width: 80
-		    },
+		       },
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -111,7 +110,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	    	            	 		smooth: true,
 	    	             	 },
 	    	             	 subStyle: {
-	    	             			fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+	    	             			fill: ["#115fa6"]
 	    	             	 }
 	    	              }
 	    	           ]
@@ -127,13 +126,10 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
 		    interactions: ['panzoom'],
 		    legend: {
-		        position: 'right',
-		        width: 80
-		    },
-		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
-		    legend: {
 	            position: 'right'
 	        },
+		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
+		    
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -188,7 +184,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
     	            	 		smooth: true,
    	    	            	 },
    	    	              subStyle: {
-   	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                fill: ["#115fa6"]
    	    	            },     	 
    	    	              },
    	    	              {
@@ -208,7 +204,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            		  smooth: true,
    	    	            	  }, 
    	    	            	  subStyle: {
-   	    	                   fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                   fill: ["#94ae0a"]
    	    	               },
 
    	    	            	 
@@ -227,12 +223,9 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    interactions: ['panzoom'],
 		    legend: {
 		        position: 'right',
-		        width: 80
-		    },
+		       },
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
-		    legend: {
-	            position: 'right'
-	        },
+		   
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -287,7 +280,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
     	            	 		smooth: true,
    	    	            	 },
    	    	              subStyle: {
-   	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                fill: ["#115fa6"]
    	    	            },
 
    	    	            	 	    	             	 
@@ -303,13 +296,13 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	  shadow: true,
    	    	            	  animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	  style: {
-   	    	            		  //fill: "#94ae0a",
+   	    	            		  
    	    	            		 stroke: 'black',
       	    	                  fillOpacity: 0.8,
    	    	            		  smooth: true,
    	    	            	  }, 
    	    	            	  subStyle: {
-   	    	                   fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                   fill: [ "#94ae0a"]
    	    	               },
 
    	    	            	 	    	              },
@@ -330,7 +323,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
     	            	 		smooth: true,
    	    	            	 }, 
    	    	              subStyle: {
-   	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                fill: [ "#a61120"]
    	    	            },
 
    	    	            	
@@ -350,8 +343,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 		    legend: {
 		        position: 'right',
-		        width: 80
-		    },
+		     },
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -407,7 +399,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
     	            	 		smooth: true,
    	    	            	 },
    	    	              subStyle: {
-   	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                fill: ["#115fa6"]
    	    	            },
 
    	    	            		    	             	 
@@ -429,7 +421,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            		  smooth: true,
    	    	            	  }, 
    	    	            	  subStyle: {
-   	    	                   fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                   fill: ["#94ae0a"]
    	    	               },
 
    	    	            		    	              },
@@ -449,7 +441,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
     	            	 		smooth: true,
    	    	            	 }, 
    	    	              subStyle: {
-   	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                fill: ["#a61120"]
    	    	            },
 
    	    	            	
@@ -471,7 +463,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	    	            		 smooth: true,
 	    	            	 },
 	    	            	  subStyle: {
-	    	                      fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+	    	                      fill: [ "#ff8809"]
 	    	                  },
 
 	    	            	 
@@ -491,12 +483,9 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    interactions: ['panzoom'],
 		    legend: {
 		        position: 'right',
-		        width: 80
-		    },
+		       },
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
-		    legend: {
-	            position: 'right'
-	        },
+		    
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -551,7 +540,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
     	            	 		smooth: true,
    	    	            	 },
    	    	              subStyle: {
-   	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                fill: ["#115fa6"]
    	    	            },
 
    	    	            		    	             	 
@@ -573,7 +562,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            		  smooth: true,
    	    	            	  }, 
    	    	            	  subStyle: {
-   	    	                   fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                   fill: [ "#94ae0a"]
    	    	               },
 
    	    	            	  	    	              },
@@ -594,7 +583,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
     	            	 		smooth: true,
    	    	            	 }, 
    	    	              subStyle: {
-   	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+   	    	                fill: ["#a61120"]
    	    	            },
    	    	            	
    	    	              },
@@ -615,7 +604,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	    	            		 smooth: true,
 	    	            	 },
 	    	            	  subStyle: {
-	    	                      fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+	    	                      fill: [ "#ff8809"]
 	    	                  },
 
 	    	            	
@@ -637,7 +626,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	    	            		 smooth: true,
 	    	            	 },
 	    	            	  subStyle: {
-	    	                      fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
+	    	                      fill: ["#ffd13e"]
 	    	                  },
 
 	    	            	
