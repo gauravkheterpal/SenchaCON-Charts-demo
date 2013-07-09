@@ -85,7 +85,7 @@ public class ChartDataUtils
 		}
 		return json;
 	}
-	//Gauge Charts
+	
 	public static String getJSONStringForGaugeChartData(List<Object> data, String dataField, Boolean limitData)
 	{
 		String json = null;
@@ -94,60 +94,18 @@ public class ChartDataUtils
 			JSONArray returnArray = new JSONArray();
 			if (data.size() != 0)
 			{
-				if (limitData)
+				int i = 0;
+				for (; i < Constants.MAX_GROUP_BY && i < data.size(); i++)
 				{
-					int i = 0;
-					for (; i < Constants.MAX_GROUP_BY && i < data.size(); i++)
-					{
-						Object[] row = (Object[]) data.get(i);
-						JSONObject item = new JSONObject();
-						//item.put(categoryField, escapeHtml(String.valueOf(row[0])));
-						item.put(dataField, row[1]);
-						returnArray.add(item);
-					}
-					int sum = 0;
-					int count = 0;
-					for (; i < data.size(); i++)
-					{
-						Object[] row = (Object[]) data.get(i);
-						sum = (int) (sum + ((Double.parseDouble(row[1].toString()))));
-						if (Double.parseDouble(row[1].toString()) != 0)
-						{
-							count = count + 1;
-						}
-					}
-					if (dataField.equalsIgnoreCase("Percent Out Of Spec"))
-					{
-						if (count != 0)
-						{
-							sum = sum / count;
-						}
-						else
-						{
-							sum = 0;
-						}
-					}
+					Object row = data.get(i);
 					JSONObject item = new JSONObject();
-					//item.put(categoryField, CategoryField.OTHER.toString().toLowerCase());
-					item.put(dataField, sum);
+					item.put(dataField, row);
 					returnArray.add(item);
-				}
-				else
-				{
-					for (int i = 0; i < data.size(); i++)
-					{
-						Object[] row = (Object[]) data.get(i);
-						JSONObject item = new JSONObject();
-						//item.put(categoryField, row[0]);
-						item.put(dataField, row[1]);
-						returnArray.add(item);
-					}
 				}
 			}
 			else
 			{
 				JSONObject item = new JSONObject();
-				//item.put(categoryField, "No Data Found");
 				item.put(dataField, 0);
 				returnArray.add(item);
 			}
@@ -155,7 +113,7 @@ public class ChartDataUtils
 		}
 		return json;
 	}
-//End
+	
 	public static String getJSONStringForScatterChartData(List<Object> data, DatabaseTableFieldsView dataField1,
 			DatabaseTableFieldsView dataField2)
 	{

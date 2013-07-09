@@ -27,6 +27,9 @@ public class GaugeChartService
 
 	@Autowired
 	private AccumService accumService;
+	
+	@Autowired
+	private GetMaxService getMaxService;
 
 	@Autowired
 	private InterestingMomentsService interestingMomentsService;
@@ -41,7 +44,7 @@ public class GaugeChartService
 		List<Object> data = null;
 		data = gaugeChartDao.getGaugeChartData(database, timeField, startDate, endDate, granularity, dataField, fixOrderString,
 				filterString);
-		json = ChartDataUtils.getJSONStringForGaugeChartData(data, dataField.getFieldLabel(),true);
+		json = ChartDataUtils.getJSONStringForGaugeChartData(data, dataField.getFieldLabel(), true);
 		return json;
 	}
 
@@ -132,7 +135,7 @@ public class GaugeChartService
 		}
 		response.put(Constants.DATA_IDENTIFIER, returnArray);
 		response.put(Constants.DATA_FIELD_IDENTIFIER, dataField.getFieldLabel());
-		//response.put(Constants.CATEGORY_FIELD_IDENTIFIER, categoryField.getFieldLabel());
+		response.put(Constants.X_MAX_IDENTIFIER, getMaxService.getMaxFromUnifiedJSON(returnArray, dataField.getFieldLabel()));
 		response.put(Constants.DATE_ARRAY_INDENTIFIER, dateArray);
 		return response.toString();
 	}

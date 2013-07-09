@@ -29,7 +29,7 @@ public class UnifiedManager
 
 	@Autowired
 	GaugeChartService gaugeChartService;
-	
+
 	@Autowired
 	ScatterChartService scatterChartService;
 
@@ -82,7 +82,8 @@ public class UnifiedManager
 			dataField = xAxisField;
 			categoryField = yAxisField;
 		}
-		else if (chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString()) || chartType.equalsIgnoreCase(ChartType.AREA.toString()))
+		else if (chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString())
+				|| chartType.equalsIgnoreCase(ChartType.AREA.toString()))
 		{
 			dataField = yAxisField;
 			categoryField = xAxisField;
@@ -93,7 +94,7 @@ public class UnifiedManager
 			categoryField = groupByField;
 		}
 
-		if (!chartType.equalsIgnoreCase(ChartType.SCATTER.toString()))
+		if (!chartType.equalsIgnoreCase(ChartType.SCATTER.toString()) && !chartType.equalsIgnoreCase(ChartType.GAUGE.toString()))
 		{
 			fixOrderString = unifiedFixOrderService.getFixOrderString(database, timeField, absStartDate, absEndDate, granularity,
 					chartType, dataField, categoryField, filterString);
@@ -101,7 +102,7 @@ public class UnifiedManager
 
 		if ((!(groupBy.equalsIgnoreCase(CategoryField.NONE.toString())))
 				&& (chartType.equalsIgnoreCase(ChartType.LINE.toString()) || chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType
-						.equalsIgnoreCase(ChartType.HORIZONTALBAR.toString())))
+						.equalsIgnoreCase(ChartType.HORIZONTALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.AREA.toString())))
 		{
 			groupByBarValues = unifiedGroupByBarService.getUnifiedGroupByBarValues(database, timeField, absStartDate, absEndDate,
 					dataField, groupByField, filterString);
@@ -112,13 +113,14 @@ public class UnifiedManager
 			responseString = pieChartService.getUnifiedPieChartData(database, timeField, absStartDate, absEndDate, granularity, dataField,
 					categoryField, fixOrderString, differential, accum, filterString);
 		}
-		else if (chartType.equalsIgnoreCase(ChartType.GAUGE.toString()) )
+		else if (chartType.equalsIgnoreCase(ChartType.GAUGE.toString()))
 		{
-			responseString = gaugeChartService.getUnifiedGaugeChartData(database, timeField, absStartDate, absEndDate, granularity, dataField,
-					fixOrderString, differential, accum, filterString);
+			responseString = gaugeChartService.getUnifiedGaugeChartData(database, timeField, absStartDate, absEndDate, granularity,
+					dataField, fixOrderString, differential, accum, filterString);
 		}
 		else if (chartType.equalsIgnoreCase(ChartType.HORIZONTALBAR.toString())
-				|| chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString()) || chartType.equalsIgnoreCase(ChartType.AREA.toString()))
+				|| chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString())
+				|| chartType.equalsIgnoreCase(ChartType.AREA.toString()))
 		{
 			responseString = barChartService.getUnifiedBarChartData(chartType, database, timeField, absStartDate, absEndDate, granularity,
 					dataField, categoryField, groupByField, groupByBarValues, fixOrderString, differential, accum, filterString);

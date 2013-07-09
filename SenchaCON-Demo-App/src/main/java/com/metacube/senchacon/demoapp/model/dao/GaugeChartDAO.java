@@ -25,8 +25,7 @@ public class GaugeChartDAO
 	private final static Logger logger = LoggerFactory.getLogger(GaugeChartDAO.class);
 
 	public List<Object> getGaugeChartData(DatabaseTableView database, DatabaseTableFieldsView timeField, String startDate, String endDate,
-			String granularity, DatabaseTableFieldsView dataField,  String fixOrderString,
-			String filterString)
+			String granularity, DatabaseTableFieldsView dataField, String fixOrderString, String filterString)
 	{
 		Session session = sessionFactory.getCurrentSession();
 		try
@@ -35,10 +34,6 @@ public class GaugeChartDAO
 			String whereClause = null;
 			String selectClause = null;
 			String tableName = database.getTableName();
-			if (fixOrderString == null)
-			{
-				fixOrderString = "order by " + dataField + " desc";
-			}
 
 			whereClause = "where " + DAOUtils.getTimeWhereClause(timeField, granularity, startDate, endDate, "");
 			selectClause = dataField.getFieldSelection();
@@ -47,20 +42,13 @@ public class GaugeChartDAO
 				whereClause = whereClause + " and " + dataField.getFieldCalculation();
 			}
 
-			/* Hard-coded Fix */
-			/*if (dataField.getFieldName().equalsIgnoreCase("data_4"))
-			{
-				selectClause = "count(`" + categoryField.getFieldName() + "`)";
-			}*/
-			/* Hard-coded Fix End */
-
 			if (Utilities.verifyString(filterString))
 			{
 				whereClause = whereClause + " AND " + filterString;
 			}
 
 			String queryString = null;
-			queryString = "SELECT `" + "`, " + selectClause + " as "+dataField.getFieldLabel()+" from " + tableName + " " + whereClause ;
+			queryString = "SELECT " + selectClause + " as `" + dataField.getFieldLabel() + "` from " + tableName + " " + whereClause;
 			logger.debug("Final Query in GaugeChartDAO is==" + queryString);
 			query = session.createSQLQuery(queryString);
 			return query.list();
