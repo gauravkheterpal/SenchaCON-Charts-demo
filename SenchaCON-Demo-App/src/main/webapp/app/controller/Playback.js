@@ -150,7 +150,7 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 				this.getApplication().getController('Scatter').createScatterChart(ReplayAnalytics.app.chartTypes[chartIndex],ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex, null);
 			}				
 		}	
-		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'horizontalbar' || ReplayAnalytics.app.chartTypes[chartIndex] == 'verticalbar' || ReplayAnalytics.app.chartTypes[chartIndex] == 'line') {
+		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'horizontalbar' || ReplayAnalytics.app.chartTypes[chartIndex] == 'verticalbar' || ReplayAnalytics.app.chartTypes[chartIndex] == 'line' || ReplayAnalytics.app.chartTypes[chartIndex] == 'area') {
 			this.getApplication().getController('Main').changeModelFields();
 			if(ReplayAnalytics.app.chartTypes[chartIndex] == 'horizontalbar') {
 				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] != 'none') {
@@ -169,11 +169,12 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 				}
 			}
 			else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'area') {
+				//debugger;
 				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] != 'none') {
-					ReplayAnalytics.app.getController('AreaBar').createAreaBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,ReplayAnalytics.app.groupByBarLabels);
+					ReplayAnalytics.app.getController('AreaBar').createAreaChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,ReplayAnalytics.app.groupByBarLabels);
 				}
 				else {
-					ReplayAnalytics.app.getController('AreaBar').createAreaBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
+					ReplayAnalytics.app.getController('AreaBar').createAreaChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
 				}
 			}
 			
