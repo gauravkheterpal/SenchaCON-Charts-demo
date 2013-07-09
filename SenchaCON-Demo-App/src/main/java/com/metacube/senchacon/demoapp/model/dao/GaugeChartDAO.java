@@ -60,7 +60,7 @@ public class GaugeChartDAO
 			}
 
 			String queryString = null;
-			queryString = "SELECT `" + "`, " + selectClause + " as "+dataField.getFieldLabel()+" from " + tableName + " " + whereClause ;
+			queryString = "SELECT " + selectClause + " as "+dataField.getFieldLabel()+" from " + tableName + " " + whereClause ;
 			logger.debug("Final Query in GaugeChartDAO is==" + queryString);
 			query = session.createSQLQuery(queryString);
 			return query.list();

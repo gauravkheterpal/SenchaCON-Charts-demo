@@ -12,6 +12,7 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	},
 	
 	createAreaChart: function(store,chartIndex,groupByBarArray) {
+		debugger;
 		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
@@ -40,7 +41,8 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 			} else if (groupByBarArray.length == 5){
 				this.createAreaChartGroupBy4(store,chartIndex, groupByBarArray);
 			}			
-		}		
+		}	
+		
 	},
 	
 	createAreaChartGroupByNone: function(store,chartIndex) {
@@ -104,10 +106,8 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	    	            	 shadow: true,
 	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 	    	            	 style: {
-	    	            		 	//fill: "#115fa6",
-	    	            		 	stroke: "#115fa6",
-	    	            	 		fillOpacity: 0,
-	    	            	 		lineWidth: 3,
+	    	            		 stroke: 'black',
+	    	                     fillOpacity: 0.8,
 	    	            	 		smooth: true,
 	    	             	 },
 	    	             	 subStyle: {
@@ -183,20 +183,13 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	 style: {
     	            		 	//fill: "#115fa6",
-    	            		 	stroke: "#115fa6",
-    	            	 		fillOpacity: 0,
-    	            	 		lineWidth: 3,
+   	    	            		 stroke: 'black',
+   	    	                  fillOpacity: 0.8,
     	            	 		smooth: true,
    	    	            	 },
    	    	              subStyle: {
    	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
-   	    	            },
-
-   	    	            	 marker: {
-   	    	            		 type: 'circle',
-   	    	            		 radius: 4,
-   	    	            		 lineWidth: 3
-   	    	            	 }  	    	             	 
+   	    	            },     	 
    	    	              },
    	    	              {
    	    	            	  type: 'area',
@@ -210,20 +203,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	  animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	  style: {
    	    	            		  //fill: "#94ae0a",
-   	    	            		  stroke: "#94ae0a",
-   	    	            		  fillOpacity: 0,
-   	    	            		  lineWidth: 3,
+   	    	            		 stroke: 'black',
+      	    	                  fillOpacity: 0.8,
    	    	            		  smooth: true,
    	    	            	  }, 
    	    	            	  subStyle: {
    	    	                   fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	               },
 
-   	    	            	  marker: {
-   	    	            		type: 'circle',
-   	    	            		radius: 4,
-   	    	            		lineWidth: 3
-   	    	            	  }
+   	    	            	 
 	    	              },	    	                 	    	              
    	    	           ]
 		});	
@@ -294,20 +282,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	 style: {
     	            		 	//fill: "#115fa6",
-    	            		 	stroke: "#115fa6",
-    	            	 		fillOpacity: 0,
-    	            	 		lineWidth: 3,
+   	    	            		 stroke: 'black',
+   	    	                  fillOpacity: 0.8,
     	            	 		smooth: true,
    	    	            	 },
    	    	              subStyle: {
    	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	            },
 
-   	    	            	 marker: {
-   	    	            		 type: 'circle',
-   	    	            		 radius: 4,
-   	    	            		 lineWidth: 3
-   	    	            	 }  	    	             	 
+   	    	            	 	    	             	 
    	    	              },
    	    	              {
    	    	            	  type: 'area',
@@ -321,21 +304,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	  animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	  style: {
    	    	            		  //fill: "#94ae0a",
-   	    	            		  stroke: "#94ae0a",
-   	    	            		  fillOpacity: 0,
-   	    	            		  lineWidth: 3,
+   	    	            		 stroke: 'black',
+      	    	                  fillOpacity: 0.8,
    	    	            		  smooth: true,
    	    	            	  }, 
    	    	            	  subStyle: {
    	    	                   fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	               },
 
-   	    	            	  marker: {
-   	    	            		type: 'circle',
-   	    	            		radius: 4,
-   	    	            		lineWidth: 3
-   	    	            	  }
-	    	              },
+   	    	            	 	    	              },
 	    	              {
    	    	            	 type: 'area',
    	    	            	 xField: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
@@ -348,20 +325,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	 style: {
     	            		 	//fill: "#a61120",
-    	            		 	stroke: "#a61120",
-    	            	 		fillOpacity: 0,
-    	            	 		lineWidth: 3,
+   	    	            		 stroke: 'black',
+      	    	                  fillOpacity: 0.8,
     	            	 		smooth: true,
    	    	            	 }, 
    	    	              subStyle: {
    	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	            },
 
-   	    	            	 marker: {
-   	    	            		 type: 'circle',
-   	    	            		 radius: 4,
-   	    	            		 lineWidth: 3
-   	    	            	 }
+   	    	            	
    	    	              },   	    	                	    	              
    	    	           ]
 		});	
@@ -430,20 +402,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	 style: {
     	            		 	//fill: "#115fa6",
-    	            		 	stroke: "#115fa6",
-    	            	 		fillOpacity: 0,
-    	            	 		lineWidth: 3,
+   	    	            		 stroke: 'black',
+   	    	                  fillOpacity: 0.8,
     	            	 		smooth: true,
    	    	            	 },
    	    	              subStyle: {
    	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	            },
 
-   	    	            	 marker: {
-   	    	            		 type: 'circle',
-   	    	            		 radius: 4,
-   	    	            		 lineWidth: 3
-   	    	            	 }  	    	             	 
+   	    	            		    	             	 
    	    	              },
    	    	              {
    	    	            	  type: 'area',
@@ -457,21 +424,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	  animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	  style: {
    	    	            		  //fill: "#94ae0a",
-   	    	            		  stroke: "#94ae0a",
-   	    	            		  fillOpacity: 0,
-   	    	            		  lineWidth: 3,
+   	    	            		 stroke: 'black',
+      	    	                  fillOpacity: 0.8,
    	    	            		  smooth: true,
    	    	            	  }, 
    	    	            	  subStyle: {
    	    	                   fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	               },
 
-   	    	            	  marker: {
-   	    	            		type: 'circle',
-   	    	            		radius: 4,
-   	    	            		lineWidth: 3
-   	    	            	  }
-	    	              },
+   	    	            		    	              },
 	    	              {
    	    	            	 type: 'area',
    	    	            	 xField: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
@@ -483,21 +444,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	 shadow: true,
    	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	 style: {
-    	            		 	//fill: "#a61120",
-    	            		 	stroke: "#a61120",
-    	            	 		fillOpacity: 0,
-    	            	 		lineWidth: 3,
+   	    	            		 stroke: 'black',
+   	    	                  fillOpacity: 0.8,
     	            	 		smooth: true,
    	    	            	 }, 
    	    	              subStyle: {
    	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	            },
 
-   	    	            	 marker: {
-   	    	            		 type: 'circle',
-   	    	            		 radius: 4,
-   	    	            		 lineWidth: 3
-   	    	            	 }
+   	    	            	
    	    	              },
    	    	              {
 	    	            	 type: 'area',
@@ -511,26 +466,22 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 	    	            	 style: {
 	    	            		 //fill: "#ff8809",
-	    	            		 stroke: "#ff8809",
-	    	            		 fillOpacity: 0,
-	    	            		 lineWidth: 3,
+	    	            		 stroke: 'black',
+	    	                     fillOpacity: 0.8,
 	    	            		 smooth: true,
 	    	            	 },
 	    	            	  subStyle: {
 	    	                      fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
 	    	                  },
 
-	    	            	 marker: {
-	    	                     type: 'circle',
-	    	                     radius: 4,
-	    	                     lineWidth: 3
-	    	                 }
+	    	            	 
 	    	              },   	    	              
    	    	           ]
 		});	
 	},
 	
 	createAreaChartGroupBy4: function(store, chartIndex, groupByBarArray){
+		debugger;
 		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create("Ext.chart.CartesianChart", {
 		    id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
 		    flex: 1,
@@ -595,20 +546,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	 style: {
     	            		 	//fill: "#115fa6",
-    	            		 	stroke: "#115fa6",
-    	            	 		fillOpacity: 0,
-    	            	 		lineWidth: 3,
+   	    	            		 stroke: 'black',
+   	    	                  fillOpacity: 0.8,
     	            	 		smooth: true,
    	    	            	 },
    	    	              subStyle: {
    	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	            },
 
-   	    	            	 marker: {
-   	    	            		 type: 'circle',
-   	    	            		 radius: 4,
-   	    	            		 lineWidth: 3
-   	    	            	 }  	    	             	 
+   	    	            		    	             	 
    	    	              },
    	    	              {
    	    	            	  type: 'area',
@@ -622,21 +568,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	  animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	  style: {
    	    	            		  //fill: "#94ae0a",
-   	    	            		  stroke: "#94ae0a",
-   	    	            		  fillOpacity: 0,
-   	    	            		  lineWidth: 3,
+   	    	            		 stroke: 'black',
+   	    	                  fillOpacity: 0.8,
    	    	            		  smooth: true,
    	    	            	  }, 
    	    	            	  subStyle: {
    	    	                   fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	               },
 
-   	    	            	  marker: {
-   	    	            		type: 'circle',
-   	    	            		radius: 4,
-   	    	            		lineWidth: 3
-   	    	            	  }
-	    	              },
+   	    	            	  	    	              },
 	    	              {
    	    	            	 type: 'area',
    	    	            	 xField: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
@@ -649,19 +589,14 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
    	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
    	    	            	 style: {
     	            		 	//fill: "#a61120",
-    	            		 	stroke: "#a61120",
-    	            	 		fillOpacity: 0,
-    	            	 		lineWidth: 3,
+   	    	            		 stroke: 'black',
+   	    	                  fillOpacity: 0.8,
     	            	 		smooth: true,
    	    	            	 }, 
    	    	              subStyle: {
    	    	                fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
    	    	            },
-   	    	            	 marker: {
-   	    	            		 type: 'circle',
-   	    	            		 radius: 4,
-   	    	            		 lineWidth: 3
-   	    	            	 }
+   	    	            	
    	    	              },
    	    	              {
 	    	            	 type: 'area',
@@ -675,20 +610,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 	    	            	 style: {
 	    	            		 //fill: "#ff8809",
-	    	            		 stroke: "#ff8809",
-	    	            		 fillOpacity: 0,
-	    	            		 lineWidth: 3,
+	    	            		 stroke: 'black',
+	    	                     fillOpacity: 0.8,
 	    	            		 smooth: true,
 	    	            	 },
 	    	            	  subStyle: {
 	    	                      fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
 	    	                  },
 
-	    	            	 marker: {
-	    	                     type: 'circle',
-	    	                     radius: 4,
-	    	                     lineWidth: 3
-	    	                 }
+	    	            	
 	    	              },  
 	    	              {
 	    	            	 type: 'area',
@@ -702,20 +632,15 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 	    	            	 style: {
 	    	            		 //fill: "#ff8809",
-	    	            		 stroke: "#ff8809",
-	    	            		 fillOpacity: 0,
-	    	            		 lineWidth: 3,
+	    	            		 stroke: 'black',
+	    	                     fillOpacity: 0.8,
 	    	            		 smooth: true,
 	    	            	 },
 	    	            	  subStyle: {
 	    	                      fill: ["#115fa6", "#94ae0a", "#a61120", "#ff8809", "#ffd13e", "#a61187", "#24ad9a", "#7c7474", "#a66111"]
 	    	                  },
 
-	    	            	 marker: {
-	    	                     type: 'circle',
-	    	                     radius: 4,
-	    	                     lineWidth: 3
-	    	                 }
+	    	            	
 		    	           },
    	    	           ]
 		});	
