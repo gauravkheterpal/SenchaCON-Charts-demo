@@ -9,6 +9,7 @@ import com.metacube.senchacon.demoapp.common.enums.CategoryField;
 import com.metacube.senchacon.demoapp.common.enums.ChartType;
 import com.metacube.senchacon.demoapp.common.util.Utilities;
 import com.metacube.senchacon.demoapp.service.BarChartService;
+import com.metacube.senchacon.demoapp.service.GaugeChartService;
 import com.metacube.senchacon.demoapp.service.GetMaxService;
 import com.metacube.senchacon.demoapp.service.PieChartService;
 import com.metacube.senchacon.demoapp.service.ScatterChartService;
@@ -26,6 +27,9 @@ public class UnifiedManager
 	@Autowired
 	PieChartService pieChartService;
 
+	@Autowired
+	GaugeChartService gaugeChartService;
+	
 	@Autowired
 	ScatterChartService scatterChartService;
 
@@ -78,7 +82,7 @@ public class UnifiedManager
 			dataField = xAxisField;
 			categoryField = yAxisField;
 		}
-		else if (chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString()))
+		else if (chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString()) || chartType.equalsIgnoreCase(ChartType.AREA.toString()))
 		{
 			dataField = yAxisField;
 			categoryField = xAxisField;
@@ -107,6 +111,11 @@ public class UnifiedManager
 		{
 			responseString = pieChartService.getUnifiedPieChartData(database, timeField, absStartDate, absEndDate, granularity, dataField,
 					categoryField, fixOrderString, differential, accum, filterString);
+		}
+		else if (chartType.equalsIgnoreCase(ChartType.GAUGE.toString()) )
+		{
+			responseString = gaugeChartService.getUnifiedGaugeChartData(database, timeField, absStartDate, absEndDate, granularity, dataField,
+					fixOrderString, differential, accum, filterString);
 		}
 		else if (chartType.equalsIgnoreCase(ChartType.HORIZONTALBAR.toString())
 				|| chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString()) || chartType.equalsIgnoreCase(ChartType.AREA.toString()))

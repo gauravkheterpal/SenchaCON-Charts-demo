@@ -52,6 +52,7 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 						{text: 'Area', value: 'area'},
 						{text: 'Pie', value: 'pie'},
 						{text: 'Radar', value: 'radar'},
+						{text: 'Gauge', value: 'gauge'},
 					]
 		        },
 		        {
