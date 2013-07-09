@@ -109,7 +109,7 @@ public class UnifiedManager
 					categoryField, fixOrderString, differential, accum, filterString);
 		}
 		else if (chartType.equalsIgnoreCase(ChartType.HORIZONTALBAR.toString())
-				|| chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString()))
+				|| chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString()) || chartType.equalsIgnoreCase(ChartType.AREA.toString()))
 		{
 			responseString = barChartService.getUnifiedBarChartData(chartType, database, timeField, absStartDate, absEndDate, granularity,
 					dataField, categoryField, groupByField, groupByBarValues, fixOrderString, differential, accum, filterString);

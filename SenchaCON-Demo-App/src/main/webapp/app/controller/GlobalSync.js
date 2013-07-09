@@ -263,7 +263,6 @@ Ext.define('ReplayAnalytics.controller.GlobalSync', {
 		//ReplayAnalytics.app.globalSync();
 		this.globalSync();
 		var sum = 0;
-		debugger;
 		for(i = 0; i < ReplayAnalytics.app.chartSection.length; i++) {
 			if (!isNaN(ReplayAnalytics.app.chartLengths[i])){
 				sum = sum + ReplayAnalytics.app.chartLengths[i];

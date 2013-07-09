@@ -49,6 +49,7 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 						{text: 'Horizontal Bar', value: 'horizontalbar'},
 						{text: 'Vertical Bar', value: 'verticalbar'},
 						{text: 'Line', value: 'line'},
+						{text: 'Area', value: 'area'},
 						{text: 'Pie', value: 'pie'},
 						{text: 'Radar', value: 'radar'},
 					]

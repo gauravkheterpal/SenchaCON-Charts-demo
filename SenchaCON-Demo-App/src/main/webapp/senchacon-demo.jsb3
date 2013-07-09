@@ -319,6 +319,11 @@
                     "name": "Radar.js",
                     "path": "app/controller/"
                 },
+                 {
+                    "clsName": "AreaBar",
+                    "name": "AreaBar.js",
+                    "path": "app/controller/"
+                },
                 {
                     "clsName": "ReplayAnalytics.store.TempStore",
                     "name": "TempStore.js",

@@ -168,6 +168,15 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 					ReplayAnalytics.app.getController('VerticalBar').createVerticalBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
 				}
 			}
+			else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'area') {
+				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] != 'none') {
+					ReplayAnalytics.app.getController('AreaBar').createAreaBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,ReplayAnalytics.app.groupByBarLabels);
+				}
+				else {
+					ReplayAnalytics.app.getController('AreaBar').createAreaBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
+				}
+			}
+			
 			else {
 				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] == 'none') {
 					ReplayAnalytics.app.getController('LineBar').createLineChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
@@ -195,6 +204,7 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		if (chartIndex == 5){
 			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].add(ReplayAnalytics.app.newChart[chartIndex]);						
 		} else {
+			
 			Ext.ComponentQuery.query('panel'+chartIndex)[0].add(ReplayAnalytics.app.newChart[chartIndex]);
 			/*var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
 			playbackController.getApplication().getController('Main').clearCarousel();					

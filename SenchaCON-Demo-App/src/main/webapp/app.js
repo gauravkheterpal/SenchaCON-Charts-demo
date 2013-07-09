@@ -5,7 +5,7 @@ Ext.Loader.setPath({
 Ext.application({
 	name : 'ReplayAnalytics',
 	stores : ['GlobalSettingsStore','UserSettings1','UserSettings2','UserSettings3','UserSettings4','TempStore'],
-	controllers: ['Admin', 'DatabaseTable', 'Pie','LineBar','Scatter','VerticalBar','HorizontalBar', 'Main', 'Login', 'GlobalSync', 'Help', 'InterestingMoment', 'Playback', 'Settings','Radar'],
+	controllers: ['Admin', 'DatabaseTable', 'Pie','LineBar','Scatter','VerticalBar','HorizontalBar', 'Main', 'Login', 'GlobalSync', 'Help', 'InterestingMoment', 'Playback', 'Settings','Radar', 'AreaBar'],
 	views: ['Main', 'AdminPanel', 'DataSourceUploadPanel', 'DataSourceDeletePanel', 'DataSourceManagePanel', 'DataSourceConfigurationPanel', 'DataSourceTypeSelectionPanel', 'LoginScreen', 'SaveDashboardDialog', 'ShareDashboardDialog', 'ManualIMDialog', 'ManualIMCallout', 'FilterFieldsPanel', 'FilterListPanel', 'DashboardGridRow', 'AddDashboardThumbnail', 'DashboardThumbnail', 'DashboardScreen', 'InterestingMomentGraphPanel', 'InterestingMomentFoundDialog', 'SettingsPanel','GlobalSettingsPanel','AddChartPanel1','AddChartPanel2','AddChartPanel3','AddChartPanel4','HelpPanel','SettingsHelpPanel','PlaybackHelpPanel','GlobalSyncHelpPanel','ChartHelpPanel','GestureHelpPanel','SliderHelpPanel', 'Slider5'],
     launch : function() {
     	this.publicMode = false;

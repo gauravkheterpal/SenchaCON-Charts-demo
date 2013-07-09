@@ -180,6 +180,15 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			this.getXAxisSetting().setOptions(categoryFieldValuesWithTime);
 			this.getGroupBySetting().setOptions(categoryFieldValues);
 			break;
+		case 'area':
+			this.getGroupBySetting().show('fadeIn');
+			//this.getAccumulateSetting().show('fadeIn');
+			this.getXAxisSetting().setLabel('X-Axis:');
+			this.getYAxisSetting().show('fadeIn');
+			this.getYAxisSetting().setOptions(dataFieldValues);
+			this.getXAxisSetting().setOptions(categoryFieldValuesWithTime);
+			this.getGroupBySetting().setOptions(categoryFieldValues);
+			break;
 		case 'pie':
 			this.getGroupBySetting().show('fadeIn');
 			//this.getAccumulateSetting().hide('fadeOut');
