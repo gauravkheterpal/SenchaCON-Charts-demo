@@ -34,17 +34,11 @@ public class UnifiedController
 			@RequestParam(value = "absStartDate", required = false) String absStartDate,
 			@RequestParam(value = "absEndDate", required = false) String absEndDate,
 			@RequestParam(value = "granularity", required = false) String granularity,
-			@RequestParam(value = "differential", required = false) String differential,
-			@RequestParam(value = "accum", required = false) String accum,
-			@RequestParam(value = "filterString", required = false) String filterString,
-			@RequestParam(value = "imType3Setting", required = false) Integer imType3Setting,
-			@RequestParam(value = "imType1Setting", required = false) Long imType1Setting,
-			@RequestParam(value = "imType2Setting", required = false) Double imType2Setting,
-			@RequestParam(value = "imType4Setting", required = false) Integer imType4Setting)
+			@RequestParam(value = "differential", required = false) String differential)
 	{
 		String responseString = "";
 		responseString = unifiedManager.getUnifiedData(databaseName, xAxis, yAxis, groupBy, chartType, absStartDate, absEndDate,
-				granularity, differential, accum, filterString, imType1Setting, imType2Setting, imType3Setting, imType4Setting);
+				granularity, differential);
 		logger.debug("\nINCOMING REQUEST for UnifiedController at date/time " + new Date(System.currentTimeMillis()) + " ->  "
 				+ request.getQueryString() + "\n& RESPONSE=  " + responseString + "\n\n");
 		return responseString;

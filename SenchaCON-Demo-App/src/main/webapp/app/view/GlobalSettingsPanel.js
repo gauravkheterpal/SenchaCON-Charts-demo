@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.view.GlobalSettingsPanel', {
+Ext.define('SenchaCon2013Demo.view.GlobalSettingsPanel', {
 	extend: 'Ext.Panel',
 	xtype: 'globalsettingspanel',
 	requires: [

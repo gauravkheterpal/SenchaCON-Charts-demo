@@ -1,5 +1,5 @@
 {
-    "projectName": " SenchaCON 2013 Demo",
+    "projectName": "SenchaCON 2013 Demo",
     "licenseText": "Copyright(c) 2013",
     "builds": [
         {
@@ -9,378 +9,228 @@
                 "debug": false
             },
             "files": [
-            	{
-                    "clsName": "ReplayAnalytics.view.FilterFieldsPanel",
-                    "name": "FilterFieldsPanel.js",
-                    "path": "app/view/"
-                },
                 {
-                    "clsName": "ReplayAnalytics.view.FilterListPanel",
-                    "name": "FilterListPanel.js",
-                    "path": "app/view/"
-                },   
-                {
-                    "clsName": "ReplayAnalytics.view.ManualIMCallout",
-                    "name": "ManualIMCallout.js",
-                    "path": "app/view/"
-                },             
-                {
-                    "clsName": "ReplayAnalytics.view.ManualIMDialog",
-                    "name": "ManualIMDialog.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.ShareDashboardDialog",
-                    "name": "ShareDashboardDialog.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.SaveDashboardDialog",
-                    "name": "SaveDashboardDialog.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.DashboardGridRow",
-                    "name": "DashboardGridRow.js",
-                    "path": "app/view/"
-                }, 
-				{
-                    "clsName": "ReplayAnalytics.view.AddDashboardThumbnail",
-                    "name": "AddDashboardThumbnail.js",
-                    "path": "app/view/"
-                }, 
-                {
-                    "clsName": "ReplayAnalytics.view.DashboardThumbnail",
-                    "name": "DashboardThumbnail.js",
-                    "path": "app/view/"
-                },              
-                {
-                    "clsName": "ReplayAnalytics.view.InterestingMomentFoundDialog",
-                    "name": "InterestingMomentFoundDialog.js",
-                    "path": "app/view/"
-                },                
-                {
-                    "clsName": "ReplayAnalytics.view.DashboardScreen",
-                    "name": "DashboardScreen.js",
-                    "path": "app/view/"
-                },
-            	{
-                    "clsName": "ReplayAnalytics.view.LoginScreen",
-                    "name": "LoginScreen.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.HelpPanel",
-                    "name": "HelpPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.GlobalSyncHelpPanel",
-                    "name": "GlobalSyncHelpPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.SettingsPanel",
+                    "clsName": "SenchaCon2013Demo.view.SettingsPanel",
                     "name": "SettingsPanel.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.ChartHelpPanel",
-                    "name": "ChartHelpPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.GestureHelpPanel",
-                    "name": "GestureHelpPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.SliderHelpPanel",
-                    "name": "SliderHelpPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.SettingsHelpPanel",
-                    "name": "SettingsHelpPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.PlaybackHelpPanel",
-                    "name": "PlaybackHelpPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.TitleBar",
+                    "clsName": "SenchaCon2013Demo.view.TitleBar",
                     "name": "TitleBar.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.model.GlobalSettingsPanel",
+                    "clsName": "SenchaCon2013Demo.model.GlobalSettingsPanel",
                     "name": "GlobalSettingsPanel.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.model.GlobalSettingsModel",
+                    "clsName": "SenchaCon2013Demo.model.GlobalSettingsModel",
                     "name": "GlobalSettingsModel.js",
                     "path": "app/model/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.model.GlobalSettingsStore",
+                    "clsName": "SenchaCon2013Demo.model.GlobalSettingsStore",
                     "name": "GlobalSettingsStore.js",
                     "path": "app/store/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.model.DataModel",
+                    "clsName": "SenchaCon2013Demo.model.DataModel",
                     "name": "DataModel.js",
                     "path": "app/model/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.model.UserSettings",
+                    "clsName": "SenchaCon2013Demo.model.UserSettings",
                     "name": "UserSettings.js",
                     "path": "app/model/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Slider0",
+                    "clsName": "SenchaCon2013Demo.view.Slider0",
                     "name": "Slider0.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Slider1",
+                    "clsName": "SenchaCon2013Demo.view.Slider1",
                     "name": "Slider1.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Slider2",
+                    "clsName": "SenchaCon2013Demo.view.Slider2",
                     "name": "Slider2.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Slider4",
+                    "clsName": "SenchaCon2013Demo.view.Slider4",
                     "name": "Slider4.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Slider3",
+                    "clsName": "SenchaCon2013Demo.view.Slider3",
                     "name": "Slider3.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Slider5",
+                    "clsName": "SenchaCon2013Demo.view.Slider5",
                     "name": "Slider5.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.AddChartPanel1",
+                    "clsName": "SenchaCon2013Demo.view.AddChartPanel1",
                     "name": "AddChartPanel1.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.AddChartPanel2",
+                    "clsName": "SenchaCon2013Demo.view.AddChartPanel2",
                     "name": "AddChartPanel2.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.AddChartPanel3",
+                    "clsName": "SenchaCon2013Demo.view.AddChartPanel3",
                     "name": "AddChartPanel3.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.AddChartPanel4",
+                    "clsName": "SenchaCon2013Demo.view.AddChartPanel4",
                     "name": "AddChartPanel4.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Panel1",
+                    "clsName": "SenchaCon2013Demo.view.Panel1",
                     "name": "Panel1.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Panel2",
+                    "clsName": "SenchaCon2013Demo.view.Panel2",
                     "name": "Panel2.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Panel3",
+                    "clsName": "SenchaCon2013Demo.view.Panel3",
                     "name": "Panel3.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.Panel4",
+                    "clsName": "SenchaCon2013Demo.view.Panel4",
                     "name": "Panel4.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.AdminPanel",
-                    "name": "AdminPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.DataSourceConfigurationPanel",
-                    "name": "DataSourceConfigurationPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.DataSourceTypeSelectionPanel",
-                    "name": "DataSourceTypeSelectionPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.DataSourceUploadPanel",
-                    "name": "DataSourceUploadPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.DataSourceManagePanel",
-                    "name": "DataSourceManagePanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.DataSourceDeletePanel",
-                    "name": "DataSourceDeletePanel.js",
                     "path": "app/view/"
                 },                
                 {
-                    "clsName": "ReplayAnalytics.controller.Login",
+                    "clsName": "SenchaCon2013Demo.controller.Login",
                     "name": "Login.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.Main",
+                    "clsName": "SenchaCon2013Demo.controller.Main",
                     "name": "Main.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.Gauge",
+                    "clsName": "SenchaCon2013Demo.controller.Gauge",
                     "name": "Gauge.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.Pie",
+                    "clsName": "SenchaCon2013Demo.controller.Pie",
                     "name": "Pie.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.HorizontalBar",
+                    "clsName": "SenchaCon2013Demo.controller.HorizontalBar",
                     "name": "HorizontalBar.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.LineBar",
+                    "clsName": "SenchaCon2013Demo.controller.LineBar",
                     "name": "LineBar.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.Scatter",
+                    "clsName": "SenchaCon2013Demo.controller.Scatter",
                     "name": "Scatter.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.VerticalBar",
+                    "clsName": "SenchaCon2013Demo.controller.VerticalBar",
                     "name": "VerticalBar.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.Filter",
-                    "name": "Filter.js",
-                    "path": "app/controller/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.controller.GlobalSync",
+                    "clsName": "SenchaCon2013Demo.controller.GlobalSync",
                     "name": "GlobalSync.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.Settings",
+                    "clsName": "SenchaCon2013Demo.controller.Settings",
                     "name": "Settings.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.Playback",
+                    "clsName": "SenchaCon2013Demo.controller.Playback",
                     "name": "Playback.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.controller.Help",
-                    "name": "Help.js",
-                    "path": "app/controller/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.controller.InterestingMoment",
-                    "name": "InterestingMoment.js",
-                    "path": "app/controller/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.controller.DatabaseTable",
+                    "clsName": "SenchaCon2013Demo.controller.DatabaseTable",
                     "name": "DatabaseTable.js",
                     "path": "app/controller/"
                 },
-                {
-                    "clsName": "ReplayAnalytics.controller.Admin",
-                    "name": "Admin.js",
-                    "path": "app/controller/"
-                },
                  {
-                    "clsName": "ReplayAnalytics.controller.Radar",
+                    "clsName": "SenchaCon2013Demo.controller.Radar",
                     "name": "Radar.js",
                     "path": "app/controller/"
                 },
                  {
-                    "clsName": "AreaBar",
+                    "clsName": "SenchaCon2013Demo.controller.AreaBar",
                     "name": "AreaBar.js",
                     "path": "app/controller/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.store.TempStore",
+                    "clsName": "SenchaCon2013Demo.store.TempStore",
                     "name": "TempStore.js",
                     "path": "app/store/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.store.UserSettings4",
+                    "clsName": "SenchaCon2013Demo.store.UserSettings4",
                     "name": "UserSettings4.js",
                     "path": "app/store/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.store.UserSettings3",
+                    "clsName": "SenchaCon2013Demo.store.UserSettings3",
                     "name": "UserSettings3.js",
                     "path": "app/store/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.store.UserSettings2",
+                    "clsName": "SenchaCon2013Demo.store.UserSettings2",
                     "name": "UserSettings2.js",
                     "path": "app/store/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.BottomPlaybackToolbar",
+                    "clsName": "SenchaCon2013Demo.view.BottomPlaybackToolbar",
                     "name": "BottomPlaybackToolbar.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.store.UserSettings1",
+                    "clsName": "SenchaCon2013Demo.store.UserSettings1",
                     "name": "UserSettings1.js",
                     "path": "app/store/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.TopTwoPanelLayout",
+                    "clsName": "SenchaCon2013Demo.view.TopTwoPanelLayout",
                     "name": "TopTwoPanelLayout.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.BottomTwoPanelLayout",
+                    "clsName": "SenchaCon2013Demo.view.BottomTwoPanelLayout",
                     "name": "BottomTwoPanelLayout.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.FourPanelLayout",
+                    "clsName": "SenchaCon2013Demo.view.FourPanelLayout",
                     "name": "FourPanelLayout.js",
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "ReplayAnalytics.view.InterestingMomentGraphPanel",
-                    "name": "InterestingMomentGraphPanel.js",
-                    "path": "app/view/"
-                },
-                {
-                    "clsName": "ReplayAnalytics.view.Main",
+                    "clsName": "SenchaCon2013Demo.view.Main",
                     "name": "Main.js",
                     "path": "app/view/"
                 }
@@ -413,10 +263,6 @@
             	{
                     "path": "lib/",
                     "name": "sencha-touch-all-debug-2.2.0.js"
-                },
-                {
-                    "path": "lib/",
-                    "name": "Fileup.js"
                 },
                 {
                     "path": "lib/",

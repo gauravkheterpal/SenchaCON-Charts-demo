@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.view.Panel1', {
+Ext.define('SenchaCon2013Demo.view.Panel1', {
 	extend: 'Ext.Panel',
 	xtype: 'panel1',
 	fullscreen: true,
@@ -8,27 +8,13 @@ Ext.define('ReplayAnalytics.view.Panel1', {
     	flex: 1,
     	style: 'padding-bottom:20px; background-color: white; color:black',
     	items: [
-{
-	xtype: 'addchartpanel1',
-	fullscreen: true,
-	width:'100%',
-	height:'100%',
-},
-    	       /*{
-    	        	xtype: 'carousel',
-    	        	id: 'carousel1',
-    	        	direction: 'horizontal',
+    	        {
+    	        	xtype: 'addchartpanel1',
     	        	fullscreen: true,
-    	        	cls: 'carousel-style',
-    	        	width: '100%',
-    	        	 hidden: true,
-    	        	height: '100%',
-    	        	items: [
-    	        	        {
-    	        	        	xtype: 'addchartpanel1',
-    	        	        },    	        	        
-    	        	       ]
-    	        }*/
+    	        	width:'100%',
+    	        	height:'100%',
+    	        	hidden: false,
+    	        },
     	]
 	}
 });

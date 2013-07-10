@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metacube.senchacon.demoapp.common.Constants;
-import com.metacube.senchacon.demoapp.common.enums.ChartType;
 import com.metacube.senchacon.demoapp.common.enums.Granularity;
 import com.metacube.senchacon.demoapp.common.util.ChartDataUtils;
 import com.metacube.senchacon.demoapp.common.util.DateUtils;
@@ -24,12 +23,6 @@ public class PieChartService
 {
 	@Autowired
 	private PieChartDAO pieChartDao;
-
-	@Autowired
-	private AccumService accumService;
-
-	@Autowired
-	private InterestingMomentsService interestingMomentsService;
 
 	final static Logger logger = LoggerFactory.getLogger(PieChartService.class);
 
@@ -126,18 +119,10 @@ public class PieChartService
 			}
 		}
 		JSONObject response = new JSONObject();
-		if (accum.equalsIgnoreCase("on"))
-		{
-			returnArray = accumService.getAccumDataForUnified(returnArray, dataField.getFieldName(), null, ChartType.PIE.toString());
-		}
 		response.put(Constants.DATA_IDENTIFIER, returnArray);
 		response.put(Constants.DATA_FIELD_IDENTIFIER, dataField.getFieldLabel());
 		response.put(Constants.CATEGORY_FIELD_IDENTIFIER, categoryField.getFieldLabel());
 		response.put(Constants.DATE_ARRAY_INDENTIFIER, dateArray);
-		response.put(
-				Constants.INTERESTING_MOMENTS_IDENTIFIER,
-				interestingMomentsService.getInterestingMomentForUnifiedData(ChartType.PIE.toString(), returnArray,
-						dataField.getFieldLabel(), categoryField.getFieldLabel(), dateArray, granularity, absEndDate));
 		return response.toString();
 	}
 }

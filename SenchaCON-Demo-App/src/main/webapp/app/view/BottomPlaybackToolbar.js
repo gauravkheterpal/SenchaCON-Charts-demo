@@ -1,13 +1,13 @@
-Ext.define('ReplayAnalytics.view.BottomPlaybackToolbar', {
+Ext.define('SenchaCon2013Demo.view.BottomPlaybackToolbar', {
 	extend: 'Ext.Toolbar',
 	xtype: 'bottomplaybacktoolbar',
 	requires: [
 	           'Ext.Toolbar',
-	           'ReplayAnalytics.view.Slider0',
-	           'ReplayAnalytics.view.Slider1',
-	           'ReplayAnalytics.view.Slider2',
-	           'ReplayAnalytics.view.Slider3',
-	           'ReplayAnalytics.view.Slider4',
+	           'SenchaCon2013Demo.view.Slider0',
+	           'SenchaCon2013Demo.view.Slider1',
+	           'SenchaCon2013Demo.view.Slider2',
+	           'SenchaCon2013Demo.view.Slider3',
+	           'SenchaCon2013Demo.view.Slider4',
 	],
 	config: {
 		docked: 'bottom',

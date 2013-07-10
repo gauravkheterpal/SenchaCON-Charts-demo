@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.view.Slider0', {
+Ext.define('SenchaCon2013Demo.view.Slider0', {
 	extend: 'Ext.slider.Slider',
 	xtype: 'slider0',
 	requires: [

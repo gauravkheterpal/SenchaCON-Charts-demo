@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.view.AddChartPanel3', {
+Ext.define('SenchaCon2013Demo.view.AddChartPanel3', {
 	extend: 'Ext.Panel',
 	xtype: 'addchartpanel3',
 	fullscreen: true,	

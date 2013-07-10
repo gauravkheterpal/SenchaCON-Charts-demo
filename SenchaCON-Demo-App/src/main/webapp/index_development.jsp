@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     
     <link rel="stylesheet" href="lib/sencha-touch-2.2.0.css" type="text/css">
-    <link rel="stylesheet" href="lib/replay-analytics.css" type="text/css">        
+    <link rel="stylesheet" href="lib/senchacon-demoapp.css" type="text/css">        
 
     <title>SenchaCON 2013 Demo</title>   
     

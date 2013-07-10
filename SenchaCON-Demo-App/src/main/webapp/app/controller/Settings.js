@@ -1,5 +1,5 @@
 var settingsController;
-Ext.define('ReplayAnalytics.controller.Settings', {
+Ext.define('SenchaCon2013Demo.controller.Settings', {
 	extend : 'Ext.app.Controller',
 	xtype: 'settingscontroller',
 	config: {
@@ -92,7 +92,7 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	
 	launch: function() {	
 		settingsController = this;
-		ReplayAnalytics.app.GranularityFieldStore = [
+		SenchaCon2013Demo.app.GranularityFieldStore = [
 		                     					 	{text: 'None Defined', value: 'none'},
 		                    						{text: 'Hourly', value: 'Hourly'},
 		                    						{text: 'Daily', value: 'Daily'},
@@ -126,19 +126,19 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	},
 	
 	manageDimensions: function() {	
-		var selectedPanel = ReplayAnalytics.app.currentActivePanelIndex;
-		var dataFieldValues = ReplayAnalytics.app.EmptyFieldStore;
-		var categoryFieldValues = ReplayAnalytics.app.EmptyFieldStore;
-		var categoryFieldValuesWithTime = ReplayAnalytics.app.EmptyFieldStore;
-		var granularityFieldValues = ReplayAnalytics.app.GranularityFieldStore;
-		if (ReplayAnalytics.app.PanelDataFieldStore[selectedPanel] != undefined){
-			dataFieldValues = ReplayAnalytics.app.PanelDataFieldStore[selectedPanel];
+		var selectedPanel = SenchaCon2013Demo.app.currentActivePanelIndex;
+		var dataFieldValues = SenchaCon2013Demo.app.EmptyFieldStore;
+		var categoryFieldValues = SenchaCon2013Demo.app.EmptyFieldStore;
+		var categoryFieldValuesWithTime = SenchaCon2013Demo.app.EmptyFieldStore;
+		var granularityFieldValues = SenchaCon2013Demo.app.GranularityFieldStore;
+		if (SenchaCon2013Demo.app.PanelDataFieldStore[selectedPanel] != undefined){
+			dataFieldValues = SenchaCon2013Demo.app.PanelDataFieldStore[selectedPanel];
 		}
-		if (ReplayAnalytics.app.PanelCategoryFieldStore[selectedPanel] != undefined){
-			categoryFieldValues = ReplayAnalytics.app.PanelCategoryFieldStore[selectedPanel]
+		if (SenchaCon2013Demo.app.PanelCategoryFieldStore[selectedPanel] != undefined){
+			categoryFieldValues = SenchaCon2013Demo.app.PanelCategoryFieldStore[selectedPanel]
 		}
-		if (ReplayAnalytics.app.PanelCategoryFieldStoreWithTime[selectedPanel] != undefined){
-			categoryFieldValuesWithTime = ReplayAnalytics.app.PanelCategoryFieldStoreWithTime[selectedPanel];
+		if (SenchaCon2013Demo.app.PanelCategoryFieldStoreWithTime[selectedPanel] != undefined){
+			categoryFieldValuesWithTime = SenchaCon2013Demo.app.PanelCategoryFieldStoreWithTime[selectedPanel];
 		}		
 		this.getGranularitySetting().setOptions(granularityFieldValues);
 		//this.getGranularitySetting().setValue('None');
@@ -198,10 +198,10 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			this.getXAxisSetting().setOptions(dataFieldValues);				
 			break;
 		case 'gauge':
-			//this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().hide('fadeOut');
+			this.getGroupBySetting().hide('fadeOut');
+			this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
-			//this.getYAxisSetting().hide('fadeOut');
+			this.getYAxisSetting().hide('fadeOut');
 			//this.getGroupBySetting().setOptions(categoryFieldValues);
 			this.getXAxisSetting().setOptions(dataFieldValues);				
 			break;
@@ -218,9 +218,9 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			//this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
-			this.getGroupBySetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);
-			this.getXAxisSetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);	
-			this.getYAxisSetting().setOptions(ReplayAnalytics.app.EmptyFieldStore);
+			this.getGroupBySetting().setOptions(SenchaCon2013Demo.app.EmptyFieldStore);
+			this.getXAxisSetting().setOptions(SenchaCon2013Demo.app.EmptyFieldStore);	
+			this.getYAxisSetting().setOptions(SenchaCon2013Demo.app.EmptyFieldStore);
 		}
 		//this.getGroupBySetting().setValue('none');
 		//this.getXAxisSetting().setValue('none');
@@ -271,11 +271,11 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 				}
 			} else if (this.getChartTypeSetting().getValue() == 'line' || this.getChartTypeSetting().getValue() == 'verticalbar') {
 				if(this.getYAxisSetting().getValue() == 'Percent Out Of Spec'){
-					this.getXAxisSetting().setOptions(ReplayAnalytics.app.InfinityQSCategoryFieldStoreWithTimeWithoutQPM);
+					this.getXAxisSetting().setOptions(SenchaCon2013Demo.app.InfinityQSCategoryFieldStoreWithTimeWithoutQPM);
 					this.getAccumulateSetting().hide('fadeOut');
 					this.getAccumulateSetting().setValue('Off');
 				} else if(this.getYAxisSetting().getValue() == 'Process Events'){
-					this.getXAxisSetting().setOptions(ReplayAnalytics.app.InfinityQSCategoryFieldStoreWithTime);
+					this.getXAxisSetting().setOptions(SenchaCon2013Demo.app.InfinityQSCategoryFieldStoreWithTime);
 					this.getAccumulateSetting().show('fadeIn');
 				}
 			}
@@ -327,11 +327,11 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 				}
 			} else if (this.getChartTypeSetting().getValue() == 'horizontalbar') {
 				if(this.getXAxisSetting().getValue() == 'Percent Out Of Spec'){
-					this.getYAxisSetting().setOptions(ReplayAnalytics.app.InfinityQSCategoryFieldStoreWithTimeWithoutQPM);
+					this.getYAxisSetting().setOptions(SenchaCon2013Demo.app.InfinityQSCategoryFieldStoreWithTimeWithoutQPM);
 					this.getAccumulateSetting().hide('fadeOut');
 					this.getAccumulateSetting().setValue('Off');
 				} else if(this.getXAxisSetting().getValue() == 'Process Events'){
-					this.getYAxisSetting().setOptions(ReplayAnalytics.app.InfinityQSCategoryFieldStoreWithTime);
+					this.getYAxisSetting().setOptions(SenchaCon2013Demo.app.InfinityQSCategoryFieldStoreWithTime);
 					this.getAccumulateSetting().show('fadeIn');
 				}
 			}
@@ -356,44 +356,39 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	},
 	
 	showGlobalSettingsPanel: function(){
-		this.getNumberActivePanelsSetting().setValue(ReplayAnalytics.app.numberActivePanels);
-		this.getInterestingMomentsSetting().setValue(ReplayAnalytics.app.interestingMoments);
-		this.getReplayCommentsSetting().setValue(ReplayAnalytics.app.replayCommentsSetting);
-		this.getReplaySpeedSettings().setValue(ReplayAnalytics.app.replaySpeed);
-		this.getImType3Setting().setValue(ReplayAnalytics.app.interestingMomentType3Setting);
-		this.getImType4Setting().setValue(ReplayAnalytics.app.interestingMomentType4Setting);
-		this.getImType1Setting().setValue(ReplayAnalytics.app.interestingMomentType1Setting);
-		this.getImType2Setting().setValue(ReplayAnalytics.app.interestingMomentType2Setting);
+		this.getNumberActivePanelsSetting().setValue(SenchaCon2013Demo.app.numberActivePanels);
+		this.getInterestingMomentsSetting().setValue(SenchaCon2013Demo.app.interestingMoments);
+		this.getReplayCommentsSetting().setValue(SenchaCon2013Demo.app.replayCommentsSetting);
+		this.getReplaySpeedSettings().setValue(SenchaCon2013Demo.app.replaySpeed);
+		this.getImType3Setting().setValue(SenchaCon2013Demo.app.interestingMomentType3Setting);
+		this.getImType4Setting().setValue(SenchaCon2013Demo.app.interestingMomentType4Setting);
+		this.getImType1Setting().setValue(SenchaCon2013Demo.app.interestingMomentType1Setting);
+		this.getImType2Setting().setValue(SenchaCon2013Demo.app.interestingMomentType2Setting);
 		this.getGlobalSettingsPanel().show();
 	},
 	
-	showSettingsPanel: function() {
-		
-		this.getApplication().getController('DatabaseTable').getAllDatabaseTables();
-		
+	showSettingsPanel: function() {		
+		this.getApplication().getController('DatabaseTable').getAllDatabaseTables();		
 	},
 	
-	configureSettingsPanel: function(){
-		
-		this.getDatabaseSetting().setOptions(ReplayAnalytics.app.DatabaseTableFieldStore);
-		this.getDatabaseSetting().setValue(ReplayAnalytics.app.databaseSetting[ReplayAnalytics.app.currentActivePanelIndex]);
-		this.getApplication().getController('DatabaseTable').getDatabaseTableFieldsForDatabase();
-		
-		
+	configureSettingsPanel: function(){		
+		this.getDatabaseSetting().setOptions(SenchaCon2013Demo.app.DatabaseTableFieldStore);
+		this.getDatabaseSetting().setValue(SenchaCon2013Demo.app.databaseSetting[SenchaCon2013Demo.app.currentActivePanelIndex]);
+		this.getApplication().getController('DatabaseTable').getDatabaseTableFieldsForDatabase();		
 	},
 	
 	showConfiguredSettingsPanel: function(){
-		this.getChartTypeSetting().setValue(ReplayAnalytics.app.chartTypes[ReplayAnalytics.app.currentActivePanelIndex]);
+		this.getChartTypeSetting().setValue(SenchaCon2013Demo.app.chartTypes[SenchaCon2013Demo.app.currentActivePanelIndex]);
 		this.manageDimensions();
-		//this.getGraphTitleSetting().setValue(ReplayAnalytics.app.graphTitle[ReplayAnalytics.app.currentActivePanelIndex]);
-		this.getXAxisSetting().setValue(ReplayAnalytics.app.xs[ReplayAnalytics.app.currentActivePanelIndex]);
-		this.getYAxisSetting().setValue(ReplayAnalytics.app.ys[ReplayAnalytics.app.currentActivePanelIndex]);		
-		this.getGranularitySetting().setValue(ReplayAnalytics.app.granularities[ReplayAnalytics.app.currentActivePanelIndex]);
-		this.getGroupBySetting().setValue(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex]);
-		this.getStartDateSetting().setValue(ReplayAnalytics.app.startDate[ReplayAnalytics.app.currentActivePanelIndex]);
-		this.getEndDateSetting().setValue(ReplayAnalytics.app.currentEndDate[ReplayAnalytics.app.currentActivePanelIndex]);		
-		this.getAccumulateSetting().setValue(ReplayAnalytics.app.accumulate[ReplayAnalytics.app.currentActivePanelIndex]);		
-		this.getFilterSetting().setValue(ReplayAnalytics.app.filterToggle[ReplayAnalytics.app.currentActivePanelIndex]);
+		//this.getGraphTitleSetting().setValue(SenchaCon2013Demo.app.graphTitle[SenchaCon2013Demo.app.currentActivePanelIndex]);
+		this.getXAxisSetting().setValue(SenchaCon2013Demo.app.xs[SenchaCon2013Demo.app.currentActivePanelIndex]);
+		this.getYAxisSetting().setValue(SenchaCon2013Demo.app.ys[SenchaCon2013Demo.app.currentActivePanelIndex]);		
+		this.getGranularitySetting().setValue(SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex]);
+		this.getGroupBySetting().setValue(SenchaCon2013Demo.app.groupBys[SenchaCon2013Demo.app.currentActivePanelIndex]);
+		this.getStartDateSetting().setValue(SenchaCon2013Demo.app.startDate[SenchaCon2013Demo.app.currentActivePanelIndex]);
+		this.getEndDateSetting().setValue(SenchaCon2013Demo.app.currentEndDate[SenchaCon2013Demo.app.currentActivePanelIndex]);		
+		this.getAccumulateSetting().setValue(SenchaCon2013Demo.app.accumulate[SenchaCon2013Demo.app.currentActivePanelIndex]);		
+		this.getFilterSetting().setValue(SenchaCon2013Demo.app.filterToggle[SenchaCon2013Demo.app.currentActivePanelIndex]);
 		this.getSettingsPanel().show();		
 		this.manageGranularitySettings();
 	},
@@ -430,53 +425,45 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	},
 	
 	clearPanelSettingsStore: function(){
-		clearStore('UserSettings' + ReplayAnalytics.app.currentActivePanelIndex);
-		Ext.get('chart'+ReplayAnalytics.app.currentActivePanelIndex+'Button').show();
-		Ext.get('chart'+ReplayAnalytics.app.currentActivePanelIndex+'Image').show();
-		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
+		clearStore('UserSettings' + SenchaCon2013Demo.app.currentActivePanelIndex);
+		Ext.get('chart'+SenchaCon2013Demo.app.currentActivePanelIndex+'Button').show();
+		Ext.get('chart'+SenchaCon2013Demo.app.currentActivePanelIndex+'Image').show();
+		var obj = SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
 				obj.getLegend().destroy();
 			}		
 			obj.destroy();
 		}
-		ReplayAnalytics.app.panelSettings[ReplayAnalytics.app.currentActivePanelIndex] = '';
-        ReplayAnalytics.app.panelData[ReplayAnalytics.app.currentActivePanelIndex] = '';
-        var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
+		SenchaCon2013Demo.app.panelSettings[SenchaCon2013Demo.app.currentActivePanelIndex] = '';
+        SenchaCon2013Demo.app.panelData[SenchaCon2013Demo.app.currentActivePanelIndex] = '';
+        var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
         Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].setHtml('');
-		var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-		/*for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
-			var temp = carousel.getAt(carouselIndex-1);
-			if (temp != undefined){
-				carousel.remove(temp);
-			}
-		}*/
-		//Ext.ComponentQuery.query('textfield[label=Graph Title:]')[0].setValue('Title');
 		Ext.ComponentQuery.query('selectfield[label=Accumulate:]')[0].setValue('Off');
 		this.manageDimensions();
 		this.getApplication().getController('Main').checkForConfiguredGraphPanels();
 	},
 	
 	doneGlobalSettingsPanel: function(){
-		ReplayAnalytics.app.interestingMoments = this.getInterestingMomentsSetting().getValue();
-		ReplayAnalytics.app.replayCommentsSetting = this.getReplayCommentsSetting().getValue();
-		ReplayAnalytics.app.numberActivePanels = this.getNumberActivePanelsSetting().getValue();
-		ReplayAnalytics.app.replaySpeed = this.getReplaySpeedSettings().getValue();
+		SenchaCon2013Demo.app.interestingMoments = this.getInterestingMomentsSetting().getValue();
+		SenchaCon2013Demo.app.replayCommentsSetting = this.getReplayCommentsSetting().getValue();
+		SenchaCon2013Demo.app.numberActivePanels = this.getNumberActivePanelsSetting().getValue();
+		SenchaCon2013Demo.app.replaySpeed = this.getReplaySpeedSettings().getValue();
 		var newIMType3Setting = this.getImType3Setting().getValue();
 		var newIMType4Setting = this.getImType4Setting().getValue();
 		var newIMType1Setting = this.getImType1Setting().getValue();
 		var newIMType2Setting = this.getImType2Setting().getValue();
 		var imSettingChanged = false;
-		if (newIMType3Setting != ReplayAnalytics.app.interestingMomentType3Setting ||
-				newIMType4Setting != ReplayAnalytics.app.interestingMomentType4Setting ||
-				newIMType1Setting != ReplayAnalytics.app.interestingMomentType1Setting ||
-				newIMType2Setting != ReplayAnalytics.app.interestingMomentType2Setting){
+		if (newIMType3Setting != SenchaCon2013Demo.app.interestingMomentType3Setting ||
+				newIMType4Setting != SenchaCon2013Demo.app.interestingMomentType4Setting ||
+				newIMType1Setting != SenchaCon2013Demo.app.interestingMomentType1Setting ||
+				newIMType2Setting != SenchaCon2013Demo.app.interestingMomentType2Setting){
 			imSettingChanged = true;
 		}
-		ReplayAnalytics.app.interestingMomentType3Setting = this.getImType3Setting().getValue();
-		ReplayAnalytics.app.interestingMomentType4Setting = this.getImType4Setting().getValue();
-		ReplayAnalytics.app.interestingMomentType1Setting = this.getImType1Setting().getValue();
-		ReplayAnalytics.app.interestingMomentType2Setting = this.getImType2Setting().getValue();
+		SenchaCon2013Demo.app.interestingMomentType3Setting = this.getImType3Setting().getValue();
+		SenchaCon2013Demo.app.interestingMomentType4Setting = this.getImType4Setting().getValue();
+		SenchaCon2013Demo.app.interestingMomentType1Setting = this.getImType1Setting().getValue();
+		SenchaCon2013Demo.app.interestingMomentType2Setting = this.getImType2Setting().getValue();
 		var globalStore;
 		globalStore = [{'NumberOfPanels': this.getNumberActivePanelsSetting().getValue(),'InterestingMoments': this.getInterestingMomentsSetting().getValue(),'ReplayComments':this.getReplayCommentsSetting().getValue(),'ReplaySpeed': this.getReplaySpeedSettings().getValue(), 'InterestingMomentType3Setting': this.getImType3Setting().getValue(), 'InterestingMomentType1Setting': this.getImType1Setting().getValue(), 'InterestingMomentType2Setting': this.getImType2Setting().getValue(), 'InterestingMomentType4Setting': this.getImType4Setting().getValue()}];
 		Ext.getStore('GlobalSettingsStore').setData(globalStore);
@@ -485,11 +472,11 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 		this.updateChartAnimationSettings();
 		this.cancelGlobalSettingsPanel();
 		if (imSettingChanged){
-			Ext.Msg.alert('ReplayAnalytics &#153;', 'Interesting Moment settings has been changed. Dashboard will need to be recalculated.', function(){
-				for ( i = 1; i <= ReplayAnalytics.app.numberActivePanels; i++ ){
-					//ReplayAnalytics.app.XmaxReceived[i] = false;
-					//ReplayAnalytics.app.YmaxReceived[i] = false;
-					ReplayAnalytics.app.chartCreated[i] = false;
+			Ext.Msg.alert('SenchaCon2013Demo &#153;', 'Interesting Moment settings has been changed. Dashboard will need to be recalculated.', function(){
+				for ( i = 1; i <= SenchaCon2013Demo.app.numberActivePanels; i++ ){
+					//SenchaCon2013Demo.app.XmaxReceived[i] = false;
+					//SenchaCon2013Demo.app.YmaxReceived[i] = false;
+					SenchaCon2013Demo.app.chartCreated[i] = false;
 				}
 				settingsController.getApplication().getController('Main').loadStores();
 				//refreshPage();
@@ -498,23 +485,23 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 	},
 	
 	updateChartAnimationSettings: function(){
-		ReplayAnalytics.app.animateSpeed = ReplayAnalytics.app.replaySpeed - 100;
-		for(i = 0; i < ReplayAnalytics.app.newChart.length; i++) {
-			if(ReplayAnalytics.app.newChart[i] != null) {
-				var series = ReplayAnalytics.app.newChart[i].getSeries();
+		SenchaCon2013Demo.app.animateSpeed = SenchaCon2013Demo.app.replaySpeed - 100;
+		for(i = 0; i < SenchaCon2013Demo.app.newChart.length; i++) {
+			if(SenchaCon2013Demo.app.newChart[i] != null) {
+				var series = SenchaCon2013Demo.app.newChart[i].getSeries();
 				for (j = 0; j < series.length; j++){
 					series[j].setAnimate(
 							{
-								duration: ReplayAnalytics.app.animateSpeed, 
-								delay: ReplayAnalytics.app.animateSpeed/2, 
+								duration: SenchaCon2013Demo.app.animateSpeed, 
+								delay: SenchaCon2013Demo.app.animateSpeed/2, 
 								easing: 'ease'
 							}
 						);
 				}
-				ReplayAnalytics.app.newChart[i].setAnimate(
+				SenchaCon2013Demo.app.newChart[i].setAnimate(
 						{
-							duration: ReplayAnalytics.app.animateSpeed, 
-							delay: ReplayAnalytics.app.animateSpeed/2, 
+							duration: SenchaCon2013Demo.app.animateSpeed, 
+							delay: SenchaCon2013Demo.app.animateSpeed/2, 
 							easing: 'ease'
 						}
 					);
@@ -546,17 +533,17 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 		}
 		else 
 		{
-			if(ReplayAnalytics.app.currentActivePanelIndex ==1 )
+			if(SenchaCon2013Demo.app.currentActivePanelIndex ==1 )
 			{
 				Ext.get('chart1Button').hide();
 				Ext.get('chart1Image').hide();
 			}			
-			else if (ReplayAnalytics.app.currentActivePanelIndex ==2)
+			else if (SenchaCon2013Demo.app.currentActivePanelIndex ==2)
 			{
 				Ext.get('chart2Button').hide();
 				Ext.get('chart2Image').hide();
 			}			
-			else if(ReplayAnalytics.app.currentActivePanelIndex ==3)
+			else if(SenchaCon2013Demo.app.currentActivePanelIndex ==3)
 			{
 				Ext.get('chart3Button').hide();
 				Ext.get('chart3Image').hide();
@@ -566,44 +553,44 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 				Ext.get('chart4Button').hide();
 				Ext.get('chart4Image').hide();
 			}
-			ReplayAnalytics.app.databaseSetting[ReplayAnalytics.app.currentActivePanelIndex] = this.getDatabaseSetting().getValue();
-			ReplayAnalytics.app.filterToggle[ReplayAnalytics.app.currentActivePanelIndex] = this.getFilterSetting().getValue();
-			ReplayAnalytics.app.graphTitle[ReplayAnalytics.app.currentActivePanelIndex] = this.getGraphTitleSetting().getValue();
-			ReplayAnalytics.app.xs[ReplayAnalytics.app.currentActivePanelIndex] = this.getXAxisSetting().getValue();
-			ReplayAnalytics.app.ys[ReplayAnalytics.app.currentActivePanelIndex] = this.getYAxisSetting().getValue();
-			ReplayAnalytics.app.granularities[ReplayAnalytics.app.currentActivePanelIndex] = this.getGranularitySetting().getValue();
-			ReplayAnalytics.app.chartTypes[ReplayAnalytics.app.currentActivePanelIndex] = this.getChartTypeSetting().getValue();
-			ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] = this.getGroupBySetting().getValue();
-			ReplayAnalytics.app.startDate[ReplayAnalytics.app.currentActivePanelIndex] = new Date(this.getStartDateSetting().getValue());
-			ReplayAnalytics.app.currentStartDate[ReplayAnalytics.app.currentActivePanelIndex] = new Date(this.getStartDateSetting().getValue());
-			ReplayAnalytics.app.currentDate[ReplayAnalytics.app.currentActivePanelIndex] = new Date(this.getStartDateSetting().getValue());
-			ReplayAnalytics.app.currentEndDate[ReplayAnalytics.app.currentActivePanelIndex] = new Date(this.getEndDateSetting().getValue());
-			ReplayAnalytics.app.accumulate[ReplayAnalytics.app.currentActivePanelIndex] = this.getAccumulateSetting().getValue();
-			ReplayAnalytics.app.XmaxReceived[ReplayAnalytics.app.currentActivePanelIndex] = false;
-			ReplayAnalytics.app.YmaxReceived[ReplayAnalytics.app.currentActivePanelIndex] = false;
-			switch(ReplayAnalytics.app.granularities[ReplayAnalytics.app.currentActivePanelIndex]) {
+			SenchaCon2013Demo.app.databaseSetting[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getDatabaseSetting().getValue();
+			SenchaCon2013Demo.app.filterToggle[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getFilterSetting().getValue();
+			SenchaCon2013Demo.app.graphTitle[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getGraphTitleSetting().getValue();
+			SenchaCon2013Demo.app.xs[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getXAxisSetting().getValue();
+			SenchaCon2013Demo.app.ys[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getYAxisSetting().getValue();
+			SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getGranularitySetting().getValue();
+			SenchaCon2013Demo.app.chartTypes[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getChartTypeSetting().getValue();
+			SenchaCon2013Demo.app.groupBys[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getGroupBySetting().getValue();
+			SenchaCon2013Demo.app.startDate[SenchaCon2013Demo.app.currentActivePanelIndex] = new Date(this.getStartDateSetting().getValue());
+			SenchaCon2013Demo.app.currentStartDate[SenchaCon2013Demo.app.currentActivePanelIndex] = new Date(this.getStartDateSetting().getValue());
+			SenchaCon2013Demo.app.currentDate[SenchaCon2013Demo.app.currentActivePanelIndex] = new Date(this.getStartDateSetting().getValue());
+			SenchaCon2013Demo.app.currentEndDate[SenchaCon2013Demo.app.currentActivePanelIndex] = new Date(this.getEndDateSetting().getValue());
+			SenchaCon2013Demo.app.accumulate[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getAccumulateSetting().getValue();
+			SenchaCon2013Demo.app.XmaxReceived[SenchaCon2013Demo.app.currentActivePanelIndex] = false;
+			SenchaCon2013Demo.app.YmaxReceived[SenchaCon2013Demo.app.currentActivePanelIndex] = false;
+			switch(SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex]) {
 				case 'Hourly':
-					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 1;
+					SenchaCon2013Demo.app.valueGranularities[SenchaCon2013Demo.app.currentActivePanelIndex] = 1;
 					break;
 				case 'Daily':
-					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 2;
+					SenchaCon2013Demo.app.valueGranularities[SenchaCon2013Demo.app.currentActivePanelIndex] = 2;
 					break;
 				case 'Weekly':
-					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 3;
+					SenchaCon2013Demo.app.valueGranularities[SenchaCon2013Demo.app.currentActivePanelIndex] = 3;
 					break;
 				case 'Monthly':
-					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 4;
+					SenchaCon2013Demo.app.valueGranularities[SenchaCon2013Demo.app.currentActivePanelIndex] = 4;
 					break;
 			}		 
-			var difference = ReplayAnalytics.app.currentEndDate[ReplayAnalytics.app.currentActivePanelIndex] - ReplayAnalytics.app.currentStartDate[ReplayAnalytics.app.currentActivePanelIndex];
+			var difference = SenchaCon2013Demo.app.currentEndDate[SenchaCon2013Demo.app.currentActivePanelIndex] - SenchaCon2013Demo.app.currentStartDate[SenchaCon2013Demo.app.currentActivePanelIndex];
 			var days = Math.floor(difference / (1000 * 60 * 60 * 24));		
-			var datedifference =  ReplayAnalytics.app.currentStartDate[ReplayAnalytics.app.currentActivePanelIndex] - ReplayAnalytics.app.currentEndDate[ReplayAnalytics.app.currentActivePanelIndex];
+			var datedifference =  SenchaCon2013Demo.app.currentStartDate[SenchaCon2013Demo.app.currentActivePanelIndex] - SenchaCon2013Demo.app.currentEndDate[SenchaCon2013Demo.app.currentActivePanelIndex];
 			var datedays = Math.floor(datedifference / (1000 * 60 * 60 * 24));		
 			if(datedays > 0)
 			{
 				Ext.Msg.alert('Check Dates','Start date must be earlier than end date.');
 			}		
-			else if (days <= 0 && ReplayAnalytics.app.granularities[ReplayAnalytics.app.currentActivePanelIndex] != 'Hourly')
+			else if (days <= 0 && SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex] != 'Hourly')
 			{			 
 				Ext.Msg.alert('Check Dates','Start and end date can not be same');
 			}		
@@ -611,10 +598,10 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			{				
 				var tempStore;
 				tempStore = [{'Database': this.getDatabaseSetting().getValue(),'GraphTitle': this.getGraphTitleSetting().getValue(),'XAxis':this.getXAxisSetting().getValue(),'YAxis':this.getYAxisSetting().getValue(),'GroupBy':this.getGroupBySetting().getValue(),'Granularity':this.getGranularitySetting().getValue(),'ChartType':this.getChartTypeSetting().getValue(),'StartDate':this.getStartDateSetting().getValue(),'EndDate':this.getEndDateSetting().getValue(),'InterestingMoments':this.getInterestingMomentsSetting().getValue(),'Accumulate':this.getAccumulateSetting().getValue(),'FilterToggle':this.getFilterSetting().getValue()}];
-				Ext.getStore('UserSettings'+ReplayAnalytics.app.currentActivePanelIndex).setData(tempStore);
-				Ext.getStore('UserSettings'+ReplayAnalytics.app.currentActivePanelIndex).sync();
+				Ext.getStore('UserSettings'+SenchaCon2013Demo.app.currentActivePanelIndex).setData(tempStore);
+				Ext.getStore('UserSettings'+SenchaCon2013Demo.app.currentActivePanelIndex).sync();
 				this.getSettingsPanel().hide(true);
-				ReplayAnalytics.app.dateSet[ReplayAnalytics.app.currentActivePanelIndex] = true;
+				SenchaCon2013Demo.app.dateSet[SenchaCon2013Demo.app.currentActivePanelIndex] = true;
 				showLoadingMask();
 				this.getApplication().getController('Main').chartSetUp();
 			}

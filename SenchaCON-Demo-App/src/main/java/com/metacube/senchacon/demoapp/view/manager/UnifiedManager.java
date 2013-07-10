@@ -52,14 +52,11 @@ public class UnifiedManager
 	private DatabaseTableManager databaseTableManager;
 
 	public String getUnifiedData(String databaseName, String xAxis, String yAxis, String groupBy, String chartType, String absStartDate,
-			String absEndDate, String granularity, String differential, String accum, String filterString, Long imType1Setting,
-			Double imType2Setting, Integer imType3Setting, Integer imType4Setting)
+			String absEndDate, String granularity, String differential)
 	{
 		String responseString = "";
 		String groupByBarValues[] = new String[4];
 		String fixOrderString = null;
-		filterString = Utilities.decodeFilterString(filterString);
-		Utilities.handleInterestingMomentSettingsConstants(imType1Setting, imType2Setting, imType3Setting, imType4Setting);
 		DatabaseTableView database = databaseTableManager.findDatabaseTableViewForDatabaseName(databaseName);
 		DatabaseTableFieldsView xAxisField = null, yAxisField = null, groupByField = null, timeField = null;
 		if (Utilities.verifyString(xAxis))
@@ -97,7 +94,7 @@ public class UnifiedManager
 		if (!chartType.equalsIgnoreCase(ChartType.SCATTER.toString()) && !chartType.equalsIgnoreCase(ChartType.GAUGE.toString()))
 		{
 			fixOrderString = unifiedFixOrderService.getFixOrderString(database, timeField, absStartDate, absEndDate, granularity,
-					chartType, dataField, categoryField, filterString);
+					chartType, dataField, categoryField, "");
 		}
 
 		if ((!(groupBy.equalsIgnoreCase(CategoryField.NONE.toString())))
@@ -105,25 +102,25 @@ public class UnifiedManager
 						.equalsIgnoreCase(ChartType.HORIZONTALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.AREA.toString())))
 		{
 			groupByBarValues = unifiedGroupByBarService.getUnifiedGroupByBarValues(database, timeField, absStartDate, absEndDate,
-					dataField, groupByField, filterString);
+					dataField, groupByField, "");
 		}
 
 		if (chartType.equalsIgnoreCase(ChartType.PIE.toString()) || chartType.equalsIgnoreCase(ChartType.RADAR.toString()))
 		{
 			responseString = pieChartService.getUnifiedPieChartData(database, timeField, absStartDate, absEndDate, granularity, dataField,
-					categoryField, fixOrderString, differential, accum, filterString);
+					categoryField, fixOrderString, differential, "", "");
 		}
 		else if (chartType.equalsIgnoreCase(ChartType.GAUGE.toString()))
 		{
 			responseString = gaugeChartService.getUnifiedGaugeChartData(database, timeField, absStartDate, absEndDate, granularity,
-					dataField, fixOrderString, differential, accum, filterString);
+					dataField, fixOrderString, differential, "", "");
 		}
 		else if (chartType.equalsIgnoreCase(ChartType.HORIZONTALBAR.toString())
 				|| chartType.equalsIgnoreCase(ChartType.VERTICALBAR.toString()) || chartType.equalsIgnoreCase(ChartType.LINE.toString())
 				|| chartType.equalsIgnoreCase(ChartType.AREA.toString()))
 		{
 			responseString = barChartService.getUnifiedBarChartData(chartType, database, timeField, absStartDate, absEndDate, granularity,
-					dataField, categoryField, groupByField, groupByBarValues, fixOrderString, differential, accum, filterString);
+					dataField, categoryField, groupByField, groupByBarValues, fixOrderString, differential, "", "");
 		}
 		else if (chartType.equalsIgnoreCase(ChartType.SCATTER.toString()))
 		{

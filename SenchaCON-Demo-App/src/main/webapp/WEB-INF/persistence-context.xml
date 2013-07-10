@@ -37,17 +37,6 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
-				
-				<!-- <prop key="hibernate.c3p0.validate">true</prop>
-				<prop key="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</prop>
-				<prop key="connection.autoReconnect"> true</prop>
-				<prop key="hibernate.c3p0.min_size">5</prop>
-				<prop key="hibernate.c3p0.max_size">20</prop>
-				<prop key="hibernate.c3p0.timeout">350</prop>
-				<prop key="hibernate.c3p0.max_statements">50</prop>
-				<prop key="hibernate.c3p0.idle_test_periods">300</prop>
-				<prop key="hibernate.c3p0.preferredTestQuery">SELECT 1;</prop>  -->
-				<!--<prop key="hibernate.c3p0.testConnectionOnCheckout">true</prop>-->
 			</props>
 		</property>
 	</bean>

@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.controller.Radar', {
+Ext.define('SenchaCon2013Demo.controller.Radar', {
 	extend : 'Ext.app.Controller',
 	xtype: 'radarcontroller',
 	config: {
@@ -13,15 +13,15 @@ Ext.define('ReplayAnalytics.controller.Radar', {
 	},
 	
 	createRadarChart: function(store, dataField, categoryField, chartIndex){
-		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
+		var obj = SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
 				obj.getLegend().destroy();
 			}		
 			obj.destroy();
 		}
-		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create('Ext.chart.PolarChart', {
-			id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
+		SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex] = Ext.create('Ext.chart.PolarChart', {
+			id: 'chart'+SenchaCon2013Demo.app.currentActivePanelIndex,
 			store: store,
 			flex: 1,
 			interactions: ['rotate'],

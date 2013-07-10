@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.model.DataModel', {
+Ext.define('SenchaCon2013Demo.model.DataModel', {
 	extend: 'Ext.data.Model',
 	xtype: 'datamodel',
 	config: {

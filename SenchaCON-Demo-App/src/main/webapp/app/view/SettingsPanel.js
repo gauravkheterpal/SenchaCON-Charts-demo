@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.view.SettingsPanel', {
+Ext.define('SenchaCon2013Demo.view.SettingsPanel', {
 	extend: 'Ext.Panel',
 	xtype: 'settingspanel',
 	requires: [
@@ -28,7 +28,6 @@ Ext.define('ReplayAnalytics.view.SettingsPanel', {
 		        	hidden: true,
 		        	value: 'None',
 		        	options: [
-		        	    {text: '+ Import Excel File', value: 'add_new_data_source'},
 		        		{text: 'None Defined', value: 'None'},
 		        		]
 		        },

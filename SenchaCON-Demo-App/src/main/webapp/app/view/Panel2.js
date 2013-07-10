@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.view.Panel2', {
+Ext.define('SenchaCon2013Demo.view.Panel2', {
 	extend: 'Ext.Panel',
 	xtype: 'panel2',
 	config: {
@@ -12,20 +12,7 @@ Ext.define('ReplayAnalytics.view.Panel2', {
 	width:'100%',
 	height:'100%',
 },
-    	       /* {
-    	        	xtype: 'carousel',
-    	        	id: 'carousel2',
-    	        	direction: 'horizontal',
-    	        	fullscreen: true,
-    	        	 hidden: true,
-    	        	width: '100%',
-    	        	height: '100%',
-    	        	items: [
-    	        	        {
-    	        	        	xtype: 'addchartpanel2',
-    	        	        },    	        	        
-    	        	       ]
-    	        }*/
+    	       
     	]
 	}
 });

@@ -1,8 +1,8 @@
-Ext.define("ReplayAnalytics.store.TempStore", {
+Ext.define("SenchaCon2013Demo.store.TempStore", {
 	extend : 'Ext.data.Store',
-	requires: ['ReplayAnalytics.model.DataModel'],
+	requires: ['SenchaCon2013Demo.model.DataModel'],
 	config: {
-		model: 'ReplayAnalytics.model.DataModel',
+		model: 'SenchaCon2013Demo.model.DataModel',
 		proxy: {
 			type: 'localstorage',
 			id: 'tempstore'

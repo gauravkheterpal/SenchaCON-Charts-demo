@@ -1,5 +1,5 @@
 var playbackController;
-Ext.define('ReplayAnalytics.controller.Playback', {
+Ext.define('SenchaCon2013Demo.controller.Playback', {
 	extend : 'Ext.app.Controller',
 	xtype: 'playbackcontroller',
 	config: {
@@ -75,15 +75,13 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 	},
 	
 	resumeLastPlaybackAction: function(){
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		logInfo('ResumePlayback called for chart=' + chartIndex + ' at sliderValue=' + ReplayAnalytics.app.sliders[chartIndex].getValue()[0]
-				+' and Last action is == ' + ReplayAnalytics.app.lastPlaybackAction);		
-		if (ReplayAnalytics.app.lastPlaybackAction != undefined){
-			if (ReplayAnalytics.app.lastPlaybackAction == 'playForward'){
-				this.getApplication().getController('InterestingMoment').getManualIMCallout().hide();
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		logInfo('ResumePlayback called for chart=' + chartIndex + ' at sliderValue=' + SenchaCon2013Demo.app.sliders[chartIndex].getValue()[0]
+				+' and Last action is == ' + SenchaCon2013Demo.app.lastPlaybackAction);		
+		if (SenchaCon2013Demo.app.lastPlaybackAction != undefined){
+			if (SenchaCon2013Demo.app.lastPlaybackAction == 'playForward'){
 				this.playForwardFunction();
-			} else if (ReplayAnalytics.app.lastPlaybackAction == 'playBackward'){
-				this.getApplication().getController('InterestingMoment').getManualIMCallout().hide();
+			} else if (SenchaCon2013Demo.app.lastPlaybackAction == 'playBackward'){
 				this.playBackwardFunction();
 			}			
 		}
@@ -91,9 +89,9 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 	
 	sliderListenerFunctionDrag: function(slider, thumb, value) {
 		value = value[0];
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		ReplayAnalytics.app.currentPositions[chartIndex] = ReplayAnalytics.app.sliders[chartIndex].getValue()[0];
-		//ReplayAnalytics.app.sliders[chartIndex].fireEvent('change', ReplayAnalytics.app.sliders[chartIndex], chartIndex); 
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		SenchaCon2013Demo.app.currentPositions[chartIndex] = SenchaCon2013Demo.app.sliders[chartIndex].getValue()[0];
+		//SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change', SenchaCon2013Demo.app.sliders[chartIndex], chartIndex); 
 		this.sliderListenerFunctionChange(slider);
 	},
 	
@@ -102,11 +100,11 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		var captionFormat = "ddd mmm dd yyyy HH:MM:ss";
 		var currentDate = "";
 		try {
-			currentDate = ReplayAnalytics.app.globalDateArray[chartIndex][value];
+			currentDate = SenchaCon2013Demo.app.globalDateArray[chartIndex][value];
 		} catch(err){
 		}
 		//logInfo('Current date for index='+chartIndex+' & value='+value+' is == ' + currentDate);
-		if (ReplayAnalytics.app.granularities[chartIndex] != 'Hourly'){
+		if (SenchaCon2013Demo.app.granularities[chartIndex] != 'Hourly'){
 			captionFormat = "ddd mmm dd yyyy";
 		}
 		try{
@@ -116,14 +114,11 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 			currentDate = this.dateConversion(currentDate);
 		}		
 		if (chartIndex != 0 && chartIndex != 5){
-			var graphTitle = ReplayAnalytics.app.graphTitle[chartIndex];
+			var graphTitle = SenchaCon2013Demo.app.graphTitle[chartIndex];
 			caption = '<h1 style="text-align:center; color: black; z-index: 10; font-size: 14px; padding:10px"><b>'+currentDate+'</b></h1>';
 			Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml(caption);
 			//Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml(caption);
-		} else if (chartIndex == 5){
-			caption = "<h1 style='text-align:center; color: black; z-index: 10; font-size: 14px; padding: 5px;'>"+currentDate+"</h1>";
-			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].setHtml(caption);
-		}				
+		} 				
 		return caption;
 	},
 		 
@@ -135,320 +130,225 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 	
 	//Utility function for making intervals even:	
 	updateSliderInterval: function() {	
-		var sliderValue = ReplayAnalytics.app.sliders[ReplayAnalytics.app.currentActivePanelIndex].getValue();
-		ReplayAnalytics.app.sliders[ReplayAnalytics.app.currentActivePanelIndex].setValue(sliderValue % ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex]);	
+		var sliderValue = SenchaCon2013Demo.app.sliders[SenchaCon2013Demo.app.currentActivePanelIndex].getValue();
+		SenchaCon2013Demo.app.sliders[SenchaCon2013Demo.app.currentActivePanelIndex].setValue(sliderValue % SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex]);	
 	},
 	
 	showCharts: function(){		
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;	
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;	
 		var value = 0;
-		if(ReplayAnalytics.app.chartTypes[chartIndex] == 'scatter') {
-			if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] != 'none') {
-				//this.createScatterChartGroupBy(ReplayAnalytics.app.chartTypes[chartIndex], ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.xs[chartIndex],ReplayAnalytics.app.ys[chartIndex],chartIndex);
+		if(SenchaCon2013Demo.app.chartTypes[chartIndex] == 'scatter') {
+			if(SenchaCon2013Demo.app.groupBys[SenchaCon2013Demo.app.currentActivePanelIndex] != 'none') {
+				//this.createScatterChartGroupBy(SenchaCon2013Demo.app.chartTypes[chartIndex], SenchaCon2013Demo.app.jsonstore[chartIndex][value],SenchaCon2013Demo.app.xs[chartIndex],SenchaCon2013Demo.app.ys[chartIndex],chartIndex);
 			}
 			else {	
-				this.getApplication().getController('Scatter').createScatterChart(ReplayAnalytics.app.chartTypes[chartIndex],ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex, null);
+				this.getApplication().getController('Scatter').createScatterChart(SenchaCon2013Demo.app.chartTypes[chartIndex],SenchaCon2013Demo.app.jsonstore[chartIndex][value],SenchaCon2013Demo.app.dataFieldValues[chartIndex],SenchaCon2013Demo.app.categoryFieldValues[chartIndex],chartIndex, null);
 			}				
 		}	
-		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'horizontalbar' || ReplayAnalytics.app.chartTypes[chartIndex] == 'verticalbar' || ReplayAnalytics.app.chartTypes[chartIndex] == 'line' || ReplayAnalytics.app.chartTypes[chartIndex] == 'area') {
+		else if(SenchaCon2013Demo.app.chartTypes[chartIndex] == 'horizontalbar' || SenchaCon2013Demo.app.chartTypes[chartIndex] == 'verticalbar' || SenchaCon2013Demo.app.chartTypes[chartIndex] == 'line' || SenchaCon2013Demo.app.chartTypes[chartIndex] == 'area') {
 			this.getApplication().getController('Main').changeModelFields();
-			if(ReplayAnalytics.app.chartTypes[chartIndex] == 'horizontalbar') {
-				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] != 'none') {
-					ReplayAnalytics.app.getController('HorizontalBar').createHorizontalBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,ReplayAnalytics.app.groupByBarLabels);
+			if(SenchaCon2013Demo.app.chartTypes[chartIndex] == 'horizontalbar') {
+				if(SenchaCon2013Demo.app.groupBys[SenchaCon2013Demo.app.currentActivePanelIndex] != 'none') {
+					SenchaCon2013Demo.app.getController('HorizontalBar').createHorizontalBarChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],chartIndex,SenchaCon2013Demo.app.groupByBarLabels);
 				}
 				else {
-					ReplayAnalytics.app.getController('HorizontalBar').createHorizontalBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
+					SenchaCon2013Demo.app.getController('HorizontalBar').createHorizontalBarChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],chartIndex,null);
 				}
 			}
-			else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'verticalbar') {
-				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] != 'none') {
-					ReplayAnalytics.app.getController('VerticalBar').createVerticalBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,ReplayAnalytics.app.groupByBarLabels);
+			else if(SenchaCon2013Demo.app.chartTypes[chartIndex] == 'verticalbar') {
+				if(SenchaCon2013Demo.app.groupBys[SenchaCon2013Demo.app.currentActivePanelIndex] != 'none') {
+					SenchaCon2013Demo.app.getController('VerticalBar').createVerticalBarChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],chartIndex,SenchaCon2013Demo.app.groupByBarLabels);
 				}
 				else {
-					ReplayAnalytics.app.getController('VerticalBar').createVerticalBarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
+					SenchaCon2013Demo.app.getController('VerticalBar').createVerticalBarChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],chartIndex,null);
 				}
 			}
-			else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'area') {
-				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] != 'none') {
-					ReplayAnalytics.app.getController('AreaBar').createAreaChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,ReplayAnalytics.app.groupByBarLabels);
+			else if(SenchaCon2013Demo.app.chartTypes[chartIndex] == 'area') {
+				if(SenchaCon2013Demo.app.groupBys[SenchaCon2013Demo.app.currentActivePanelIndex] != 'none') {
+					SenchaCon2013Demo.app.getController('AreaBar').createAreaChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],chartIndex,SenchaCon2013Demo.app.groupByBarLabels);
 				}
 				else {
-					ReplayAnalytics.app.getController('AreaBar').createAreaChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
+					SenchaCon2013Demo.app.getController('AreaBar').createAreaChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],chartIndex,null);
 				}
 			}
 			
 			else {
-				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] == 'none') {
-					ReplayAnalytics.app.getController('LineBar').createLineChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,null);
+				if(SenchaCon2013Demo.app.groupBys[SenchaCon2013Demo.app.currentActivePanelIndex] == 'none') {
+					SenchaCon2013Demo.app.getController('LineBar').createLineChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],chartIndex,null);
 				}
 				else{
-					ReplayAnalytics.app.getController('LineBar').createLineChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,ReplayAnalytics.app.groupByBarLabels);	
+					SenchaCon2013Demo.app.getController('LineBar').createLineChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],chartIndex,SenchaCon2013Demo.app.groupByBarLabels);	
 				}
 			}
 		}
-		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'pie') {
-			this.getApplication().getController('Pie').createPieChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex);						
+		else if(SenchaCon2013Demo.app.chartTypes[chartIndex] == 'pie') {
+			this.getApplication().getController('Pie').createPieChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],SenchaCon2013Demo.app.dataFieldValues[chartIndex],SenchaCon2013Demo.app.categoryFieldValues[chartIndex],chartIndex);						
 		}
-		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'gauge') {
-			this.getApplication().getController('Gauge').createGaugeChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],chartIndex);						
+		else if(SenchaCon2013Demo.app.chartTypes[chartIndex] == 'gauge') {
+			this.getApplication().getController('Gauge').createGaugeChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],SenchaCon2013Demo.app.dataFieldValues[chartIndex],chartIndex);						
 		}
-		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'radar') {
-			this.getApplication().getController('Radar').createRadarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex);						
+		else if(SenchaCon2013Demo.app.chartTypes[chartIndex] == 'radar') {
+			this.getApplication().getController('Radar').createRadarChart(SenchaCon2013Demo.app.jsonstore[chartIndex][value],SenchaCon2013Demo.app.dataFieldValues[chartIndex],SenchaCon2013Demo.app.categoryFieldValues[chartIndex],chartIndex);						
 		}
-		ReplayAnalytics.app.chartCreated[chartIndex] = true;
-		if(ReplayAnalytics.app.dateSet[chartIndex] == true) {
+		SenchaCon2013Demo.app.chartCreated[chartIndex] = true;
+		if(SenchaCon2013Demo.app.dateSet[chartIndex] == true) {
 			this.getApplication().getController('Main').setFocusOnPanel(chartIndex);
 		}
 		else {
-			ReplayAnalytics.app.dateSet[chartIndex] = true;
+			SenchaCon2013Demo.app.dateSet[chartIndex] = true;
 		}
-		this.setPanelDateCaption(chartIndex, value);
-		
-		if (chartIndex == 5){
-			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].add(ReplayAnalytics.app.newChart[chartIndex]);						
-		} else {
-			
-			Ext.ComponentQuery.query('panel'+chartIndex)[0].add(ReplayAnalytics.app.newChart[chartIndex]);
-			/*var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-			playbackController.getApplication().getController('Main').clearCarousel();					
-			playbackController.getApplication().getController('InterestingMoment').addChartDataTableToCarousel(chartIndex);
-			playbackController.getApplication().getController('InterestingMoment').addIMCommentListToCarousel(chartIndex);	
-			playbackController.getApplication().getController('InterestingMoment').addIMListToCarousel(chartIndex);					
-			carousel.setActiveItem(0);*/
-		}
+		this.setPanelDateCaption(chartIndex, value);			
+		Ext.ComponentQuery.query('panel'+chartIndex)[0].add(SenchaCon2013Demo.app.newChart[chartIndex]);
 		hideLoadingMask();
 	},
 	
 	resetFunction: function() {	
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]);	
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);	
 		var newPosition;
-		newPosition = ReplayAnalytics.app.minimumPositions[chartIndex]; 
-		ReplayAnalytics.app.sliders[chartIndex].setValue(newPosition); 
-		ReplayAnalytics.app.currentPositions[chartIndex] = newPosition;
+		newPosition = SenchaCon2013Demo.app.minimumPositions[chartIndex]; 
+		SenchaCon2013Demo.app.sliders[chartIndex].setValue(newPosition); 
+		SenchaCon2013Demo.app.currentPositions[chartIndex] = newPosition;
 		this.showCharts();
-		//ReplayAnalytics.app.sliders[chartIndex].fireEvent('change', ReplayAnalytics.app.sliders[chartIndex], chartIndex);
+		//SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change', SenchaCon2013Demo.app.sliders[chartIndex], chartIndex);
 		if (chartIndex != 0){
-			ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);
+			SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change',SenchaCon2013Demo.app.sliders[chartIndex],chartIndex);
 		}
 		if (chartIndex == 0) {	
 			for(i = 1; i < 5; i++) {
-				ReplayAnalytics.app.currentActivePanelIndex = i;
-				ReplayAnalytics.app.sliders[i].setValue(newPosition);
-				ReplayAnalytics.app.sliders[i].fireEvent('change',ReplayAnalytics.app.sliders[i],i);
-				//ReplayAnalytics.app.sliders[i].fireEvent('change',ReplayAnalytics.app.sliders[i],i);
+				SenchaCon2013Demo.app.currentActivePanelIndex = i;
+				SenchaCon2013Demo.app.sliders[i].setValue(newPosition);
+				SenchaCon2013Demo.app.sliders[i].fireEvent('change',SenchaCon2013Demo.app.sliders[i],i);
+				//SenchaCon2013Demo.app.sliders[i].fireEvent('change',SenchaCon2013Demo.app.sliders[i],i);
 			}
-			ReplayAnalytics.app.currentActivePanelIndex = 0;
+			SenchaCon2013Demo.app.currentActivePanelIndex = 0;
 		}
 		//this.checkForConfiguredCarousel();
 	},
 	
-	checkForConfiguredCarousel: function(){
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if (ReplayAnalytics.app.chartCreated[chartIndex]){
-			var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ chartIndex +']')[0];
-			if (carousel.getItems().items.length == 2){
-				playbackController.getApplication().getController('InterestingMoment').addChartDataTableToCarousel(chartIndex);
-				playbackController.getApplication().getController('InterestingMoment').addIMListToCarousel(chartIndex);				
-				playbackController.getApplication().getController('InterestingMoment').addIMCommentListToCarousel(chartIndex);	
-			}			
-		}
-	},
-	
 	sliderListenerFunctionChange: function(slider) {
-		this.moveCarouselToGraphItem();
-		this.getApplication().getController('InterestingMoment').getManualIMCallout().hide();
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
 		var sliderValue = slider.getValue()[0];
-		var value = Math.floor(sliderValue / ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex]);
-		ReplayAnalytics.app.currentPositions[ReplayAnalytics.app.currentActivePanelIndex] = ReplayAnalytics.app.sliders[ReplayAnalytics.app.currentActivePanelIndex].getValue()[0];
-		logInfo('sliderValue=' + sliderValue + ' & differential=' + ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] 
-			+ ' & value=' + value);
-		/*if (ReplayAnalytics.app.interestingMoments == 'On' && !ReplayAnalytics.app.creatingGraphs){
-       		playbackController.getApplication().getController('InterestingMoment').checkForInterestingMoment(chartIndex, value);
-    	}*/
-		
+		var value = Math.floor(sliderValue / SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex]);
+		SenchaCon2013Demo.app.currentPositions[SenchaCon2013Demo.app.currentActivePanelIndex] = SenchaCon2013Demo.app.sliders[SenchaCon2013Demo.app.currentActivePanelIndex].getValue()[0];
+		logInfo('sliderValue=' + sliderValue + ' & differential=' + SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] 
+			+ ' & value=' + value);		
 		if (chartIndex != 0){
 			this.setPanelDateCaption(chartIndex, value);
-			ReplayAnalytics.app.newChart[chartIndex].bindStore(ReplayAnalytics.app.jsonstore[chartIndex][value]);
+			SenchaCon2013Demo.app.newChart[chartIndex].bindStore(SenchaCon2013Demo.app.jsonstore[chartIndex][value]);
 		} else if (chartIndex == 0) {
 			this.getApplication().getController('GlobalSync').globalSyncSliderFunctionChange(sliderValue, chartIndex);
 		}
 	},	
 	
 	resetBackwardFunction: function() {	
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		ReplayAnalytics.app.lastPlaybackAction = 'resetBackward';
-		clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]);	
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		SenchaCon2013Demo.app.lastPlaybackAction = 'resetBackward';
+		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);	
 		var newPosition;
-		newPosition = ReplayAnalytics.app.minimumPositions[chartIndex]; 
-		ReplayAnalytics.app.sliders[chartIndex].setValue(newPosition);
-		ReplayAnalytics.app.currentPositions[chartIndex] = newPosition;
-		ReplayAnalytics.app.sliders[chartIndex].fireEvent('change', ReplayAnalytics.app.sliders[chartIndex], chartIndex);
-		//if (ReplayAnalytics.app.interestingMoments == 'On'){
-       	//	playbackController.getApplication().getController('InterestingMoment').checkForInterestingMoment(chartIndex, newPosition);
-    	//}
-		/*if (chartIndex != 0){
-			ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);
-		}*/
-		/*if (chartIndex == 0) {	
-			for(i = 1; i < 5; i++) {
-				ReplayAnalytics.app.currentActivePanelIndex = i;
-				ReplayAnalytics.app.sliders[i].setValue(newPosition);
-				ReplayAnalytics.app.sliders[i].fireEvent('change',ReplayAnalytics.app.sliders[i],i);
-				//ReplayAnalytics.app.sliders[i].fireEvent('change',ReplayAnalytics.app.sliders[i],i);
-			}
-			ReplayAnalytics.app.currentActivePanelIndex = 0;
-		}*/	
+		newPosition = SenchaCon2013Demo.app.minimumPositions[chartIndex]; 
+		SenchaCon2013Demo.app.sliders[chartIndex].setValue(newPosition);
+		SenchaCon2013Demo.app.currentPositions[chartIndex] = newPosition;
+		SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change', SenchaCon2013Demo.app.sliders[chartIndex], chartIndex);	
 	},
 	
 	stepBackwardFunction: function() {	
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if(ReplayAnalytics.app.currentPositions[chartIndex] != ReplayAnalytics.app.minimumPositions[chartIndex]) {
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		if(SenchaCon2013Demo.app.currentPositions[chartIndex] != SenchaCon2013Demo.app.minimumPositions[chartIndex]) {
 			this.updateSliderInterval();
 		}
-		ReplayAnalytics.app.lastPlaybackAction = 'stepBackward';		
-		clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]);
-        if (ReplayAnalytics.app.currentPositions[chartIndex] > ReplayAnalytics.app.minimumPositions[chartIndex]) {
-          	newPosition = ReplayAnalytics.app.currentPositions[chartIndex] - ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex];
-           	ReplayAnalytics.app.sliders[chartIndex].setValue(newPosition);           	
-           	ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);    
-           	if (ReplayAnalytics.app.interestingMoments == 'On' || ReplayAnalytics.app.replayCommentsSetting == 'On'){
-           		playbackController.getApplication().getController('InterestingMoment').checkForInterestingMoment(chartIndex, newPosition);
-        	}
-           	/*if (chartIndex != 0){
-				ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);
-			}*/
-           	//ReplayAnalytics.app.currentPositions[chartIndex] = ReplayAnalytics.app.sliders[chartIndex].getValue()[0];
+		SenchaCon2013Demo.app.lastPlaybackAction = 'stepBackward';		
+		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);
+        if (SenchaCon2013Demo.app.currentPositions[chartIndex] > SenchaCon2013Demo.app.minimumPositions[chartIndex]) {
+          	newPosition = SenchaCon2013Demo.app.currentPositions[chartIndex] - SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex];
+           	SenchaCon2013Demo.app.sliders[chartIndex].setValue(newPosition);           	
+           	SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change',SenchaCon2013Demo.app.sliders[chartIndex],chartIndex);
         }
 	},	
 	
 	playBackwardFunction: function() {
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if(ReplayAnalytics.app.currentPositions[chartIndex] != ReplayAnalytics.app.minimumPositions[chartIndex]) {
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		if(SenchaCon2013Demo.app.currentPositions[chartIndex] != SenchaCon2013Demo.app.minimumPositions[chartIndex]) {
 			this.updateSliderInterval();
 		}
 		this.stepBackwardFunction();
-		ReplayAnalytics.app.lastPlaybackAction = 'playBackward';		
-		clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]);
-		ReplayAnalytics.app.currentPositions[chartIndex] = ReplayAnalytics.app.sliders[chartIndex].getValue()[0];     
-		if (!ReplayAnalytics.app.isIMGraphRunning && chartIndex != 5){
-			ReplayAnalytics.app.waitvariables[chartIndex] = setInterval( function() {	
-				var newPosition;
-	            if (ReplayAnalytics.app.currentPositions[chartIndex] > ReplayAnalytics.app.minimumPositions[chartIndex]) {
-	            	newPosition = ReplayAnalytics.app.currentPositions[chartIndex] - ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex];
-	            	ReplayAnalytics.app.sliders[chartIndex].setValue(newPosition);
-	            	ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);    
-	            	if (ReplayAnalytics.app.interestingMoments == 'On' || ReplayAnalytics.app.replayCommentsSetting == 'On'){
-	               		playbackController.getApplication().getController('InterestingMoment').checkForInterestingMoment(chartIndex, newPosition);
-	            	}
-	            	/*if (chartIndex != 0){
-						ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);
-					}*/
-	            	//ReplayAnalytics.app.currentPositions[chartIndex] = ReplayAnalytics.app.sliders[chartIndex].getValue()[0];
-	            }	
-	            else { 	
-	               	clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]); 
-	            }
-			},ReplayAnalytics.app.replaySpeed);
-		}		
+		SenchaCon2013Demo.app.lastPlaybackAction = 'playBackward';		
+		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);
+		SenchaCon2013Demo.app.currentPositions[chartIndex] = SenchaCon2013Demo.app.sliders[chartIndex].getValue()[0];		
+		SenchaCon2013Demo.app.waitvariables[chartIndex] = setInterval( function() {	
+			var newPosition;
+            if (SenchaCon2013Demo.app.currentPositions[chartIndex] > SenchaCon2013Demo.app.minimumPositions[chartIndex]) {
+            	newPosition = SenchaCon2013Demo.app.currentPositions[chartIndex] - SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex];
+            	SenchaCon2013Demo.app.sliders[chartIndex].setValue(newPosition);
+            	SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change',SenchaCon2013Demo.app.sliders[chartIndex],chartIndex);    
+            }	
+            else { 	
+               	clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]); 
+            }
+		},SenchaCon2013Demo.app.replaySpeed);		
 	},
 	
 	pauseFunction: function() {	
 		this.moveCarouselToGraphItem();
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		logInfo('pauseFunction called for Chart ' + chartIndex + ' at sliderValue=' + ReplayAnalytics.app.sliders[chartIndex].getValue()[0]);		
-		clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]);
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		logInfo('pauseFunction called for Chart ' + chartIndex + ' at sliderValue=' + SenchaCon2013Demo.app.sliders[chartIndex].getValue()[0]);		
+		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);
 		if (chartIndex == 0) {
 			for(i = 1; i < 5; i++) {
-				clearInterval(ReplayAnalytics.app.waitvariables[i]); 
+				clearInterval(SenchaCon2013Demo.app.waitvariables[i]); 
 			}
 		}
 	},
 	
 	playForwardFunction: function() {
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if(ReplayAnalytics.app.currentPositions[chartIndex] != ReplayAnalytics.app.maximumPositions[chartIndex]) {
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		if(SenchaCon2013Demo.app.currentPositions[chartIndex] != SenchaCon2013Demo.app.maximumPositions[chartIndex]) {
 			this.updateSliderInterval();
 		}
 		this.stepForwardFunction();
-		ReplayAnalytics.app.lastPlaybackAction = 'playForward';
-		clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]);
-		ReplayAnalytics.app.currentPositions[chartIndex] = ReplayAnalytics.app.sliders[chartIndex].getValue()[0];     		
-		if (!ReplayAnalytics.app.isIMGraphRunning && chartIndex != 5 && ReplayAnalytics.app.currentPositions[chartIndex] != ReplayAnalytics.app.maximumPositions[chartIndex]){
-			ReplayAnalytics.app.waitvariables[chartIndex] = setInterval( function() {	
-				logInfo('Inside setInterval for playForwardFunction at currentPos=' + ReplayAnalytics.app.currentPositions[chartIndex]
-					+ ' & newPos=' + (ReplayAnalytics.app.currentPositions[chartIndex] + ReplayAnalytics.app.differentialMultiplier[chartIndex]));
+		SenchaCon2013Demo.app.lastPlaybackAction = 'playForward';
+		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);
+		SenchaCon2013Demo.app.currentPositions[chartIndex] = SenchaCon2013Demo.app.sliders[chartIndex].getValue()[0];     		
+		if (SenchaCon2013Demo.app.currentPositions[chartIndex] != SenchaCon2013Demo.app.maximumPositions[chartIndex]){
+			SenchaCon2013Demo.app.waitvariables[chartIndex] = setInterval( function() {	
+				logInfo('Inside setInterval for playForwardFunction at currentPos=' + SenchaCon2013Demo.app.currentPositions[chartIndex]
+					+ ' & newPos=' + (SenchaCon2013Demo.app.currentPositions[chartIndex] + SenchaCon2013Demo.app.differentialMultiplier[chartIndex]));
 				var newPosition;
-	            if (ReplayAnalytics.app.currentPositions[chartIndex] < ReplayAnalytics.app.maximumPositions[chartIndex]) {
-	            	newPosition = ReplayAnalytics.app.currentPositions[chartIndex] + ReplayAnalytics.app.differentialMultiplier[chartIndex];
-	            	ReplayAnalytics.app.sliders[chartIndex].setValue(newPosition);
-					ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);
-					if (ReplayAnalytics.app.interestingMoments == 'On' || ReplayAnalytics.app.replayCommentsSetting == 'On'){
-			       		playbackController.getApplication().getController('InterestingMoment').checkForInterestingMoment(chartIndex, newPosition);
-			    	}
-					/*if (chartIndex != 0){
-						ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);
-					}*/
-					//ReplayAnalytics.app.currentPositions[chartIndex] = ReplayAnalytics.app.sliders[chartIndex].getValue()[0];
+	            if (SenchaCon2013Demo.app.currentPositions[chartIndex] < SenchaCon2013Demo.app.maximumPositions[chartIndex]) {
+	            	newPosition = SenchaCon2013Demo.app.currentPositions[chartIndex] + SenchaCon2013Demo.app.differentialMultiplier[chartIndex];
+	            	SenchaCon2013Demo.app.sliders[chartIndex].setValue(newPosition);
+					SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change',SenchaCon2013Demo.app.sliders[chartIndex],chartIndex);
 				}	
 	            else {
-					clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]); 
+					clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]); 
 	            }
-			},ReplayAnalytics.app.replaySpeed);
+			},SenchaCon2013Demo.app.replaySpeed);
 		}		
 	},
 	
 	stepForwardFunction: function() {
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if(ReplayAnalytics.app.currentPositions[chartIndex] != ReplayAnalytics.app.maximumPositions[chartIndex]) {
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		if(SenchaCon2013Demo.app.currentPositions[chartIndex] != SenchaCon2013Demo.app.maximumPositions[chartIndex]) {
 			this.updateSliderInterval();
 		}
-		ReplayAnalytics.app.lastPlaybackAction = 'stepForward';
-		clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]);
-        if (ReplayAnalytics.app.currentPositions[chartIndex] < ReplayAnalytics.app.maximumPositions[chartIndex]) {
-        	newPosition = ReplayAnalytics.app.currentPositions[chartIndex] + ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex];
-        	ReplayAnalytics.app.sliders[chartIndex].setValue(newPosition);
-           	ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);    
-           	if (ReplayAnalytics.app.interestingMoments == 'On' || ReplayAnalytics.app.replayCommentsSetting == 'On'){
-           		playbackController.getApplication().getController('InterestingMoment').checkForInterestingMoment(chartIndex, newPosition);
-        	}
-           	//ReplayAnalytics.app.currentPositions[chartIndex] = ReplayAnalytics.app.sliders[chartIndex].getValue()[0];
-           	/*if (chartIndex != 0){
-				ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);
-			}*/
+		SenchaCon2013Demo.app.lastPlaybackAction = 'stepForward';
+		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);
+        if (SenchaCon2013Demo.app.currentPositions[chartIndex] < SenchaCon2013Demo.app.maximumPositions[chartIndex]) {
+        	newPosition = SenchaCon2013Demo.app.currentPositions[chartIndex] + SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex];
+        	SenchaCon2013Demo.app.sliders[chartIndex].setValue(newPosition);
+           	SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change',SenchaCon2013Demo.app.sliders[chartIndex],chartIndex);
         }
 	},
 	
 	resetForwardFunction: function() {
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		ReplayAnalytics.app.lastPlaybackAction = 'resetForward';
-		this.getApplication().getController('InterestingMoment').getManualIMCallout().hide();
-		logMessage('resetForwardFunction for Chart ' + ReplayAnalytics.app.currentActivePanelIndex);
-		clearInterval(ReplayAnalytics.app.waitvariables[chartIndex]);	
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		SenchaCon2013Demo.app.lastPlaybackAction = 'resetForward';
+		logMessage('resetForwardFunction for Chart ' + SenchaCon2013Demo.app.currentActivePanelIndex);
+		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);	
 		var newPosition;
-		newPosition = ReplayAnalytics.app.maximumPositions[chartIndex]; 
-		ReplayAnalytics.app.sliders[chartIndex].setValue(newPosition); 
-		ReplayAnalytics.app.currentPositions[chartIndex] = newPosition;
-		ReplayAnalytics.app.sliders[chartIndex].fireEvent('change', ReplayAnalytics.app.sliders[chartIndex], chartIndex);
-		//if (ReplayAnalytics.app.interestingMoments == 'On'){
-       	//	playbackController.getApplication().getController('InterestingMoment').checkForInterestingMoment(chartIndex, newPosition);
-    	//}
-		/*if (chartIndex != 0){
-			ReplayAnalytics.app.sliders[chartIndex].fireEvent('change',ReplayAnalytics.app.sliders[chartIndex],chartIndex);
-		}*/
-		/*if (chartIndex == 0) {
-			for(i = 1; i < 5; i++) {	
-				ReplayAnalytics.app.currentActivePanelIndex = i;
-				ReplayAnalytics.app.sliders[i].setValue(ReplayAnalytics.app.maximumPositions[ReplayAnalytics.app.currentActivePanelIndex]);
-				ReplayAnalytics.app.sliders[i].fireEvent('change',ReplayAnalytics.app.sliders[i],i);
-				//ReplayAnalytics.app.sliders[i].fireEvent('change',ReplayAnalytics.app.sliders[i],i);
-			}
-			ReplayAnalytics.app.currentActivePanelIndex = 0;
-		}*/
-	},
-	
-	moveCarouselToGraphItem: function(){
-				
-	},
+		newPosition = SenchaCon2013Demo.app.maximumPositions[chartIndex]; 
+		SenchaCon2013Demo.app.sliders[chartIndex].setValue(newPosition); 
+		SenchaCon2013Demo.app.currentPositions[chartIndex] = newPosition;
+		SenchaCon2013Demo.app.sliders[chartIndex].fireEvent('change', SenchaCon2013Demo.app.sliders[chartIndex], chartIndex);
+	}
 });

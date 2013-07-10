@@ -1,20 +1,20 @@
-Ext.define('ReplayAnalytics.view.Main', {
+Ext.define('SenchaCon2013Demo.view.Main', {
 	extend: 'Ext.Container',
-	xtype: 'replayanalyticsmain',
+	xtype: 'senchademomain',
 	requires: [
-	           'ReplayAnalytics.view.TitleBar',
-	           'ReplayAnalytics.view.FourPanelLayout',
-	           'ReplayAnalytics.view.BottomPlaybackToolbar'
+	           'SenchaCon2013Demo.view.TitleBar',
+	           'SenchaCon2013Demo.view.FourPanelLayout',
+	           'SenchaCon2013Demo.view.BottomPlaybackToolbar'
 	],
 	config: {
 		fullscreen: true,
-		hidden: true,
+		hidden: false,
 		style: 'background: white;',
 		layout: {type: 'vbox'},
 		items: [
 		        {
 		        	docked: 'top',
-		        	xtype: 'replayanalyticstitlebar'
+		        	xtype: 'senchademotitlebar'
 		        },
 		        {
 		        	xtype: 'fourpanellayout'

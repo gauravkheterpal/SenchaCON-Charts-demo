@@ -2,8 +2,6 @@ package com.metacube.senchacon.demoapp.common.util;
 
 import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.List;
 
 import net.sf.json.JSONArray;
@@ -13,26 +11,6 @@ import com.metacube.senchacon.demoapp.view.model.DatabaseTableFieldsView;
 
 public class Utilities
 {
-	public static String decodeFilterString(String filterString)
-	{
-		if (filterString != null && filterString != "")
-		{
-			try
-			{
-				filterString = URLDecoder.decode(filterString, "UTF-8");
-			}
-			catch (UnsupportedEncodingException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		else
-		{
-			filterString = "";
-		}
-		// logger.debug("Filter string is== " + filterString);
-		return filterString;
-	}
 
 	public static String[] escapeHTMLGroupByBarStrings(String[] groupByBar)
 	{

@@ -1,43 +1,3 @@
-/*@font-face {
-	font-family: 'replay-analytics';
-	src: url('font/replay-analytics.eot');
-	src: local('?'), url("font/replay-analytics.woff") format("woff"), url("font/replay-analytics.ttf") format("truetype");
-}*/
-
-.replayanalyticslogo{
-	width: 130px; 
-	padding: 30px; 
-	background-size: 100%;
-}
-
-.dashboard-icon-style{
-	background-size: 100%; 
-	width: 35px; 
-	height: 35px; 
-	cursor: pointer; 
-	margin: 5px;
-}
-
-.callout-icon-thumbnail{
-	background-size: 100%; 
-	width: 35px; 
-	height: 35px; 
-	cursor: pointer; 
-	margin: 5px;
-	background-color: transparent;
-	-webkit-mask-size: 0;
-}
-
-.list-item-icon-style{
-	background-size: 100%; 
-	width: 30px; 
-	height: 30px;
-	margin: 5px;
-	display: block;
-	position: absolute; 
-	right: 0.125in;
-}
-
 .x-button-label {
 	margin-left: 5px;
 }
@@ -59,67 +19,6 @@ div#logocontainer > div > div > div > div.x-innerhtml{
 	font-size: 30px;
 	font-family: 'Helvetica Neue', HelveticaNeue;
 	margin-top: 25px;
-}
-
-.thumbnail{
-	margin: 20px; 
-	background-color: rgb(20, 104, 162); 
-	background-image: -webkit-linear-gradient(top, rgb(50, 73, 81) 1%, rgb(50, 73, 81) 1%, rgb(40,40,40)); 
-	border: 1px solid black; 
-	border-radius: 5px; 
-	cursor: pointer;
-	box-shadow: 0px 3px 5px #000;
-	-moz-box-shadow: 0px 3px 5px #000;
-	-webkit-box-shadow: 0px 3px 5px #000;
-}
-
-.thumbnail:hover{
-	margin: 18px;
-	box-shadow:none;
-	-moz-box-shadow:none;
-	-webkit-box-shadow:none;
-}
-
-.thumbnail:active{
-	background-color: #006bb6;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #50b7ff), color-stop(2%, #0080da), color-stop(100%, #005692));
-	background-image: -webkit-linear-gradient(#50b7ff, #0080da 2%, #005692);
-	background-image: linear-gradient(#50b7ff, #0080da 2%, #005692);
-}
-
-.upload-panel-bg {
-	background-color: rgb(17, 89, 140);
-	background-image: -webkit-linear-gradient(top, rgb(50, 73, 81) 1%, rgb(50, 73, 81) 1%, rgb(51, 51, 51));
-	margin-top: 50px; 
-	border-radius: 10px;
-}
-
-.uploadlabel {
-	color: white;
-	font-size: 22px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-/* .button-toolbar-bg {
-	background-color: #cccccc;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #dedede), color-stop(100%, #bababa));
-	background-image: -webkit-linear-gradient(#ffffff, #dedede 2%, #bababa);
-	background-image: linear-gradient(#ffffff, #dedede 2%, #bababa); 	
-} */
-
-#usernamefield > .x-form-label > span, #passwordfield > .x-form-label > span, #remembermecheck > .x-form-label > span {
-	float: right;
-}
-
-#remembermecheck > .x-component-outer > .x-field-input{
-	width: 150px;
-}
-
-.SettingsHelpPanel,.PlaybackHelpPanel,.GlobalSyncHelpPanel,.ChartHelpPanel,.SliderHelpPanel,.GestureHelpPanel{
-	padding: 5px;
-	border-radius: 10px;
-	font-size: 15px;
 }
 
 .x-list-normal .x-list-item.x-item-selected .x-list-item-label {
@@ -157,24 +56,7 @@ div#logocontainer > div > div > div > div.x-innerhtml{
 	padding: 10px;
 }
 
-.thumbnail > div > div > div.x-innerhtml {
-	color: #DDD;
-	font-size: 1em;
-	z-index: 1;
-	text-align: center;
-}
-
-div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body > div {
-	color: white;
-	background-color: rgba(3, 17, 26, 0.901961);
-	background-image: -webkit-linear-gradient(top, rgba(7, 37, 58, 0.901961) 50%, rgba(0, 0, 0, 0.901961));
-}
-
-div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body > div > div > div{
-	background-color: transparent;
-}
-
- .x-button .x-button-icon.x-shown{
+.x-button .x-button-icon.x-shown{
 	background-color: #fff;
 	width: 1.1em;
 	height: 1.1em;
@@ -188,34 +70,14 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	height: 1.5em;
 	margin-bottom: 5px;
 	-webkit-mask-size: 0;	
-} 
-
-.x-button .x-button-icon.x-shown.callout {
-	-webkit-mask-image: url(images/chat2.png);	
 }
 
 .x-button .x-button-icon.x-shown.refresh5 {
 	-webkit-mask-image: url('images/refresh5.png');
 }
 
-.x-button .x-button-icon.x-shown.share {
-	-webkit-mask-image: url('images/share.png');
-}
-
-.x-button .x-button-icon.x-shown.save {
-	-webkit-mask-image: url('images/save.png');
-}
-
 .x-button .x-button-icon.x-shown.rightbig {
 	-webkit-mask-image: url('images/right2.png');
-}
-
-.x-button .x-button-icon.x-shown.user {
-	-webkit-mask-image: url('images/user.png');
-}
-
-.x-button .x-button-icon.x-shown.logout {
-	-webkit-mask-image: url('images/user_send.png');
 }
 
 .x-button .x-button-icon.x-shown.clear {
@@ -226,20 +88,12 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	-webkit-mask-image: url('images/backspace.png');
 }
 
-.x-button .x-button-icon.x-shown.help {
-	-webkit-mask-image: url('images/help.png');
-}
-
 .x-button .x-button-icon.x-shown.stepforward {
 	-webkit-mask-image: url('images/step_forward.png');
 }
 
 .x-button .x-button-icon.x-shown.globe {
 	-webkit-mask-image: url('images/globe_black.png');
-}
-
-.x-button .x-button-icon.x-shown.info {
-	-webkit-mask-image: url('images/info_plain.png');
 }
 
 .x-button .x-button-icon.x-shown.list {
@@ -282,14 +136,6 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	-webkit-mask-image: url('images/check2.png');
 }
 
-.x-button .x-button-icon.x-shown.mail {
-	-webkit-mask-image: url('images/mail.png');
-}
-
-.x-button .x-button-icon.x-shown.window {
-	-webkit-mask-image: url('images/window.png');
-}
-
 /* Hacks for 2.1.1 Lib */
 
 .x-panel.x-floating > .x-panel-inner, .x-panel.x-floating .x-scroll-view, .x-panel.x-floating .x-body, .x-msgbox.x-floating > .x-panel-inner, 
@@ -298,31 +144,9 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	background-color: transparent;
 }
 
-/*.x-container.x-unsized.x-panel.x-floating > .x-dock.x-dock-vertical.x-unsized{
-	width: 100%;
-}*/
-
 .x-chart-watermark {
 	display: none;
 }
-
-/* .x-toolbar-dark{
-	background-color: rgb(20, 104, 162);
-	background-image: -webkit-linear-gradient(top, white, rgb(50, 73, 81) 1%, black);
-	border-bottom-color: rgb(0, 0, 0);
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-left-color: rgb(0, 0, 0);
-	border-right-color: rgb(0, 0, 0);
-	border-top-color: rgb(0, 0, 0);
-	box-sizing: border-box;
-	display: -webkit-box;
-} */
-
-/*.x-toolbar-dark .x-button{
-	background-color: rgb(17, 89, 140);
-	background-image: -webkit-linear-gradient(top, white, rgb(50, 73, 81) 1%, rgb(51, 51, 51));
-}*/
 
 .x-legend .x-legend-inner .x-legend-container .x-legend-item{
 	white-space: normal;
@@ -347,10 +171,6 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 	-webkit-box-orient: initial;
 }
 
-.x-stretched.x-container#dashboardlinkfield{
-	-webkit-box-orient: vertical;
-}
-
 .x-webkit .x-anchor.x-anchor-bottom, .x-webkit .x-anchor.x-anchor-top, .x-webkit .x-anchor.x-anchor-left, .x-webkit .x-anchor.x-anchor-right{
 	background-color: rgb(0, 161, 222);	
 }
@@ -358,24 +178,16 @@ div.x-panel.x-floating#ext-interestingmomentgraphpanel-1 > div > div.x-dock-body
 .x-mask .x-mask-inner{
 	border-radius: 10px;
 	background-color: #1468a2;
-background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1e93e4), color-stop(3%, #1676b9), color-stop(100%, #11598c));
-background-image: -webkit-linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
-background-image: -moz-linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
-background-image: -o-linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
-background-image: linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1e93e4), color-stop(3%, #1676b9), color-stop(100%, #11598c));
+	background-image: -webkit-linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
+	background-image: -moz-linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
+	background-image: -o-linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
+	background-image: linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
 	border: 1px solid black;
 }
 
 .x-mask{
 	background: rgba(0,0,0,0.5) center center no-repeat;	
-}
-
-.x-carousel-indicator-horizontal > span{
-	background-color: rgba(17, 95, 166, 0.4);	
-}
-
-.x-carousel-indicator-horizontal > span.x-carousel-indicator-active {
-	background-color: rgba(17, 95, 166, 0.8);	
 }
 
 .x-list-item-first.x-list-header-wrap.x-list-item{
@@ -393,10 +205,6 @@ background-image: linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
 	background-color:white; 
 	border: 3px solid white;
 	border-radius: 15px;
-}
-
-.carousel-style{
-	border-radius: 10px;
 }
 
 .toolbar-alternate{
@@ -450,30 +258,10 @@ background-image: linear-gradient(top, #1e93e4,#1676b9 3%,#11598c);
 	padding-bottom: 20px;
 }
 
-.delete-icon:active{
-	width: 35px;
-	height: 35px;
-}
-
-.usernamelabel{
-	font-size: 16px;
-	margin-top: 20px;
-	margin-left: 15px;
-	font-weight: normal !important;
-}
-
 .x-sheet, .x-picker, .x-sheet-action{
 	width: 500px;
 }
 
-#datasourceconfigurationpanel.x-container > .x-dock > .x-dock-body {
-	background-color: rgb(235, 235, 235);
-}
-
 .x-field .x-field-input, .x-field .x-input-el{
 	border-radius: 10px;
-}
-
-div#datasourcenamefield > div {
-	background-color: rgb(230,230,230);
 }

@@ -1,5 +1,5 @@
 var databaseTableController;
-Ext.define('ReplayAnalytics.controller.DatabaseTable', {
+Ext.define('SenchaCon2013Demo.controller.DatabaseTable', {
 	extend : 'Ext.app.Controller',
 	
 	xtype: 'databasetablecontroller',
@@ -19,25 +19,11 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	},
 	
 	launch: function() {
-		databaseTableController = this;	
-		this.getDatabaseSetting().element.on('tap', function(el) {
-			databaseTableController.applyStyleForAddDatSourceOption();
-		});
-	},
-	
-	applyStyleForAddDatSourceOption: function(){
-		try{
-			var items = Ext.query('div div span[class=x-list-label]');
-			if (items != undefined && items.length > 0 && items[0].innerHTML == '+ Import Data'){
-				items[0].parentElement.parentElement.setAttribute('style','background-color: #6c9804; background-image: -webkit-linear-gradient(top, #a2e306, #7eb105 3%, #5b7f03); border: 1px solid #263501; border-top-color: #374e02; margin: 5px 53px; border-radius: 5px; width: 200px; text-align: center;');
-				items[0].innerHTML = '<img src="lib/images/spreadsheet_icon.png" style="width: 20px; height: 20px;" /> Import Data';
-			}			
-		} catch(err){
-		}		
+		databaseTableController = this;
 	},
 	
 	getAllDatabaseTables: function(){
-		if (ReplayAnalytics.app.CachedDatabaseTables.length == 0){
+		if (SenchaCon2013Demo.app.CachedDatabaseTables.length == 0){
 			showLoadingMask();
 			Ext.Ajax.request({  
 				url: 'getAllDatabaseTables.do',  
@@ -45,7 +31,7 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	            success: function(response){
 	            	hideLoadingMask();
 	        		var responseJSON = Ext.JSON.decode(response.responseText.trim());
-	        		ReplayAnalytics.app.CachedDatabaseTables = responseJSON;
+	        		SenchaCon2013Demo.app.CachedDatabaseTables = responseJSON;
 	        		databaseTableController.decodeDatabaseTableData(responseJSON);
 	            },
 	            failure: function(response) {
@@ -54,29 +40,27 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
                },
 			});
 		} else {
-			databaseTableController.decodeDatabaseTableData(ReplayAnalytics.app.CachedDatabaseTables);
+			databaseTableController.decodeDatabaseTableData(SenchaCon2013Demo.app.CachedDatabaseTables);
 		}		
 	},
 	
 	decodeDatabaseTableData: function(responseJSON){
-		ReplayAnalytics.app.DatabaseTableFieldStore = new Array();
-		var temp = {text: '+ Import Data', value: 'add_new_data_source'};
-		ReplayAnalytics.app.DatabaseTableFieldStore.push(temp);
+		SenchaCon2013Demo.app.DatabaseTableFieldStore = new Array();
 		temp = {text: 'None Defined', value: 'none'};
-		ReplayAnalytics.app.DatabaseTableFieldStore.push(temp);
+		SenchaCon2013Demo.app.DatabaseTableFieldStore.push(temp);
 		for (var index = 0; index < responseJSON.length; index++){
 			temp = {text: responseJSON[index].name, value: responseJSON[index].tableName};
-			ReplayAnalytics.app.DatabaseTableFieldStore.push(temp);
+			SenchaCon2013Demo.app.DatabaseTableFieldStore.push(temp);
 		}
 		this.getApplication().getController('Settings').configureSettingsPanel();
 	},
 	
 	getDatabaseTableIdForTableName: function(tableName){
 		var databaseTableId = 0;
-		if (ReplayAnalytics.app.CachedDatabaseTables != undefined && ReplayAnalytics.app.CachedDatabaseTables.length > 0){
-			for (var index = 0; index < ReplayAnalytics.app.CachedDatabaseTables.length; index++){
-				if (ReplayAnalytics.app.CachedDatabaseTables[index].tableName == tableName){
-					databaseTableId = ReplayAnalytics.app.CachedDatabaseTables[index].id;
+		if (SenchaCon2013Demo.app.CachedDatabaseTables != undefined && SenchaCon2013Demo.app.CachedDatabaseTables.length > 0){
+			for (var index = 0; index < SenchaCon2013Demo.app.CachedDatabaseTables.length; index++){
+				if (SenchaCon2013Demo.app.CachedDatabaseTables[index].tableName == tableName){
+					databaseTableId = SenchaCon2013Demo.app.CachedDatabaseTables[index].id;
 					return databaseTableId;
 				}
 			}
@@ -85,21 +69,21 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	},
 	
 	saveDatabaseTablesFieldsForDatabaseTableId: function(databaseTableId, databaseTableFieldsJSON){
-		if (ReplayAnalytics.app.CachedDatabaseTables != undefined && ReplayAnalytics.app.CachedDatabaseTables.length > 0){
-			for (var index = 0; index < ReplayAnalytics.app.CachedDatabaseTables.length; index++){
-				if (ReplayAnalytics.app.CachedDatabaseTables[index].id == databaseTableId){
+		if (SenchaCon2013Demo.app.CachedDatabaseTables != undefined && SenchaCon2013Demo.app.CachedDatabaseTables.length > 0){
+			for (var index = 0; index < SenchaCon2013Demo.app.CachedDatabaseTables.length; index++){
+				if (SenchaCon2013Demo.app.CachedDatabaseTables[index].id == databaseTableId){
 					break;
 				}
 			}
-			ReplayAnalytics.app.CachedDatabaseTables[index].tableFields = databaseTableFieldsJSON;
+			SenchaCon2013Demo.app.CachedDatabaseTables[index].tableFields = databaseTableFieldsJSON;
 		}
 	},
 	
 	getDatabaseTablesFieldsForDatabaseTableId: function(databaseTableId){
-		if (ReplayAnalytics.app.CachedDatabaseTables != undefined && ReplayAnalytics.app.CachedDatabaseTables.length > 0){
-			for (var index = 0; index < ReplayAnalytics.app.CachedDatabaseTables.length; index++){
-				if (ReplayAnalytics.app.CachedDatabaseTables[index].id == databaseTableId){
-					return ReplayAnalytics.app.CachedDatabaseTables[index].tableFields;
+		if (SenchaCon2013Demo.app.CachedDatabaseTables != undefined && SenchaCon2013Demo.app.CachedDatabaseTables.length > 0){
+			for (var index = 0; index < SenchaCon2013Demo.app.CachedDatabaseTables.length; index++){
+				if (SenchaCon2013Demo.app.CachedDatabaseTables[index].id == databaseTableId){
+					return SenchaCon2013Demo.app.CachedDatabaseTables[index].tableFields;
 				}
 			}
 		}
@@ -109,13 +93,7 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	getDatabaseTableFieldsForDatabase: function(){
 		//this.getChartTypeSetting().setValue('none');
 		var selectedDatabaseTable = this.getDatabaseSetting().getValue();
-		if (selectedDatabaseTable == 'add_new_data_source'){
-			//this.getApplication().getController('Admin').showAdminPanel();
-			this.getApplication().getController('Admin').showDataSourceUploadFlow();
-			this.getApplication().getController('Settings').getSettingsPanel().hide();
-			return;
-		}
-		else if (selectedDatabaseTable != 'none'){
+		if (selectedDatabaseTable != 'none'){
 			var databaseTableId = this.getDatabaseTableIdForTableName(selectedDatabaseTable);
 			var databaseTableFieldsJSON = this.getDatabaseTablesFieldsForDatabaseTableId(databaseTableId);
 			if (databaseTableFieldsJSON != undefined && databaseTableFieldsJSON != ""){
@@ -168,10 +146,10 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 			categoryFieldStoreWithTime.push(timeFieldStore[index]);
 		}
 		
-		var selectedPanel = ReplayAnalytics.app.currentActivePanelIndex;
-		ReplayAnalytics.app.PanelDataFieldStore[selectedPanel] = dataFieldStore;
-		ReplayAnalytics.app.PanelCategoryFieldStore[selectedPanel] = categoryFieldStore;
-		ReplayAnalytics.app.PanelCategoryFieldStoreWithTime[selectedPanel] = categoryFieldStoreWithTime;
+		var selectedPanel = SenchaCon2013Demo.app.currentActivePanelIndex;
+		SenchaCon2013Demo.app.PanelDataFieldStore[selectedPanel] = dataFieldStore;
+		SenchaCon2013Demo.app.PanelCategoryFieldStore[selectedPanel] = categoryFieldStore;
+		SenchaCon2013Demo.app.PanelCategoryFieldStoreWithTime[selectedPanel] = categoryFieldStoreWithTime;
 		this.getApplication().getController('Settings').showConfiguredSettingsPanel();
 	},
 	
@@ -204,7 +182,7 @@ Ext.define('ReplayAnalytics.controller.DatabaseTable', {
 	            success: function(response){
 	            	hideLoadingMask();
 	        		var responseJSON = Ext.JSON.decode(response.responseText.trim());
-	        		ReplayAnalytics.app.CachedDatabaseTables = responseJSON;
+	        		SenchaCon2013Demo.app.CachedDatabaseTables = responseJSON;
 	        		loginController.showMainScreen();
 	            },
 	            failure: function(response) {

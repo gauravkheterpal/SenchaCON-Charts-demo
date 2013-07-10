@@ -29,12 +29,6 @@ public class BarChartService
 	@Autowired
 	private GetMaxService getMaxService;
 
-	@Autowired
-	private AccumService accumService;
-
-	@Autowired
-	private InterestingMomentsService interestingMomentsService;
-
 	final static Logger logger = LoggerFactory.getLogger(BarChartService.class);
 
 	private String getGroupBarChart(DatabaseTableView database, DatabaseTableFieldsView timeField, String startDate, String endDate,
@@ -157,24 +151,12 @@ public class BarChartService
 			}
 		}
 		JSONObject response = new JSONObject();
-		if (accum.equalsIgnoreCase("on") && groupByField == null)
-		{
-			returnArray = accumService.getAccumDataForUnified(returnArray, dataField.getFieldLabel(), categoryField.getFieldLabel(),
-					ChartType.LINE.toString());
-		}
-		else if (accum.equalsIgnoreCase("on") && (groupByField != null))
-		{
-			returnArray = accumService.getAccumGroupByDataForUnified(returnArray, dataField.getFieldLabel(), categoryField.getFieldLabel(),
-					ChartType.LINE.toString(), groupByBarValues);
-		}
 		response.put("data", returnArray);
 		response.put("dateArray", dateArray);
 		response.put("dataField", dataField.getFieldLabel());
 		response.put("categoryField", categoryField.getFieldLabel());
 		if (groupByField == null)
 		{
-			response.put("interestingMoments", interestingMomentsService.getInterestingMomentForUnifiedData(chartType, returnArray,
-					dataField.getFieldLabel(), categoryField.getFieldLabel(), dateArray, granularity, absEndDate));
 			if (chartType.equalsIgnoreCase(ChartType.HORIZONTALBAR.toString()))
 			{
 				response.put("xMax", getMaxService.getMaxFromUnifiedJSON(returnArray, dataField.getFieldLabel()));
@@ -201,9 +183,6 @@ public class BarChartService
 						groupByBarValues, categoryField));
 			}
 			response.put("groupByBarArray", Utilities.escapeHTMLGroupByBarStrings(groupByBarValues));
-			String[] groupByBars = { "groupByBar1", "groupByBar2", "groupByBar3", "groupByBar4", "Others" };
-			response.put("interestingMoments", interestingMomentsService.getInterestingMomentForUnifiedData(chartType, returnArray,
-					dataField.getFieldLabel(), categoryField.getFieldLabel(), dateArray, granularity, groupByBars, absEndDate));
 		}
 		return response.toString();
 	}

@@ -17,8 +17,8 @@ Ext.Ajax.on("beforerequest", function(conn, options){
 	    if (myCookie != null){
 	    	logMessage("Found local cached data. value= " + myCookie);
 	    	if (url.indexOf('getUnifiedData') == 0){
-		        ReplayAnalytics.app.panelSettings[ReplayAnalytics.app.currentActivePanelIndex] = url;
-		        ReplayAnalytics.app.panelData[ReplayAnalytics.app.currentActivePanelIndex] = myCookie;
+		        SenchaCon2013Demo.app.panelSettings[SenchaCon2013Demo.app.currentActivePanelIndex] = url;
+		        SenchaCon2013Demo.app.panelData[SenchaCon2013Demo.app.currentActivePanelIndex] = myCookie;
 			}
 	        var response = new CachedResponse();
 	        response.responseText = myCookie;
@@ -39,13 +39,13 @@ Ext.Ajax.on("requestcomplete", function(conn, response, options){
         //createCookie(options.url, response.responseText, '10');
 		if (options.url.indexOf('getUnifiedData') == 0){
 			saveData(options.url, response.responseText);
-	        ReplayAnalytics.app.panelSettings[ReplayAnalytics.app.currentActivePanelIndex] = options.url;
-	        ReplayAnalytics.app.panelData[ReplayAnalytics.app.currentActivePanelIndex] = response.responseText;
+	        SenchaCon2013Demo.app.panelSettings[SenchaCon2013Demo.app.currentActivePanelIndex] = options.url;
+	        SenchaCon2013Demo.app.panelData[SenchaCon2013Demo.app.currentActivePanelIndex] = response.responseText;
 		}  
 		hideLoadingMask();
 	});
 
-Ext.define('ReplayAnalytics.controller.Main', {
+Ext.define('SenchaCon2013Demo.controller.Main', {
 	extend : 'Ext.app.Controller',
 	xtype: 'maincontroller',
 	requires: [
@@ -57,13 +57,13 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	        //'Ext.draw.engine.ImageExporter',
 	        'Ext.util.Format',
 	        'Ext.MessageBox',
-	        'ReplayAnalytics.model.DataModel'
+	        'SenchaCon2013Demo.model.DataModel'
 	],
 	config: {
 		refs: {
 			'mainController': 'maincontroller',
 			'dataModel': 'datamodel',
-			'mainContainer': 'replayanalyticsmain',						
+			'mainContainer': 'senchademomain',						
 			'chart1': 'chart[id=chart1]',
 			'chart2': 'chart[id=chart2]',
 			'chart3': 'chart[id=chart3]',
@@ -83,9 +83,6 @@ Ext.define('ReplayAnalytics.controller.Main', {
 			'bottomTwoPanelLayout': 'bottomtwopanellayout',
 			'topTwoPanelLayout': 'toptwopanellayout',		
 			'settingsButton': 'button[id=settingsbutton]',
-			'globalSettingsButton': 'button[id=globalsettingsbutton]',
-			'globalSyncButton': 'segmentedbutton[id=globalsynctogglebutton]',
-			'filterSetting': 'selectfield[id=filtersettingtoggle]',
 		},
 		control: {
 			'chart1': {
@@ -120,8 +117,8 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	},
 	
 	clearAllPanels: function(){
-		for (i = 0; i < ReplayAnalytics.app.newChart.length; i++){
-			var obj = ReplayAnalytics.app.newChart[i];
+		for (i = 0; i < SenchaCon2013Demo.app.newChart.length; i++){
+			var obj = SenchaCon2013Demo.app.newChart[i];
 			if (obj != undefined){
 				if (obj.getLegend() != undefined){
 					obj.getLegend().destroy();
@@ -129,16 +126,6 @@ Ext.define('ReplayAnalytics.controller.Main', {
 				obj.destroy();
 			}
 		}
-		/*for (var j = 1; j < 5; j++){
-			Ext.ComponentQuery.query('addchartpanel'+j)[0].setHtml('');
-			var carousel = Ext.ComponentQuery.query('carousel[id=carousel'+ j +']')[0];
-			for (var carouselIndex = carousel.getItems().items.length; carouselIndex > 2; carouselIndex--){
-				var temp = carousel.getAt(carouselIndex-1);
-				if (temp != undefined){
-					carousel.remove(temp);
-				}
-			}
-		}*/
 	},
 	
 	handleTitleBarButtons: function(){
@@ -149,63 +136,62 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	loadStores: function() {
 		this.handleTitleBarButtons();
 		this.checkForConfiguredGraphPanels();	
-		ReplayAnalytics.app.creatingGraphs = true;
+		SenchaCon2013Demo.app.creatingGraphs = true;
 		Ext.getStore('GlobalSettingsStore').load();
 		if (Ext.getStore('GlobalSettingsStore').getData().items[0] != undefined){
-			ReplayAnalytics.app.interestingMoments = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMoments;
-			ReplayAnalytics.app.replayCommentsSetting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().ReplayComments;
-			ReplayAnalytics.app.replaySpeed = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().ReplaySpeed;
-			ReplayAnalytics.app.numberActivePanels = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().NumberOfPanels;
-			ReplayAnalytics.app.interestingMomentType3Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType3Setting;
-			ReplayAnalytics.app.interestingMomentType4Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType4Setting;
-			ReplayAnalytics.app.interestingMomentType1Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType1Setting;
-			ReplayAnalytics.app.interestingMomentType2Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType2Setting;
+			SenchaCon2013Demo.app.interestingMoments = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMoments;
+			SenchaCon2013Demo.app.replayCommentsSetting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().ReplayComments;
+			SenchaCon2013Demo.app.replaySpeed = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().ReplaySpeed;
+			SenchaCon2013Demo.app.numberActivePanels = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().NumberOfPanels;
+			SenchaCon2013Demo.app.interestingMomentType3Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType3Setting;
+			SenchaCon2013Demo.app.interestingMomentType4Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType4Setting;
+			SenchaCon2013Demo.app.interestingMomentType1Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType1Setting;
+			SenchaCon2013Demo.app.interestingMomentType2Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType2Setting;
 		}
 		this.getApplication().getController('Settings').updateChartAnimationSettings();
 		this.changePanels();
 		var loopIndex = 1;
-		for(;loopIndex <= ReplayAnalytics.app.numberActivePanels; loopIndex++){
+		for(;loopIndex <= SenchaCon2013Demo.app.numberActivePanels; loopIndex++){
 			Ext.getStore('UserSettings'+loopIndex).load();
-			
 			if(Ext.getStore('UserSettings'+loopIndex).getData().items[0] != undefined) {
 				Ext.get('chart'+loopIndex+'Button').hide();
 				Ext.get('chart'+loopIndex+'Image').hide();
-				ReplayAnalytics.app.databaseSetting[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Database;
-				ReplayAnalytics.app.filterToggle[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().FilterToggle;
-				ReplayAnalytics.app.graphTitle[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().GraphTitle;
-				ReplayAnalytics.app.xs[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().XAxis;
-				ReplayAnalytics.app.ys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().YAxis;
-				ReplayAnalytics.app.sizeBys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().BubbleSize;
-				ReplayAnalytics.app.granularities[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Granularity;
-				ReplayAnalytics.app.chartTypes[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().ChartType;
-				ReplayAnalytics.app.groupBys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().GroupBy;
-				ReplayAnalytics.app.startDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
-				ReplayAnalytics.app.currentStartDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
-				ReplayAnalytics.app.currentDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
-				ReplayAnalytics.app.currentEndDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().EndDate);
-				ReplayAnalytics.app.accumulate[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Accumulate;
-				ReplayAnalytics.app.currentActivePanelIndex = loopIndex;
-				switch(ReplayAnalytics.app.granularities[ReplayAnalytics.app.currentActivePanelIndex]) {
+				SenchaCon2013Demo.app.databaseSetting[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Database;
+				SenchaCon2013Demo.app.filterToggle[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().FilterToggle;
+				SenchaCon2013Demo.app.graphTitle[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().GraphTitle;
+				SenchaCon2013Demo.app.xs[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().XAxis;
+				SenchaCon2013Demo.app.ys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().YAxis;
+				SenchaCon2013Demo.app.sizeBys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().BubbleSize;
+				SenchaCon2013Demo.app.granularities[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Granularity;
+				SenchaCon2013Demo.app.chartTypes[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().ChartType;
+				SenchaCon2013Demo.app.groupBys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().GroupBy;
+				SenchaCon2013Demo.app.startDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
+				SenchaCon2013Demo.app.currentStartDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
+				SenchaCon2013Demo.app.currentDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
+				SenchaCon2013Demo.app.currentEndDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().EndDate);
+				SenchaCon2013Demo.app.accumulate[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Accumulate;
+				SenchaCon2013Demo.app.currentActivePanelIndex = loopIndex;
+				switch(SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex]) {
 				case 'Hourly':
-					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 1;
+					SenchaCon2013Demo.app.valueGranularities[SenchaCon2013Demo.app.currentActivePanelIndex] = 1;
 					break;
 				case 'Daily':
-					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 2;
+					SenchaCon2013Demo.app.valueGranularities[SenchaCon2013Demo.app.currentActivePanelIndex] = 2;
 					break;
 				case 'Weekly':
-					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 3;
+					SenchaCon2013Demo.app.valueGranularities[SenchaCon2013Demo.app.currentActivePanelIndex] = 3;
 					break;
 				case 'Monthly':
-					ReplayAnalytics.app.valueGranularities[ReplayAnalytics.app.currentActivePanelIndex] = 4;
+					SenchaCon2013Demo.app.valueGranularities[SenchaCon2013Demo.app.currentActivePanelIndex] = 4;
 					break;
-				}
-				
+				}				
 				showLoadingMask();
 				this.chartSetUp();
 			} else {				
-				if (ReplayAnalytics.app.publicMode){
+				if (SenchaCon2013Demo.app.publicMode){
 					Ext.get('chart'+loopIndex+'Button').hide();
 				} else {
+					Ext.get('addchartpanel'+loopIndex).show();
 					Ext.get('chart'+loopIndex+'Button').show();
 					Ext.get('chart'+loopIndex+'Image').show();
 				}				
@@ -215,11 +201,11 @@ Ext.define('ReplayAnalytics.controller.Main', {
 			}
 		}
 		this.changePanels();
-		ReplayAnalytics.app.currentActivePanelIndex = 1;
-		this.setFocusOnPanel(ReplayAnalytics.app.currentActivePanelIndex);
+		SenchaCon2013Demo.app.currentActivePanelIndex = 1;
+		this.setFocusOnPanel(SenchaCon2013Demo.app.currentActivePanelIndex);
 		this.addPanelClickListener();
 		hideLoadingMask();
-		ReplayAnalytics.app.creatingGraphs = false;
+		SenchaCon2013Demo.app.creatingGraphs = false;
 	},
 	
 	addPanelClickListener: function(){
@@ -230,8 +216,8 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	},
 
 	changePanels: function() {
-		if(ReplayAnalytics.app.numberActivePanels == '1') {
-			switch(ReplayAnalytics.app.currentActivePanelIndex) {
+		if(SenchaCon2013Demo.app.numberActivePanels == '1') {
+			switch(SenchaCon2013Demo.app.currentActivePanelIndex) {
 				case 1:
 					this.getPanel2().hide();
 					this.getBottomTwoPanelLayout().hide();
@@ -250,8 +236,8 @@ Ext.define('ReplayAnalytics.controller.Main', {
 					break;			
 			}
 		}
-		else if(ReplayAnalytics.app.numberActivePanels == '2') {
-			if(ReplayAnalytics.app.currentActivePanelIndex == 1 || ReplayAnalytics.app.currentActivePanelIndex == 2) {
+		else if(SenchaCon2013Demo.app.numberActivePanels == '2') {
+			if(SenchaCon2013Demo.app.currentActivePanelIndex == 1 || SenchaCon2013Demo.app.currentActivePanelIndex == 2) {
 				this.getTopTwoPanelLayout().show();
 				this.getPanel1().show();
 				this.getPanel2().show();
@@ -277,22 +263,18 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	chartSetUp: function() {
 		mainController = this;
 		this.checkForConfiguredGraphPanels();
-		if(ReplayAnalytics.app.dateSet[ReplayAnalytics.currentActivePanelIndex] == true) {
+		if(SenchaCon2013Demo.app.dateSet[SenchaCon2013Demo.currentActivePanelIndex] == true) {
 			showLoadingMask();
 		}
-		mainController.changeDateRangeLabel(ReplayAnalytics.currentActivePanelIndex);
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		if (chartIndex == 5){
-			Ext.ComponentQuery.query('interestingmomentgraphpanel')[0].setHtml('');
-		} else {
-			Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml('');
-		}		
+		mainController.changeDateRangeLabel(SenchaCon2013Demo.currentActivePanelIndex);
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;		
+		Ext.ComponentQuery.query('panel'+chartIndex)[0].setHtml('');	
 		var chartObject = Ext.ComponentQuery.query('chart[id=chart'+chartIndex+']')[0];
 		if(chartObject != undefined){
 			chartObject.destroy();
 		}
-		ReplayAnalytics.app.chartCreated[ReplayAnalytics.app.currentActivePanelIndex] = false;
-		mainController.configureGranularities(ReplayAnalytics.app.currentActivePanelIndex,ReplayAnalytics.app.startDate[ReplayAnalytics.app.currentActivePanelIndex],ReplayAnalytics.app.currentEndDate[ReplayAnalytics.app.currentActivePanelIndex]);	
+		SenchaCon2013Demo.app.chartCreated[SenchaCon2013Demo.app.currentActivePanelIndex] = false;
+		mainController.configureGranularities(SenchaCon2013Demo.app.currentActivePanelIndex,SenchaCon2013Demo.app.startDate[SenchaCon2013Demo.app.currentActivePanelIndex],SenchaCon2013Demo.app.currentEndDate[SenchaCon2013Demo.app.currentActivePanelIndex]);	
 	},
 	
 	getModelTypeForField: function(field){
@@ -308,7 +290,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	},
 
 	changeModelFields: function() {
-		var selectedDatabaseTable = ReplayAnalytics.app.databaseSetting[ReplayAnalytics.app.currentActivePanelIndex];
+		var selectedDatabaseTable = SenchaCon2013Demo.app.databaseSetting[SenchaCon2013Demo.app.currentActivePanelIndex];
 		var databaseTableId = this.getApplication().getController('DatabaseTable').getDatabaseTableIdForTableName(selectedDatabaseTable);
 		var tableFields = this.getApplication().getController('DatabaseTable').getDatabaseTablesFieldsForDatabaseTableId(databaseTableId);
 		var dataModelFieldArray = new Array();
@@ -330,7 +312,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 				dataModelFieldArray.push(temp);
 			}
 		}
-		ReplayAnalytics.model.DataModel.setFields(dataModelFieldArray);
+		SenchaCon2013Demo.model.DataModel.setFields(dataModelFieldArray);
 	},	
 
 	configureGranularities: function(i, startDate, endDate) {
@@ -350,20 +332,20 @@ Ext.define('ReplayAnalytics.controller.Main', {
 			hourDifferential = 24;
 		}
 		var instancestore = new Array();
-		switch(ReplayAnalytics.app.granularities[i]) {
+		switch(SenchaCon2013Demo.app.granularities[i]) {
 		case 'Hourly':
-			ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] = Math.round(100 / hourDifferential);	
-			Ext.ComponentQuery.query('slider'+i)[0].setMaxValue(ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] * hourDifferential);
+			SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] = Math.round(100 / hourDifferential);	
+			Ext.ComponentQuery.query('slider'+i)[0].setMaxValue(SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] * hourDifferential);
 			this.generateURLForChartData(instancestore, i, hourDifferential);
 			break;
 		case 'Daily':
-			ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] = Math.round(100 / dayDifferential);	
-			Ext.ComponentQuery.query('slider'+i)[0].setMaxValue(ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] * dayDifferential);
+			SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] = Math.round(100 / dayDifferential);	
+			Ext.ComponentQuery.query('slider'+i)[0].setMaxValue(SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] * dayDifferential);
 			this.generateURLForChartData(instancestore, i, dayDifferential);
 			break;
 		case 'Weekly':
-			ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] = Math.round(100 / (weekDifferential - 1));	
-			Ext.ComponentQuery.query('slider'+i)[0].setMaxValue(ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] * (weekDifferential - 1));
+			SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] = Math.round(100 / (weekDifferential - 1));	
+			Ext.ComponentQuery.query('slider'+i)[0].setMaxValue(SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] * (weekDifferential - 1));
 			mod = weekDifferential % 7;
 			seven = 7;
 			if(mod == 0) {
@@ -374,8 +356,8 @@ Ext.define('ReplayAnalytics.controller.Main', {
 			}
 			break;
 		case 'Monthly':
-			ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] = Math.round(100 / monthDifferential);	
-			Ext.ComponentQuery.query('slider'+i)[0].setMaxValue(ReplayAnalytics.app.differentialMultiplier[ReplayAnalytics.app.currentActivePanelIndex] * monthDifferential);
+			SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] = Math.round(100 / monthDifferential);	
+			Ext.ComponentQuery.query('slider'+i)[0].setMaxValue(SenchaCon2013Demo.app.differentialMultiplier[SenchaCon2013Demo.app.currentActivePanelIndex] * monthDifferential);
 			this.generateURLForChartData(instancestore, i, monthDifferential);
 			break;
 		}
@@ -402,14 +384,14 @@ Ext.define('ReplayAnalytics.controller.Main', {
 		logMessage('JSON for decoding is==' + xhr.responseText);
 		response = Ext.JSON.decode(xhr.responseText.trim());
 		dateArray = new Array();
-		ReplayAnalytics.app.groupByBarLabels = response.groupByBarArray;		
+		SenchaCon2013Demo.app.groupByBarLabels = response.groupByBarArray;		
 		this.changeModelFields();
 		for ( index = 0; index < response.data.length; index++)        
         {
 			dateArray[index] = response.dateArray[index];
 			instancestore[index] = Ext.create('Ext.data.Store', {
 		        autoLoad: true,
-		    	model: 'ReplayAnalytics.model.DataModel',
+		    	model: 'SenchaCon2013Demo.model.DataModel',
 		    	data: response.data[index],
 		        proxy: {
 		            type: 'memory',                 		            
@@ -420,66 +402,60 @@ Ext.define('ReplayAnalytics.controller.Main', {
 		        }
 		    });      	 
         }
-		ReplayAnalytics.app.globalDateArray[ReplayAnalytics.app.currentActivePanelIndex] = dateArray;
-		ReplayAnalytics.app.jsonstore[ReplayAnalytics.app.currentActivePanelIndex] = instancestore;	
-		ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex] = response.dataField;
-		ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex] = response.categoryField;
+		SenchaCon2013Demo.app.globalDateArray[SenchaCon2013Demo.app.currentActivePanelIndex] = dateArray;
+		SenchaCon2013Demo.app.jsonstore[SenchaCon2013Demo.app.currentActivePanelIndex] = instancestore;	
+		SenchaCon2013Demo.app.dataFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex] = response.dataField;
+		SenchaCon2013Demo.app.categoryFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex] = response.categoryField;
 		if (i > 5){
 			return;
 		}
-		ReplayAnalytics.app.maximumPositions[i] = Ext.ComponentQuery.query('slider'+i)[0].getMaxValue();
+		SenchaCon2013Demo.app.maximumPositions[i] = Ext.ComponentQuery.query('slider'+i)[0].getMaxValue();
 		
 		if (response.yMax != undefined){
-			ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex] = response.yMax;
-			ReplayAnalytics.app.YmaxReceived[ReplayAnalytics.app.currentActivePanelIndex] = true;
-			if (ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex] != undefined && ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex] > 0){
-				ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex] = parseInt(ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex]) + (parseInt(ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex]) * ReplayAnalytics.app.graphMaxValueMargin);
-				if (ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex] == 0){
-					ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex] = 10;
+			SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex] = response.yMax;
+			SenchaCon2013Demo.app.YmaxReceived[SenchaCon2013Demo.app.currentActivePanelIndex] = true;
+			if (SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex] != undefined && SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex] > 0){
+				SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex] = parseInt(SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex]) + (parseInt(SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex]) * SenchaCon2013Demo.app.graphMaxValueMargin);
+				if (SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex] == 0){
+					SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex] = 10;
 				}
 			}
 		}
 		
 		if (response.xMax != undefined){
-			ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex] = response.xMax;
-			ReplayAnalytics.app.XmaxReceived[ReplayAnalytics.app.currentActivePanelIndex] = true;
-			if (ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex] != undefined && ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex] > 0){
-				ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex] = parseInt(ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex]) + (parseInt(ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex]) * ReplayAnalytics.app.graphMaxValueMargin);
-				if (ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex] == 0){
-					ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex] = 10;
+			SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex] = response.xMax;
+			SenchaCon2013Demo.app.XmaxReceived[SenchaCon2013Demo.app.currentActivePanelIndex] = true;
+			if (SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex] != undefined && SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex] > 0){
+				SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex] = parseInt(SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex]) + (parseInt(SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex]) * SenchaCon2013Demo.app.graphMaxValueMargin);
+				if (SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex] == 0){
+					SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex] = 10;
 				}
 			}
 		}
 		
 		if (response.interestingMoments != undefined){
-			ReplayAnalytics.app.interestingMomentsPoints[ReplayAnalytics.app.currentActivePanelIndex] = response.interestingMoments;
+			SenchaCon2013Demo.app.interestingMomentsPoints[SenchaCon2013Demo.app.currentActivePanelIndex] = response.interestingMoments;
 		}
 		
 		finishTime = new Date();
 		var loadingTime = finishTime - startTime;
-		console.info('Graph Loading/Decoding time for Panel' + ReplayAnalytics.app.currentActivePanelIndex +' is = '+loadingTime+'ms');
+		console.info('Graph Loading/Decoding time for Panel' + SenchaCon2013Demo.app.currentActivePanelIndex +' is = '+loadingTime+'ms');
 		this.getApplication().getController('Playback').resetFunction();		
 	},
 	
 	generateURLForChartData: function(instancestore, i, difference){
-		var chartIndex = ReplayAnalytics.app.currentActivePanelIndex;
-		var databaseName = ReplayAnalytics.app.databaseSetting[chartIndex];
-		var chartType = ReplayAnalytics.app.chartTypes[chartIndex];
-		var absStartDate = dateFormat(ReplayAnalytics.app.startDate[chartIndex],"yyyy-mm-dd");
-		var absEndDate = dateFormat(ReplayAnalytics.app.currentEndDate[chartIndex],"yyyy-mm-dd");
-		var granularity = ReplayAnalytics.app.granularities[chartIndex];
-		var x_axis = ReplayAnalytics.app.xs[chartIndex];
-		var y_axis = ReplayAnalytics.app.ys[chartIndex];
-		var groupBy = ReplayAnalytics.app.groupBys[chartIndex];
-		var accum = ReplayAnalytics.app.accumulate[chartIndex];
-		var imType1Setting = ReplayAnalytics.app.interestingMomentType1Setting;
-		var imType2Setting = ReplayAnalytics.app.interestingMomentType2Setting;
-		var imType3Setting = ReplayAnalytics.app.interestingMomentType3Setting;
-		var imType4Setting = ReplayAnalytics.app.interestingMomentType4Setting;
+		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
+		var databaseName = SenchaCon2013Demo.app.databaseSetting[chartIndex];
+		var chartType = SenchaCon2013Demo.app.chartTypes[chartIndex];
+		var absStartDate = dateFormat(SenchaCon2013Demo.app.startDate[chartIndex],"yyyy-mm-dd");
+		var absEndDate = dateFormat(SenchaCon2013Demo.app.currentEndDate[chartIndex],"yyyy-mm-dd");
+		var granularity = SenchaCon2013Demo.app.granularities[chartIndex];
+		var x_axis = SenchaCon2013Demo.app.xs[chartIndex];
+		var y_axis = SenchaCon2013Demo.app.ys[chartIndex];
+		var groupBy = SenchaCon2013Demo.app.groupBys[chartIndex];
 		var url = 'getUnifiedData.do?databaseName=' + databaseName + '&chartType=' + chartType + '&absStartDate=' + absStartDate +
 		'&absEndDate='+ absEndDate + '&differential=' + difference + '&granularity='+ granularity + '&x_axis='+ x_axis + 
-		'&y_axis=' + y_axis + '&groupBy=' + groupBy + '&accum=' + accum + '&imType1Setting=' + imType1Setting +
-		'&imType2Setting=' + imType2Setting + '&imType3Setting=' + imType3Setting + '&imType4Setting=' + imType4Setting;
+		'&y_axis=' + y_axis + '&groupBy=' + groupBy;
 		this.getUnifiedData(url, i, instancestore);
 	},
 	
@@ -500,11 +476,6 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	
 	setFocusOnPanel: function(index) {
 		if (index != 0){
-			if (this.getGlobalSyncButton().getPressedButtons().length != 0){
-				this.getSettingsButton().setDisabled(false);
-				this.getGlobalSettingsButton().setDisabled(false);
-			}
-			this.getGlobalSyncButton().setPressedButtons([false]);
 			this.getFourPanelLayout().setCls('unselected-panel');
 			this.getPanel1().setCls('unselected-panel');
 			this.getPanel2().setCls('unselected-panel');
@@ -519,7 +490,7 @@ Ext.define('ReplayAnalytics.controller.Main', {
 				Ext.ComponentQuery.query('panel'+index)[0].setCls('selected-panel');
 			}		
 			Ext.ComponentQuery.query('slider'+index)[0].show();
-			ReplayAnalytics.app.currentActivePanelIndex = index;
+			SenchaCon2013Demo.app.currentActivePanelIndex = index;
 			this.changeDateRangeLabel(index);
 		}		
 	},
@@ -541,10 +512,10 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	},
 	
 	changeDateRangeLabel: function(panelIndex){
-		if (ReplayAnalytics.app.isChartConfigured[panelIndex]){
+		if (SenchaCon2013Demo.app.isChartConfigured[panelIndex]){
 			try{
-				var startDate = dateFormat(ReplayAnalytics.app.startDate[panelIndex],'m/d/yy');
-				var endDate = dateFormat(ReplayAnalytics.app.currentEndDate[panelIndex],'m/d/yy');
+				var startDate = dateFormat(SenchaCon2013Demo.app.startDate[panelIndex],'m/d/yy');
+				var endDate = dateFormat(SenchaCon2013Demo.app.currentEndDate[panelIndex],'m/d/yy');
 				var labelString = "<p class ='dateRangeLabelClass'>" + startDate + " - " + endDate + "</p>";
 				Ext.ComponentQuery.query('container[id=daterangelabel]')[0].setHtml(labelString);
 			} catch(err){
@@ -557,10 +528,10 @@ Ext.define('ReplayAnalytics.controller.Main', {
 	
 	checkForConfiguredGraphPanels: function(){
 		var loopIndex = 1;
-		for(;loopIndex <= ReplayAnalytics.app.numberActivePanels; loopIndex++){
+		for(;loopIndex <= SenchaCon2013Demo.app.numberActivePanels; loopIndex++){
 			Ext.getStore('UserSettings'+loopIndex).load();
 			if(Ext.getStore('UserSettings'+loopIndex).getData().items[0] != undefined) {
-				ReplayAnalytics.app.isChartConfigured[loopIndex] = true;
+				SenchaCon2013Demo.app.isChartConfigured[loopIndex] = true;
 			}
 		}
 	},

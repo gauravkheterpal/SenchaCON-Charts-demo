@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.model.GlobalSettingsModel', {
+Ext.define('SenchaCon2013Demo.model.GlobalSettingsModel', {
 	extend: 'Ext.data.Model',
 	config: {
 		fields: [

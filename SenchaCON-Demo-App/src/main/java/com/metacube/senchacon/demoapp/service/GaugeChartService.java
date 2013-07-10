@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metacube.senchacon.demoapp.common.Constants;
-import com.metacube.senchacon.demoapp.common.enums.ChartType;
 import com.metacube.senchacon.demoapp.common.enums.Granularity;
 import com.metacube.senchacon.demoapp.common.util.ChartDataUtils;
 import com.metacube.senchacon.demoapp.common.util.DateUtils;
@@ -24,15 +23,9 @@ public class GaugeChartService
 {
 	@Autowired
 	private GaugeChartDAO gaugeChartDao;
-
-	@Autowired
-	private AccumService accumService;
 	
 	@Autowired
 	private GetMaxService getMaxService;
-
-	@Autowired
-	private InterestingMomentsService interestingMomentsService;
 
 	final static Logger logger = LoggerFactory.getLogger(GaugeChartService.class);
 
@@ -129,10 +122,6 @@ public class GaugeChartService
 			}
 		}
 		JSONObject response = new JSONObject();
-		if (accum.equalsIgnoreCase("on"))
-		{
-			returnArray = accumService.getAccumDataForUnified(returnArray, dataField.getFieldName(), null, ChartType.GAUGE.toString());
-		}
 		response.put(Constants.DATA_IDENTIFIER, returnArray);
 		response.put(Constants.DATA_FIELD_IDENTIFIER, dataField.getFieldLabel());
 		response.put(Constants.X_MAX_IDENTIFIER, getMaxService.getMaxFromUnifiedJSON(returnArray, dataField.getFieldLabel()));

@@ -1,7 +1,7 @@
-Ext.define('ReplayAnalytics.view.AddChartPanel1', {
+Ext.define('SenchaCon2013Demo.view.AddChartPanel1', {
 	extend: 'Ext.Panel',
 	xtype: 'addchartpanel1',
-	fullscreen: true,	
+	hidden: false,
 	config: {
 		layout: {type: 'vbox', pack: 'center'},
     	id: 'addchartpanel1',  
@@ -9,7 +9,6 @@ Ext.define('ReplayAnalytics.view.AddChartPanel1', {
     	items: [
     	        {
     	        	xtype: 'panel',
-    	        	fullscreen: true,
     	        	centered: true,
     	        	style: 'background-color: transparent; cursor: pointer;',
     	        	items: [

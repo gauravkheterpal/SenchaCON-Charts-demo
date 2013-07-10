@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.controller.Gauge', {
+Ext.define('SenchaCon2013Demo.controller.Gauge', {
 	extend : 'Ext.app.Controller',
 	xtype: 'gaugecontroller',
 	config: {
@@ -13,15 +13,15 @@ Ext.define('ReplayAnalytics.controller.Gauge', {
 	},
 	
 	createGaugeChart: function(store, dataField, chartIndex){
-		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
+		var obj = SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
 				obj.getLegend().destroy();
 			}		
 			obj.destroy();
 		}
-		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create('Ext.chart.SpaceFillingChart', {
-			id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
+		SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex] = Ext.create('Ext.chart.SpaceFillingChart', {
+			id: 'chart'+SenchaCon2013Demo.app.currentActivePanelIndex,
 			store: store,
 			flex: 1,
 			//interactions: ['rotate'],
@@ -38,7 +38,7 @@ Ext.define('ReplayAnalytics.controller.Gauge', {
 	        	   type: 'gauge',
 	                position: 'gauge',
 	                minimum: 0,
-	                maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
+	                maximum: SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex],
                     steps: 10,
 	                margin: 7
 	           }
@@ -47,10 +47,10 @@ Ext.define('ReplayAnalytics.controller.Gauge', {
 		    series: [
 		                {
 		                    type: 'gauge',
-		                   // value:  ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],//check
-		                    field:ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+		                   // value:  SenchaCon2013Demo.app.dataFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],//check
+		                    field:SenchaCon2013Demo.app.dataFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 		                    minimum: 0,
-		                    maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
+		                    maximum: SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex],
 		                    donut: 30,
 		                    style: {
 		                        miterLimit: 10,

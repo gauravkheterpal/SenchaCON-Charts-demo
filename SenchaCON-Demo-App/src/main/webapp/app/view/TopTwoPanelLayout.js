@@ -1,9 +1,9 @@
-Ext.define('ReplayAnalytics.view.TopTwoPanelLayout', {
+Ext.define('SenchaCon2013Demo.view.TopTwoPanelLayout', {
 	extend: 'Ext.Panel',
 	xtype: 'toptwopanellayout',
 	requires: [
-	           'ReplayAnalytics.view.Panel1',
-	           'ReplayAnalytics.view.Panel2'
+	           'SenchaCon2013Demo.view.Panel1',
+	           'SenchaCon2013Demo.view.Panel2'
 	],
 	config: {
 		layout: {type: 'hbox', pack: 'center', align: 'stretch'},

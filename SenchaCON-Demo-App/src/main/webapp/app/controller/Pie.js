@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.controller.Pie', {
+Ext.define('SenchaCon2013Demo.controller.Pie', {
 	extend : 'Ext.app.Controller',
 	xtype: 'piecontroller',
 	config: {
@@ -13,15 +13,15 @@ Ext.define('ReplayAnalytics.controller.Pie', {
 	},
 	
 	createPieChart: function(store, dataField, categoryField, chartIndex){	
-		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
+		var obj = SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
 				obj.getLegend().destroy();
 			}		
 			obj.destroy();
 		}
-		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create('Ext.chart.PolarChart', {
-			id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
+		SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex] = Ext.create('Ext.chart.PolarChart', {
+			id: 'chart'+SenchaCon2013Demo.app.currentActivePanelIndex,
 			store: store,
 			flex: 1,
 			interactions: ['rotate'],
@@ -38,7 +38,7 @@ Ext.define('ReplayAnalytics.controller.Pie', {
 				        donut: 0,
 				        showInLegend: true,
 				        contrast: true,
-				        animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
+				        animate: { duration: SenchaCon2013Demo.app.animateSpeed, delay: SenchaCon2013Demo.app.animateSpeed/2, easing: 'ease' },
 				        label: {
 				        	field: categoryField,
 				        	display: 'rotate',

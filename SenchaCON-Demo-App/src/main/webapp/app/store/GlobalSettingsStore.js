@@ -1,8 +1,8 @@
-Ext.define("ReplayAnalytics.store.GlobalSettingsStore", {
+Ext.define("SenchaCon2013Demo.store.GlobalSettingsStore", {
 	extend : 'Ext.data.Store',
-	requires: ['ReplayAnalytics.model.GlobalSettingsModel'],
+	requires: ['SenchaCon2013Demo.model.GlobalSettingsModel'],
 	config: {
-		model: 'ReplayAnalytics.model.GlobalSettingsModel',
+		model: 'SenchaCon2013Demo.model.GlobalSettingsModel',
 		proxy: {
 			type: 'localstorage',
 			id: 'globalsettings'

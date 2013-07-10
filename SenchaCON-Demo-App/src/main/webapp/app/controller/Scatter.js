@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.controller.Scatter', {
+Ext.define('SenchaCon2013Demo.controller.Scatter', {
 	extend : 'Ext.app.Controller',
 	xtype: 'scattercontroller',
 	config: {
@@ -13,15 +13,15 @@ Ext.define('ReplayAnalytics.controller.Scatter', {
 	},	
 			    
 	createScatterChart: function(chartType,store,xfield,yfield,chartIndex,groupByBarArray) {
-		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
+		var obj = SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
 				obj.getLegend().destroy();
 			}		
 			obj.destroy();
 		}
-		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create("Ext.chart.CartesianChart", {
-			id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
+		SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex] = Ext.create("Ext.chart.CartesianChart", {
+			id: 'chart'+SenchaCon2013Demo.app.currentActivePanelIndex,
 			animate: true,
 			renderTo: Ext.getBody(),
 			flex: 1,
@@ -45,7 +45,7 @@ Ext.define('ReplayAnalytics.controller.Scatter', {
 				},
 		        //grid: true,
 		        minimum: 0,
-		        maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
+		        maximum: SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex],
 		    }, {
 		        type: 'numeric',
 		        position: 'left',
@@ -62,14 +62,14 @@ Ext.define('ReplayAnalytics.controller.Scatter', {
    						shadowColor: 'black',	    	    	   	
    				},
 		        minimum: 0,
-		        maximum: ReplayAnalytics.app.Ymax[ReplayAnalytics.app.currentActivePanelIndex],
+		        maximum: SenchaCon2013Demo.app.Ymax[SenchaCon2013Demo.app.currentActivePanelIndex],
 		    }],
 		    series: [{
 		        type: 'scatter',
 		        fill: true,
 		        xField: xfield,
 		        yField: yfield,
-		        animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
+		        animate: { duration: SenchaCon2013Demo.app.animateSpeed, delay: SenchaCon2013Demo.app.animateSpeed/2, easing: 'ease' },
 		        marker: {
 		        	type: 'circle',
 		        	fill: '#a00',

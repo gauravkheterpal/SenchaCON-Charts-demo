@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metacube.senchacon.demoapp.common.Constants;
-import com.metacube.senchacon.demoapp.common.enums.ChartType;
 import com.metacube.senchacon.demoapp.common.enums.Granularity;
 import com.metacube.senchacon.demoapp.common.util.ChartDataUtils;
 import com.metacube.senchacon.demoapp.common.util.DateUtils;
@@ -27,9 +26,6 @@ public class ScatterChartService
 
 	@Autowired
 	private GetMaxService getMaxService;
-
-	@Autowired
-	private InterestingMomentsService interestingMomentsService;
 
 	final static Logger logger = LoggerFactory.getLogger(ScatterChartService.class);
 
@@ -128,10 +124,6 @@ public class ScatterChartService
 			response.put(Constants.CATEGORY_FIELD_IDENTIFIER, dataField2.getFieldLabel());
 			response.put(Constants.X_MAX_IDENTIFIER, getMaxService.getMaxFromUnifiedJSON(returnArray, dataField1.getFieldLabel()));
 			response.put(Constants.Y_MAX_IDENTIFIER, getMaxService.getMaxFromUnifiedJSON(returnArray, dataField2.getFieldLabel()));
-			response.put(
-					Constants.INTERESTING_MOMENTS_IDENTIFIER,
-					interestingMomentsService.getInterestingMomentForUnifiedData(ChartType.SCATTER.toString(), returnArray,
-							dataField1.getFieldLabel(), dataField2.getFieldLabel(), dateArray, granularity, absEndDate));
 		}
 		return response.toString();
 	}

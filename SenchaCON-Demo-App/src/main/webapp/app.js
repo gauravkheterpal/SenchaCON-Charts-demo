@@ -1,19 +1,12 @@
 Ext.Loader.setConfig({enabled:true});
-Ext.Loader.setPath({
-    'Ext.ux': 'lib'
-});
 Ext.application({
-	name : 'ReplayAnalytics',
+	name : 'SenchaCon2013Demo',
 	stores : ['GlobalSettingsStore','UserSettings1','UserSettings2','UserSettings3','UserSettings4','TempStore'],
-	controllers: ['Admin', 'DatabaseTable', 'Pie','LineBar','Scatter','VerticalBar','HorizontalBar', 'Main', 'Login', 'GlobalSync', 'Help', 'InterestingMoment', 'Playback', 'Settings','Radar', 'AreaBar', 'Gauge'],
-	views: ['Main', 'AdminPanel', 'DataSourceUploadPanel', 'DataSourceDeletePanel', 'DataSourceManagePanel', 'DataSourceConfigurationPanel', 'DataSourceTypeSelectionPanel', 'LoginScreen', 'SaveDashboardDialog', 'ShareDashboardDialog', 'ManualIMDialog', 'ManualIMCallout', 'FilterFieldsPanel', 'FilterListPanel', 'DashboardGridRow', 'AddDashboardThumbnail', 'DashboardThumbnail', 'DashboardScreen', 'InterestingMomentGraphPanel', 'InterestingMomentFoundDialog', 'SettingsPanel','GlobalSettingsPanel','AddChartPanel1','AddChartPanel2','AddChartPanel3','AddChartPanel4','HelpPanel','SettingsHelpPanel','PlaybackHelpPanel','GlobalSyncHelpPanel','ChartHelpPanel','GestureHelpPanel','SliderHelpPanel', 'Slider5'],
+	controllers: ['DatabaseTable', 'Pie','LineBar','Scatter','VerticalBar','HorizontalBar', 'Main', 'Login', 'GlobalSync', 'Playback', 'Settings','Radar', 'AreaBar', 'Gauge'],
+	views: ['Main', 'SettingsPanel','GlobalSettingsPanel', 'AddChartPanel1', 'AddChartPanel2', 'AddChartPanel3', 'AddChartPanel4', 'Panel1', 'Panel2', 'Panel3', 'Panel4'],
     launch : function() {
-    	this.publicMode = false;
-    	this.uniqueDashboardId = undefined;
-    	this.isHelpPanelShowing = false;
     	this.creatingGraphs = false;
     	
-    	this.sessionCookie = 'ReplayAnalyticsUserSession'; 
     	this.panelSettings = new Array();
     	for (i = 0; i < 5; i++){
     		this.panelSettings[i] = '';
@@ -269,40 +262,8 @@ Ext.application({
 		Ext.get('loading').setVisible(false);
 		
 		Ext.Viewport.add({
-    	   	xtype: 'loginscreen'
-    	});
-		
-		Ext.Viewport.add({
-    	   	xtype: 'dashboardscreen'
-    	});
-		
-		Ext.Viewport.add({
-    	   	xtype: 'replayanalyticsmain'
-    	});
-		
-		Ext.Viewport.add({
-			xtype: 'interestingmomentgraphpanel'
-		});
-    	
-		Ext.Viewport.add({
-			xtype: 'imfounddialog'
-		});
-		
-		Ext.Viewport.add({
-			xtype: 'manualimcallout'
-		});
-		
-		Ext.Viewport.add({
-			xtype: 'savedashboarddialog'
-		});
-		
-		Ext.Viewport.add({
-			xtype: 'sharedashboarddialog'
-		});
-		
-		Ext.Viewport.add({
-			xtype: 'manualimdialog'
-		});		
+    	   	xtype: 'senchademomain'
+    	});	
 		
 		Ext.Viewport.add({
 			xtype: 'settingspanel'
@@ -310,60 +271,15 @@ Ext.application({
 		Ext.Viewport.add({
 			xtype: 'globalsettingspanel'
 		});
-		Ext.Viewport.add({
-    	   	xtype: 'helppanel'
-    	});
-		Ext.Viewport.add({
-    	   	xtype: 'settingshelppanel'
-    	});
-		Ext.Viewport.add({
-    	   	xtype: 'playbackhelppanel'
-    	});
-		Ext.Viewport.add({
-    	   	xtype: 'globalsynchelppanel'
-    	});
-		Ext.Viewport.add({
-    	   	xtype: 'charthelppanel'
-    	});
-		Ext.Viewport.add({
-    	   	xtype: 'sliderhelppanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'gesturehelppanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'filterfieldspanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'filterlistpanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'adminpanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'datasourceuploadpanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'datasourceconfigurationpanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'datasourcetypeselectionpanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'datasourcemanagepanel'
-    	});
-    	Ext.Viewport.add({
-    	   	xtype: 'datasourcedeletepanel'
-    	});
     	
     	for (i = 0; i < 6; i++){
 			this.sliders[i] = Ext.ComponentQuery.query('slider'+i)[0];
 		}
 		
-		for(i = 0; i < 6; i++) {
+		/*for(i = 0; i < 6; i++) {
 			this.maximumPositions[i] = Ext.ComponentQuery.query('slider'+i)[0].getMaxValue();
 			this.minimumPositions[i] = Ext.ComponentQuery.query('slider'+i)[0].getMinValue();
 			this.currentPositions[i] = this.minimumPositions[i];
-		}
+		}*/
 	}
 });

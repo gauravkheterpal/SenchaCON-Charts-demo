@@ -1,9 +1,9 @@
-Ext.define('ReplayAnalytics.view.FourPanelLayout', {
+Ext.define('SenchaCon2013Demo.view.FourPanelLayout', {
 	extend: 'Ext.Panel',
 	xtype: 'fourpanellayout',
 	requires: [
-	           'ReplayAnalytics.view.TopTwoPanelLayout',
-	           'ReplayAnalytics.view.BottomTwoPanelLayout'
+	           'SenchaCon2013Demo.view.TopTwoPanelLayout',
+	           'SenchaCon2013Demo.view.BottomTwoPanelLayout'
 	],
 	config: {
 		layout: {type: 'vbox',},

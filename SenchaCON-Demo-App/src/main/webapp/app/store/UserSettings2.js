@@ -1,8 +1,8 @@
-Ext.define("ReplayAnalytics.store.UserSettings2", {
+Ext.define("SenchaCon2013Demo.store.UserSettings2", {
 	extend : 'Ext.data.Store',
-	requires: ['ReplayAnalytics.model.UserSettings'],
+	requires: ['SenchaCon2013Demo.model.UserSettings'],
 	config: {
-		model: 'ReplayAnalytics.model.UserSettings',
+		model: 'SenchaCon2013Demo.model.UserSettings',
 		proxy: {
 			type: 'localstorage',
 			id: 'usersettings2'

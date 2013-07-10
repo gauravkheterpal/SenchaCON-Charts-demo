@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.controller.HorizontalBar', {
+Ext.define('SenchaCon2013Demo.controller.HorizontalBar', {
 	extend : 'Ext.app.Controller',
 	xtype: 'horizontalbarcontroller',
 	config: {
@@ -13,7 +13,7 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	},
 	
 	createHorizontalBarChart: function(store,chartIndex,groupByBarArray) {
-		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
+		var obj = SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
 				obj.getLegend().destroy();
@@ -24,27 +24,27 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 			this.createHorizontalBarChartGroupByNone(store,chartIndex);
 		}
 		else {
-			ReplayAnalytics.app.groupByValueBar = new Array();
+			SenchaCon2013Demo.app.groupByValueBar = new Array();
 			for (i = 0; i < groupByBarArray.length; i++){
-				ReplayAnalytics.app.groupByValueBar[i] = 'groupByBar' + (i+1);
+				SenchaCon2013Demo.app.groupByValueBar[i] = 'groupByBar' + (i+1);
 			}
 			if (groupByBarArray.length != 0 && groupByBarArray[groupByBarArray.length - 1] != 'other'){
 				groupByBarArray[groupByBarArray.length] = "Other";
-				ReplayAnalytics.app.groupByValueBar[ReplayAnalytics.app.groupByValueBar] = "Other";
+				SenchaCon2013Demo.app.groupByValueBar[SenchaCon2013Demo.app.groupByValueBar] = "Other";
 			}			
 			this.createHorizontalBarChartGroupBy(store,chartIndex, groupByBarArray);
 		}		
 	},
 	
 	createHorizontalBarChartGroupByNone: function(store,chartIndex) {
-		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create("Ext.chart.CartesianChart", {
-		    id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
+		SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex] = Ext.create("Ext.chart.CartesianChart", {
+		    id: 'chart'+SenchaCon2013Demo.app.currentActivePanelIndex,
 		    flipXY: true,
 		    flex: 1,
 		    store: store,
 		    //shadow: true,
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
-		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
+		    animate: { duration: SenchaCon2013Demo.app.animateSpeed, delay: SenchaCon2013Demo.app.animateSpeed/2, easing: 'ease' },
 		    //interactions: ['panzoom'],
 	    	axes: [
 	    	       {
@@ -55,11 +55,11 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   		//shadowColor: 'black',    	    	   	
 	    	       		},
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
-	    	       		fields: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+	    	       		fields: SenchaCon2013Demo.app.dataFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 	    	    	   	minimum: 0,
-	    	    	   	maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
+	    	    	   	maximum: SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex],
 	    	    	   	title: {
-	   						text: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+	   						text: SenchaCon2013Demo.app.dataFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
 	   						//shadowColor: 'black',
@@ -69,13 +69,13 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	type: 'category',
 	    	    	   	position: 'left',
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
-	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+	    	       		fields: SenchaCon2013Demo.app.categoryFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 	    	    	   	style: {
 	    	    	   		strokeStyle: 'black',
 	    	    	   		//shadowColor: 'black',
 	    	       		},
 	    	       		title: {
-	   						text: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+	   						text: SenchaCon2013Demo.app.categoryFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
 	   						//shadowColor: 'black',	    	    	   	
@@ -85,8 +85,8 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    series: [
 	    	             {
 	    	            	 type: 'bar',
-	    	            	 xField: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	    	            	 yField: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+	    	            	 xField: SenchaCon2013Demo.app.categoryFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
+	    	            	 yField: SenchaCon2013Demo.app.dataFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 	    	            	 axis: 'left',
 	    	            	 highlight: true,
 	    	            	 showInLegend: false,
@@ -103,8 +103,8 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	},		
 
 	createHorizontalBarChartGroupBy: function(store, chartIndex, groupByBarArray){
-		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create("Ext.chart.CartesianChart", {
-			id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
+		SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex] = Ext.create("Ext.chart.CartesianChart", {
+			id: 'chart'+SenchaCon2013Demo.app.currentActivePanelIndex,
 			flipXY: true,
 			flex: 1,
 			store: store,
@@ -125,9 +125,9 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
 	    	       		//fields: groupByBarArray,
 	    	       		minimum: 0,
-	    	    	   	maximum: ReplayAnalytics.app.Xmax[ReplayAnalytics.app.currentActivePanelIndex],
+	    	    	   	maximum: SenchaCon2013Demo.app.Xmax[SenchaCon2013Demo.app.currentActivePanelIndex],
 	    	    	   	title: {
-	   						text: ReplayAnalytics.app.dataFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+	   						text: SenchaCon2013Demo.app.dataFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
 	   						//shadowColor: 'black',
@@ -136,13 +136,13 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	       { type: 'category',
 	    	    	   	position: 'left',
 	    	    	   	label: {fontFamily: 'Helvetica', color: '#4270A2'},
-	    	       		fields: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+	    	       		fields: SenchaCon2013Demo.app.categoryFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 	    	    	   	style: {
 	    	    	   		strokeStyle: 'black',
 	    	    	   		//shadowColor: 'black',
 	    	       		},
 	    	       		title: {
-	   						text: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
+	   						text: SenchaCon2013Demo.app.categoryFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
 	   						//strokeStyle: '#4270A2',
 	   						fillStyle: '#4270A2',
 	   						//shadowColor: 'black',	    	    	   	
@@ -152,14 +152,14 @@ Ext.define('ReplayAnalytics.controller.HorizontalBar', {
 	    	    series: [
 	    	             {
 	    	            	 type: 'bar',
-	    	            	 xField: ReplayAnalytics.app.categoryFieldValues[ReplayAnalytics.app.currentActivePanelIndex],
-	    	            	 yField: ReplayAnalytics.app.groupByValueBar,
+	    	            	 xField: SenchaCon2013Demo.app.categoryFieldValues[SenchaCon2013Demo.app.currentActivePanelIndex],
+	    	            	 yField: SenchaCon2013Demo.app.groupByValueBar,
 	    	            	 title: groupByBarArray,
 	    	            	 axis: 'left',
 	    	            	 highlight: true,
 	    	            	 //showInLegend: true,
 	    	            	// shadow: true,
-	    	            	 animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
+	    	            	 animate: { duration: SenchaCon2013Demo.app.animateSpeed, delay: SenchaCon2013Demo.app.animateSpeed/2, easing: 'ease' },
 	    	            	 style: {
 	    	            	 		stroke: 'rgb(40,40,40)',
 	    	             	 },

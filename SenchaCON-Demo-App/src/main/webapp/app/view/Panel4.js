@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.view.Panel4', {
+Ext.define('SenchaCon2013Demo.view.Panel4', {
 	extend: 'Ext.Panel',
 	xtype: 'panel4',
 	config: {

@@ -1,4 +1,4 @@
-Ext.define('ReplayAnalytics.model.UserProfileModel', {
+Ext.define('SenchaCon2013Demo.model.UserProfileModel', {
 	extend: 'Ext.data.Model',
 	config: {
 		fields: [

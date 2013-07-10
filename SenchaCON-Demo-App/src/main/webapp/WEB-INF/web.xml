@@ -6,7 +6,7 @@
          http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
 
 	<servlet>
-		<servlet-name>replayanalytics</servlet-name>
+		<servlet-name>senchacondemoapp</servlet-name>
 		<servlet-class>
 			org.springframework.web.servlet.DispatcherServlet
 		</servlet-class>
@@ -21,22 +21,12 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>replayanalytics</servlet-name>
+		<servlet-name>senchacondemoapp</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	
-	<!--<servlet>
-    	<servlet-name>ViewStatusMessages</servlet-name>
-    	<servlet-class>ch.qos.logback.classic.ViewStatusMessagesServlet</servlet-class>
-  	</servlet>
-
-  	<servlet-mapping>
-   	 	<servlet-name>ViewStatusMessages</servlet-name>
-    	<url-pattern>/appStatus</url-pattern>
-  	</servlet-mapping>-->
 
 	<welcome-file-list>
-		<welcome-file>index_development.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 </web-app>
