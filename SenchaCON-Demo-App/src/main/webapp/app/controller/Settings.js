@@ -197,6 +197,14 @@ Ext.define('ReplayAnalytics.controller.Settings', {
 			this.getGroupBySetting().setOptions(categoryFieldValues);
 			this.getXAxisSetting().setOptions(dataFieldValues);				
 			break;
+		case 'gauge':
+			//this.getGroupBySetting().show('fadeIn');
+			//this.getAccumulateSetting().hide('fadeOut');
+			this.getXAxisSetting().setLabel('Data Value:');
+			//this.getYAxisSetting().hide('fadeOut');
+			//this.getGroupBySetting().setOptions(categoryFieldValues);
+			this.getXAxisSetting().setOptions(dataFieldValues);				
+			break;
 		case 'radar':
 			this.getGroupBySetting().show('fadeIn');
 			//this.getAccumulateSetting().hide('fadeOut');

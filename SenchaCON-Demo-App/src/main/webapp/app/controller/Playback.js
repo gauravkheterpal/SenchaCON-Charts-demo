@@ -169,7 +169,6 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 				}
 			}
 			else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'area') {
-				//debugger;
 				if(ReplayAnalytics.app.groupBys[ReplayAnalytics.app.currentActivePanelIndex] != 'none') {
 					ReplayAnalytics.app.getController('AreaBar').createAreaChart(ReplayAnalytics.app.jsonstore[chartIndex][value],chartIndex,ReplayAnalytics.app.groupByBarLabels);
 				}
@@ -189,6 +188,9 @@ Ext.define('ReplayAnalytics.controller.Playback', {
 		}
 		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'pie') {
 			this.getApplication().getController('Pie').createPieChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex);						
+		}
+		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'gauge') {
+			this.getApplication().getController('Gauge').createGaugeChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],chartIndex);						
 		}
 		else if(ReplayAnalytics.app.chartTypes[chartIndex] == 'radar') {
 			this.getApplication().getController('Radar').createRadarChart(ReplayAnalytics.app.jsonstore[chartIndex][value],ReplayAnalytics.app.dataFieldValues[chartIndex],ReplayAnalytics.app.categoryFieldValues[chartIndex],chartIndex);						

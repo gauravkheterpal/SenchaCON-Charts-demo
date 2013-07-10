@@ -250,6 +250,11 @@
                     "path": "app/controller/"
                 },
                 {
+                    "clsName": "ReplayAnalytics.controller.Gauge",
+                    "name": "Gauge.js",
+                    "path": "app/controller/"
+                },
+                {
                     "clsName": "ReplayAnalytics.controller.Pie",
                     "name": "Pie.js",
                     "path": "app/controller/"

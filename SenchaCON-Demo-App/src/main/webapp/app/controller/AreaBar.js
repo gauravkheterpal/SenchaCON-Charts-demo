@@ -12,7 +12,6 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	},
 	
 	createAreaChart: function(store,chartIndex,groupByBarArray) {
-		debugger;
 		var obj = ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
@@ -54,10 +53,8 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
 		    innerPadding: {top: 15, left: 0, right: 0, bottom: 25},
-		    interactions: ['panzoom'],
-		    legend: {
-		        position: 'right',
-		       },
+		   // interactions: ['panzoom'],
+		    
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -124,12 +121,11 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    store: store,
 		    shadow: true,
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
-		    interactions: ['panzoom'],
-		    legend: {
-	            position: 'right'
-	        },
+		    //interactions: ['panzoom'],
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
-		    
+		   /* legend: {
+	            position: 'right'
+	        },*/
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -220,12 +216,11 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    store: store,
 		    shadow: true,
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
-		    interactions: ['panzoom'],
-		    legend: {
-		        position: 'right',
-		       },
+		    //interactions: ['panzoom'],
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
-		   
+		  /*  legend: {
+		        position: 'right',
+		       },*/
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -339,11 +334,11 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 		    store: store,
 		    shadow: true,
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
-		    interactions: ['panzoom'],
+		   // interactions: ['panzoom'],
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
-		    legend: {
+		    /*legend: {
 		        position: 'right',
-		     },
+		     },*/
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
@@ -473,19 +468,17 @@ Ext.define('ReplayAnalytics.controller.AreaBar', {
 	},
 	
 	createAreaChartGroupBy4: function(store, chartIndex, groupByBarArray){
-		debugger;
 		ReplayAnalytics.app.newChart[ReplayAnalytics.app.currentActivePanelIndex] = Ext.create("Ext.chart.CartesianChart", {
 		    id: 'chart'+ReplayAnalytics.app.currentActivePanelIndex,
 		    flex: 1,
 		    store: store,
 		    shadow: true,
 		    insetPadding: {top: 15, left: 0, right: 0, bottom: 25},
-		    interactions: ['panzoom'],
-		    legend: {
-		        position: 'right',
-		       },
+		    //interactions: ['panzoom'],
 		    animate: { duration: ReplayAnalytics.app.animateSpeed, delay: ReplayAnalytics.app.animateSpeed/2, easing: 'ease' },
-		    
+		   /* legend: {
+		        position: 'right',
+		       },*/
 	    	axes: [
 	    	       {
 	    	    	   	type: 'numeric',
