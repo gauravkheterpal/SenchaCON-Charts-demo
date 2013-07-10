@@ -4329,7 +4329,6 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 			}
 			SenchaCon2013Demo.app.currentActivePanelIndex = 0;
 		}
-		//this.checkForConfiguredCarousel();
 	},
 	
 	sliderListenerFunctionChange: function(slider) {
@@ -4395,7 +4394,6 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 	},
 	
 	pauseFunction: function() {	
-		this.moveCarouselToGraphItem();
 		var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
 		logInfo('pauseFunction called for Chart ' + chartIndex + ' at sliderValue=' + SenchaCon2013Demo.app.sliders[chartIndex].getValue()[0]);		
 		clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]);
