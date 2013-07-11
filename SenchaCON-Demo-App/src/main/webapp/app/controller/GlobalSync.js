@@ -44,11 +44,9 @@ Ext.define('SenchaCon2013Demo.controller.GlobalSync', {
 			this.getApplication().getController('Main').checkForConfiguredGraphPanels();
 			this.getApplication().getController('Playback').resetBackwardFunction();
 			this.getSettingsButton().setDisabled(true);
-			this.getGlobalSettingsButton().setDisabled(true);
 		}	
 		else {
 			this.getSettingsButton().setDisabled(false);
-			this.getGlobalSettingsButton().setDisabled(false);
 			this.getFourPanelLayout().setCls('unselected-panel');
 			this.getPanel1().setCls('selected-panel');
 			this.getPanel2().setCls('unselected-panel');

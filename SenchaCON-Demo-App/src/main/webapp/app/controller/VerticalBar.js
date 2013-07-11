@@ -16,7 +16,7 @@ Ext.define('SenchaCon2013Demo.controller.VerticalBar', {
 		var obj = SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
-				obj.getLegend().destroy();
+				obj.get().destroy();
 			}		
 			obj.destroy();
 		}

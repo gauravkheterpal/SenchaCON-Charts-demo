@@ -519,7 +519,7 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 		{
 			this.showSettingsErrorMessage();
 		}
-		else if((this.getChartTypeSetting().getValue() == 'line' || this.getChartTypeSetting().getValue() == 'verticalbar') && (this.getXAxisSetting().getValue() == 'none' || this.getYAxisSetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
+		else if((this.getChartTypeSetting().getValue() == 'line' || this.getChartTypeSetting().getValue() == 'verticalbar' || this.getChartTypeSetting().getValue() == 'area') && (this.getXAxisSetting().getValue() == 'none' || this.getYAxisSetting().getValue() == 'none' || this.getGroupBySetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
 		{
 			this.showSettingsErrorMessage();
 		}		
@@ -530,6 +530,14 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 		else if (this.getChartTypeSetting().getValue() == 'horizontalbar' &&(this.getXAxisSetting().getValue() == 'none' || this.getYAxisSetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
 		{
 			this.showSettingsErrorMessage();
+		}
+		else if (this.getChartTypeSetting().getValue() == 'radar' &&(this.getXAxisSetting().getValue() == 'none' || this.getGroupBySetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
+		{
+			this.showSettingsErrorMessage();	
+		}
+		else if (this.getChartTypeSetting().getValue() == 'gauge' &&(this.getXAxisSetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
+		{
+			this.showSettingsErrorMessage();	
 		}
 		else 
 		{

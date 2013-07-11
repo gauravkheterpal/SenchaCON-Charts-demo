@@ -797,6 +797,8 @@ Ext.define('CachedResponse', {
 	status: '200'
 });
 
+
+
 var mainController;
 var startTime = new Date();
 var finishTime = new Date();
@@ -877,6 +879,7 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 			'bottomTwoPanelLayout': 'bottomtwopanellayout',
 			'topTwoPanelLayout': 'toptwopanellayout',		
 			'settingsButton': 'button[id=settingsbutton]',
+			'globalSyncButton': 'segmentedbutton[id=globalsynctogglebutton]',
 		},
 		control: {
 			'chart1': {
@@ -1268,8 +1271,12 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 		});
 	},
 	
-	setFocusOnPanel: function(index) {
+	setFocusOnPanel: function(index) {	
 		if (index != 0){
+			if (this.getGlobalSyncButton().getPressedButtons().length != 0){
+				this.getSettingsButton().setDisabled(false);
+			}
+			this.getGlobalSyncButton().setPressedButtons([false]);
 			this.getFourPanelLayout().setCls('unselected-panel');
 			this.getPanel1().setCls('unselected-panel');
 			this.getPanel2().setCls('unselected-panel');
@@ -1285,6 +1292,7 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 			}		
 			Ext.ComponentQuery.query('slider'+index)[0].show();
 			SenchaCon2013Demo.app.currentActivePanelIndex = index;
+			this.getApplication().getController('Playback').pauseFunction();
 			this.changeDateRangeLabel(index);
 		}		
 	},
@@ -1443,7 +1451,6 @@ Ext.define('SenchaCon2013Demo.controller.Pie', {
 				        	field: categoryField,
 				        	display: 'rotate',
 				        	contrast: true,
-						    //fill: 'black',
 						},	
 						labelOverflowPadding: 10,
 			}],			
@@ -2383,7 +2390,7 @@ Ext.define('SenchaCon2013Demo.controller.VerticalBar', {
 		var obj = SenchaCon2013Demo.app.newChart[SenchaCon2013Demo.app.currentActivePanelIndex];
 		if (obj != undefined){
 			if (obj.getLegend() != undefined){
-				obj.getLegend().destroy();
+				obj.get().destroy();
 			}		
 			obj.destroy();
 		}
@@ -2583,11 +2590,9 @@ Ext.define('SenchaCon2013Demo.controller.GlobalSync', {
 			this.getApplication().getController('Main').checkForConfiguredGraphPanels();
 			this.getApplication().getController('Playback').resetBackwardFunction();
 			this.getSettingsButton().setDisabled(true);
-			this.getGlobalSettingsButton().setDisabled(true);
 		}	
 		else {
 			this.getSettingsButton().setDisabled(false);
-			this.getGlobalSettingsButton().setDisabled(false);
 			this.getFourPanelLayout().setCls('unselected-panel');
 			this.getPanel1().setCls('selected-panel');
 			this.getPanel2().setCls('unselected-panel');
@@ -4015,7 +4020,7 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 		{
 			this.showSettingsErrorMessage();
 		}
-		else if((this.getChartTypeSetting().getValue() == 'line' || this.getChartTypeSetting().getValue() == 'verticalbar') && (this.getXAxisSetting().getValue() == 'none' || this.getYAxisSetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
+		else if((this.getChartTypeSetting().getValue() == 'line' || this.getChartTypeSetting().getValue() == 'verticalbar' || this.getChartTypeSetting().getValue() == 'area') && (this.getXAxisSetting().getValue() == 'none' || this.getYAxisSetting().getValue() == 'none' || this.getGroupBySetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
 		{
 			this.showSettingsErrorMessage();
 		}		
@@ -4026,6 +4031,14 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 		else if (this.getChartTypeSetting().getValue() == 'horizontalbar' &&(this.getXAxisSetting().getValue() == 'none' || this.getYAxisSetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
 		{
 			this.showSettingsErrorMessage();
+		}
+		else if (this.getChartTypeSetting().getValue() == 'radar' &&(this.getXAxisSetting().getValue() == 'none' || this.getGroupBySetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
+		{
+			this.showSettingsErrorMessage();	
+		}
+		else if (this.getChartTypeSetting().getValue() == 'gauge' &&(this.getXAxisSetting().getValue() == 'none' || this.getGranularitySetting().getValue() == 'none'))
+		{
+			this.showSettingsErrorMessage();	
 		}
 		else 
 		{
@@ -5178,5 +5191,4 @@ Ext.define('SenchaCon2013Demo.view.Main', {
 		        }]
 	},
 });
-
 

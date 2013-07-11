@@ -43,7 +43,6 @@ Ext.define('SenchaCon2013Demo.controller.Pie', {
 				        	field: categoryField,
 				        	display: 'rotate',
 				        	contrast: true,
-						    //fill: 'black',
 						},	
 						labelOverflowPadding: 10,
 			}],			

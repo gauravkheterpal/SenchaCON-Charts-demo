@@ -220,11 +220,11 @@ Ext.application({
 	    	this.granularities[1] = 'Daily';
 			this.valueGranularities[1] = 2;
 			this.chartTypes[1] = 'pie';
-			this.xs[1] = 'data_3';
+			this.xs[1] = 'data_4';
 			this.ys[1] = 'none';
-			this.groupBys[1] = 'category_c';
+			this.groupBys[1] = 'category_b';
 			this.startDate[1] = new Date('2011-02-01');
-			this.currentEndDate[1] = new Date('2011-02-28');
+			this.currentEndDate[1] = new Date('2011-02-20');
 
 			// Panel 2
 			this.granularities[2] = 'Daily';
@@ -234,7 +234,7 @@ Ext.application({
 			this.ys[2] = 'data_1';
 			this.groupBys[2] = 'category_b';
 			this.startDate[2] = new Date('2011-02-01');
-			this.currentEndDate[2] = new Date('2011-02-10');
+			this.currentEndDate[2] = new Date('2011-02-20');
 			
 			// Panel 3
 			this.granularities[3] = 'Daily';
@@ -244,7 +244,7 @@ Ext.application({
 			this.ys[3] = 'data_4';
 			this.groupBys[3] = 'none';
 			this.startDate[3] = new Date('2011-02-01');
-			this.currentEndDate[3] = new Date('2011-02-28');
+			this.currentEndDate[3] = new Date('2011-02-20');
 			
 			// Panel 4
 			this.granularities[4] = 'Daily';
@@ -254,7 +254,7 @@ Ext.application({
 			this.ys[4] = 'data_1';
 			this.groupBys[4] = 'category_d';
 			this.startDate[4] = new Date('2011-02-01');
-			this.currentEndDate[4] = new Date('2011-02-28');
+			this.currentEndDate[4] = new Date('2011-02-20');
 		};
 		this.setDefaultValues();
 		

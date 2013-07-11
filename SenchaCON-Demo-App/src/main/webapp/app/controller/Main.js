@@ -3,6 +3,8 @@ Ext.define('CachedResponse', {
 	status: '200'
 });
 
+
+
 var mainController;
 var startTime = new Date();
 var finishTime = new Date();
@@ -83,6 +85,7 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 			'bottomTwoPanelLayout': 'bottomtwopanellayout',
 			'topTwoPanelLayout': 'toptwopanellayout',		
 			'settingsButton': 'button[id=settingsbutton]',
+			'globalSyncButton': 'segmentedbutton[id=globalsynctogglebutton]',
 		},
 		control: {
 			'chart1': {
@@ -474,8 +477,12 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 		});
 	},
 	
-	setFocusOnPanel: function(index) {
+	setFocusOnPanel: function(index) {	
 		if (index != 0){
+			if (this.getGlobalSyncButton().getPressedButtons().length != 0){
+				this.getSettingsButton().setDisabled(false);
+			}
+			this.getGlobalSyncButton().setPressedButtons([false]);
 			this.getFourPanelLayout().setCls('unselected-panel');
 			this.getPanel1().setCls('unselected-panel');
 			this.getPanel2().setCls('unselected-panel');
@@ -491,6 +498,7 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 			}		
 			Ext.ComponentQuery.query('slider'+index)[0].show();
 			SenchaCon2013Demo.app.currentActivePanelIndex = index;
+			this.getApplication().getController('Playback').pauseFunction();
 			this.changeDateRangeLabel(index);
 		}		
 	},
