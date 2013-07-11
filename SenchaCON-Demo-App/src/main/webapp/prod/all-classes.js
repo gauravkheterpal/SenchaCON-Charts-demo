@@ -1367,7 +1367,7 @@ Ext.define('SenchaCon2013Demo.controller.Gauge', {
 			//interactions: ['rotate'],
 			 animate: {
 	                easing: 'elasticIn',
-	                duration: 1000
+	                duration: SenchaCon2013Demo.app.animateSpeed
 	            },
 			
 		    innerPadding: {top: 15, left: 0, right: 0, bottom: 25},
@@ -4731,6 +4731,7 @@ Ext.define('SenchaCon2013Demo.controller.Radar', {
 	                    type: 'radar',
 	                    xField: categoryField,
 	                    yField: dataField,
+	                    animate: { duration: SenchaCon2013Demo.app.animateSpeed, delay: SenchaCon2013Demo.app.animateSpeed/2, easing: 'ease' },
 	                    style: {
 	                        fillStyle: 'rgba(0,255,0,0.2)',
 	                        strokeStyle: 'rgba(0,0,0,0.8)',
@@ -5191,4 +5192,5 @@ Ext.define('SenchaCon2013Demo.view.Main', {
 		        }]
 	},
 });
+
 

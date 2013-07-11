@@ -63,6 +63,7 @@ Ext.define('SenchaCon2013Demo.controller.Radar', {
 	                    type: 'radar',
 	                    xField: categoryField,
 	                    yField: dataField,
+	                    animate: { duration: SenchaCon2013Demo.app.animateSpeed, delay: SenchaCon2013Demo.app.animateSpeed/2, easing: 'ease' },
 	                    style: {
 	                        fillStyle: 'rgba(0,255,0,0.2)',
 	                        strokeStyle: 'rgba(0,0,0,0.8)',

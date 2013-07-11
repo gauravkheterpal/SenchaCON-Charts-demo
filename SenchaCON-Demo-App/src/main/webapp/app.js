@@ -120,7 +120,7 @@ Ext.application({
 
 		// Single Global Setting Non Array Variables
 		this.currentActivePanelIndex = 1; //Keeps track of which panel is currently selected/tapped
-		this.replaySpeed = 1000; //Value for speed of playing charts
+		this.replaySpeed = 500; //Value for speed of playing charts
 		this.graphMaxValueMargin = .10;
 		this.animateSpeed = this.replaySpeed - 100;
 
