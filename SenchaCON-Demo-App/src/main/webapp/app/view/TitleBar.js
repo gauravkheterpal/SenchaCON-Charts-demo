@@ -5,7 +5,6 @@ Ext.define('SenchaCon2013Demo.view.TitleBar', {
 	           'Ext.TitleBar'
 	],
 	config: {
-		//title: 'Replay Analytics &#153;',
 		title:'SenchaCON-Charts-Demo',
 		docked: 'top',
 		layout: 'hbox',

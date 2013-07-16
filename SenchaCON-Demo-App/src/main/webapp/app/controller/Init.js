@@ -1,26 +1,26 @@
-var loginController = undefined;
+var initController = undefined;
 var simpleLoadingScreen = '<div><img width="50px" src="lib/images/loading.gif" alt="Please wait"></div>';
 
-Ext.define('SenchaCon2013Demo.controller.Login', {
+Ext.define('SenchaCon2013Demo.controller.Init', {
 	extend : 'Ext.app.Controller',
-	xtype: 'logincontroller',
+	xtype: 'initcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'mainScreen' : 'senchademomain',
 		},
 	},
 	
 	launch: function(){
-		loginController = this;
+		initController = this;
 		clearAllStores();
 		this.showMainScreen();
 	},
 	
 	showMainScreen: function(){
-		loginController.getMainScreen().show();
-		loginController.getApplication().getController('Main').loadStores();	
+		initController.getMainScreen().show();
+		initController.getApplication().getController('Main').loadStores();	
 	},
 	
 	showMessageBox: function(title, message){

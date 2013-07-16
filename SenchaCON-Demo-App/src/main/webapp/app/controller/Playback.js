@@ -4,7 +4,7 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 	xtype: 'playbackcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'fourPanelLayout': 'fourpanellayout',
 			'resetBackwardButton': 'button[id=ResetBackwardButton]',
@@ -284,7 +284,7 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
             else { 	
                	clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]); 
             }
-		},SenchaCon2013Demo.app.replaySpeed);		
+		},SenchaCon2013Demo.app.playSpeed);		
 	},
 	
 	pauseFunction: function() {	
@@ -320,7 +320,7 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 	            else {
 					clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]); 
 	            }
-			},SenchaCon2013Demo.app.replaySpeed);
+			},SenchaCon2013Demo.app.playSpeed);
 		}		
 	},
 	

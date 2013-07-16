@@ -1,13 +1,6 @@
 var developerMode = true;
 var showAllLogs = false;
 
-var infoString = 'Last updated June 25th, 2013';
-
-var emailBody_part1 = 'Replay Analytics is a great way to animate time sequenced data.\n\nCheck out these Replay Analytics:\n\n';
-var emailBody_part2 = '\n\nUse the navigation at the bottom of the application to Play, Fast forward, pause or rewind the animation.\n' +
-					'"Interesting Moments" in the data will appear automatically.\n\n\n'+
-					'Sincerely,\n\nThe Replay Analytics Team\nReplay Analytics is a Mind over Metrics application. Copyright 2013. All rights reserved.';
-
 function logMessage(message){
 	if (developerMode && showAllLogs){
 		console.log(message);
@@ -126,8 +119,4 @@ function clearAllStores(){
 	clearStore('UserSettings3');
 	clearStore('UserSettings4');
 	clearStore('GlobalSettingsStore');
-}
-
-function verifyString(string){
-	
 }

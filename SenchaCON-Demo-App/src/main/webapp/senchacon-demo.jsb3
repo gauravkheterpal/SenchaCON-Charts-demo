@@ -115,8 +115,8 @@
                     "path": "app/view/"
                 },                
                 {
-                    "clsName": "SenchaCon2013Demo.controller.Login",
-                    "name": "Login.js",
+                    "clsName": "SenchaCon2013Demo.controller.Init",
+                    "name": "Init.js",
                     "path": "app/controller/"
                 },
                 {

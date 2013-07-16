@@ -3,7 +3,7 @@ Ext.define('SenchaCon2013Demo.controller.GlobalSync', {
 	xtype: 'globalsynccontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'slider0': 'slider0',
 			'slider1': 'slider1',

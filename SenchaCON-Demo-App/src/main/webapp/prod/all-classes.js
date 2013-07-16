@@ -80,34 +80,12 @@ Ext.define('SenchaCon2013Demo.view.SettingsPanel', {
 					options: [
 				        		{text: 'None Defined', value: 'none'},
 				        		]
-				},
-				{
-					xtype: 'selectfield',
-					id: 'filtersettingtoggle',
-					label: 'Filter:',
-					value: 'Off',
-					hidden: true,
-					options: [
-						{text: 'On', value: 'On'},
-						{text: 'Off', value: 'Off'}
-					]
 				},				
 				{
 					xtype:'selectfield',
 					id: 'granularityfield',
 					label: 'Granularity:',
-				},				
-				{
-					xtype: 'selectfield',
-					id: 'accumfield',
-					label: 'Accumulate:',
-					hidden: true,
-					value: 'On',
-					options: [
-						{text: 'On', value: 'On'},
-						{text: 'Off', value: 'Off'}
-					]
-				},			
+				},						
 				{
 					xtype: 'datepickerfield',
 					id: 'startdatefield',
@@ -175,7 +153,6 @@ Ext.define('SenchaCon2013Demo.view.TitleBar', {
 	           'Ext.TitleBar'
 	],
 	config: {
-		//title: 'Replay Analytics &#153;',
 		title:'SenchaCON-Charts-Demo',
 		docked: 'top',
 		layout: 'hbox',
@@ -217,31 +194,9 @@ Ext.define('SenchaCon2013Demo.view.GlobalSettingsPanel', {
 		        },
 		        {
 		        	xtype: 'selectfield',
-					label: 'Interesting Moments:',
-					id: 'imtogglefield',
-					labelWidth: '50%',
-					value: 'Off',
-					options: [
-						{text: 'On', value: 'On'},
-						{text: 'Off', value: 'Off'}
-					]
-		        },
-		        {
-		        	xtype: 'selectfield',
-					label: 'Replay Comments:',
-					id: 'replaycommentstogglefield',
-					labelWidth: '50%',
-					value: 'Off',
-					options: [
-						{text: 'On', value: 'On'},
-						{text: 'Off', value: 'Off'}
-					]
-		        },
-		        {
-		        	xtype: 'selectfield',
-		        	id: 'replayspeedsetting',
+		        	id: 'playspeedsetting',
 		        	labelWidth: '50%',
-		        	label: 'Replay Speed',
+		        	label: 'Play Speed',
 		        	value: 'Normal',
 		        	options: [
 		        		{text: 'Slow', value: '3000'},
@@ -260,78 +215,6 @@ Ext.define('SenchaCon2013Demo.view.GlobalSettingsPanel', {
 		        		{text: '2', value: '2'},
 		        		{text: '4', value: '4'}
 		        	]
-		        },
-		        {
-		        	xtype: 'selectfield',
-		        	id: 'imtype1setting',
-		        	labelWidth: '50%',
-		        	label: 'IM Type-1 Mean Deviation',
-		        	value: '-1',
-		        	options: [
-		        	    {text: 'None', value: '-1'},      
-		        		{text: '20%', value: '20'},
-		        		{text: '30%', value: '30'},
-		        		{text: '40%', value: '40'},
-		        		{text: '50%', value: '50'},
-		        	]
-		        },
-		        {
-		        	xtype: 'selectfield',
-		        	id: 'imtype2setting',
-		        	labelWidth: '50%',
-		        	label: 'IM Type-2 Standard Deviation',
-		        	value: '-1',
-		        	options: [
-		        	    {text: 'None', value: '-1'}, 
-		        		{text: '1', value: '1'},
-		        		{text: '1.5', value: '1.5'},
-		        		{text: '2', value: '2'},
-		        		{text: '2.5', value: '2.5'},
-		        		{text: '3', value: '3'},
-		        	]
-		        },
-		        {
-		        	xtype: 'selectfield',
-		        	id: 'imtype3setting',
-		        	labelWidth: '50%',
-		        	label: 'IM Type-3 Trending Points',
-		        	value: '-1',
-		        	options: [
-		        	    {text: 'None', value: '-1'}, 
-		        		{text: '3', value: '3'},
-		        		{text: '4', value: '4'},
-		        		{text: '5', value: '5'},
-		        		{text: '6', value: '6'},
-		        		{text: '7', value: '7'},
-		        		{text: '8', value: '8'},
-		        		{text: '9', value: '9'},
-		        		{text: '10', value: '10'},
-		        	]
-		        },
-		        {
-		        	xtype: 'selectfield',
-		        	id: 'imtype4setting',
-		        	labelWidth: '50%',
-		        	label: 'IM Type-4 Trending Points',
-		        	value: '-1',
-		        	options: [
-		        	    {text: 'None', value: '-1'}, 
-		        		{text: '3', value: '3'},
-		        		{text: '4', value: '4'},
-		        		{text: '5', value: '5'},
-		        		{text: '6', value: '6'},
-		        		{text: '7', value: '7'},
-		        		{text: '8', value: '8'},
-		        		{text: '9', value: '9'},
-		        		{text: '10', value: '10'},
-		        	]
-		        },
-		        {
-		        	xtype: 'button',
-		        	id: 'managedatasourcesbutton',
-		        	html: 'Manage Data Sources',
-		        	ui: 'action',
-		        	style: 'font-size: 14px; margin-left: 120px; margin-right: 120px; margin-top: 10px; margin-bottom: 5px; padding: 5px;',					        	
 		        },
 		        {
 		        	xtype: 'button',
@@ -368,14 +251,8 @@ Ext.define('SenchaCon2013Demo.model.GlobalSettingsModel', {
 	extend: 'Ext.data.Model',
 	config: {
 		fields: [
-		         { name: 'NumberOfPanels', type: 'text'},
-		         { name: 'InterestingMoments', type: 'text'},
-		         { name: 'ReplayComments', type: 'text'},
-		         { name: 'ReplaySpeed', type: 'text'},	
-		         { name: 'InterestingMomentType3Setting', type: 'text'},
-		         { name: 'InterestingMomentType1Setting', type: 'text'},
-		         { name: 'InterestingMomentType2Setting', type: 'text'},
-		         { name: 'InterestingMomentType4Setting', type: 'text'},
+		         { name: 'NumberOfPanels', type: 'text'},		         
+		         { name: 'PlaySpeed', type: 'text'},	
 		] 
 	}
 });
@@ -413,14 +290,10 @@ Ext.define('SenchaCon2013Demo.model.UserSettings', {
 			{ name: 'XAxis', type: 'text'},
 			{ name: 'YAxis', type: 'text'},
 			{ name: 'GroupBy', type: 'text'},
-			{ name: 'BubbleSize', type: 'text'},
 			{ name: 'Granularity', type: 'text'},
 			{ name: 'ChartType', type: 'text'},
 			{ name: 'StartDate', type: 'Date'},
 			{ name: 'EndDate', type: 'Date'},
-			{ name: 'InterestingMoments', type: 'text'},
-			{ name: 'Accumulate', type: 'text'},
-			{ name: 'FilterToggle', type: 'text'},
 		] 
 	}
 });
@@ -762,29 +635,29 @@ Ext.define('SenchaCon2013Demo.view.Panel4', {
     	]
 	}
 });
-var loginController = undefined;
+var initController = undefined;
 var simpleLoadingScreen = '<div><img width="50px" src="lib/images/loading.gif" alt="Please wait"></div>';
 
-Ext.define('SenchaCon2013Demo.controller.Login', {
+Ext.define('SenchaCon2013Demo.controller.Init', {
 	extend : 'Ext.app.Controller',
-	xtype: 'logincontroller',
+	xtype: 'initcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'mainScreen' : 'senchademomain',
 		},
 	},
 	
 	launch: function(){
-		loginController = this;
+		initController = this;
 		clearAllStores();
 		this.showMainScreen();
 	},
 	
 	showMainScreen: function(){
-		loginController.getMainScreen().show();
-		loginController.getApplication().getController('Main').loadStores();	
+		initController.getMainScreen().show();
+		initController.getApplication().getController('Main').loadStores();	
 	},
 	
 	showMessageBox: function(title, message){
@@ -796,17 +669,7 @@ Ext.define('CachedResponse', {
 	responseText: 'Unknown',
 	status: '200'
 });
-
-
-
 var mainController;
-var startTime = new Date();
-var finishTime = new Date();
-var $lastGestureCalledTime = new Date();
-var loadingScreen = 'Loading...<div><img src="lib/images/ajax-loader3.gif" alt="Please wait"></div><br /><br />'
-	 + 'Taking too long to load? <button onclick="resetSettings();">Reset</button>';
-
-
 Ext.Ajax.on("beforerequest", function(conn, options){
 		var url = options.url;
 	    var myCookie = loadData(url);
@@ -845,12 +708,10 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 	extend : 'Ext.app.Controller',
 	xtype: 'maincontroller',
 	requires: [
-	       	//'Ext.chart.Panel',
 	        'Ext.chart.axis.Numeric',
 	        'Ext.chart.axis.Category',
 	        'Ext.chart.series.Scatter',
 	        'Ext.chart.series.Bar',
-	        //'Ext.draw.engine.ImageExporter',
 	        'Ext.util.Format',
 	        'Ext.MessageBox',
 	        'SenchaCon2013Demo.model.DataModel'
@@ -936,14 +797,8 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 		SenchaCon2013Demo.app.creatingGraphs = true;
 		Ext.getStore('GlobalSettingsStore').load();
 		if (Ext.getStore('GlobalSettingsStore').getData().items[0] != undefined){
-			SenchaCon2013Demo.app.interestingMoments = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMoments;
-			SenchaCon2013Demo.app.replayCommentsSetting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().ReplayComments;
-			SenchaCon2013Demo.app.replaySpeed = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().ReplaySpeed;
+			SenchaCon2013Demo.app.playSpeed = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().playSpeed;
 			SenchaCon2013Demo.app.numberActivePanels = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().NumberOfPanels;
-			SenchaCon2013Demo.app.interestingMomentType3Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType3Setting;
-			SenchaCon2013Demo.app.interestingMomentType4Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType4Setting;
-			SenchaCon2013Demo.app.interestingMomentType1Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType1Setting;
-			SenchaCon2013Demo.app.interestingMomentType2Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType2Setting;
 		}
 		this.getApplication().getController('Settings').updateChartAnimationSettings();
 		this.changePanels();
@@ -954,11 +809,9 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 				Ext.get('chart'+loopIndex+'Button').hide();
 				Ext.get('chart'+loopIndex+'Image').hide();
 				SenchaCon2013Demo.app.databaseSetting[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Database;
-				SenchaCon2013Demo.app.filterToggle[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().FilterToggle;
 				SenchaCon2013Demo.app.graphTitle[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().GraphTitle;
 				SenchaCon2013Demo.app.xs[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().XAxis;
 				SenchaCon2013Demo.app.ys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().YAxis;
-				SenchaCon2013Demo.app.sizeBys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().BubbleSize;
 				SenchaCon2013Demo.app.granularities[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Granularity;
 				SenchaCon2013Demo.app.chartTypes[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().ChartType;
 				SenchaCon2013Demo.app.groupBys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().GroupBy;
@@ -966,7 +819,6 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 				SenchaCon2013Demo.app.currentStartDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
 				SenchaCon2013Demo.app.currentDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
 				SenchaCon2013Demo.app.currentEndDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().EndDate);
-				SenchaCon2013Demo.app.accumulate[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Accumulate;
 				SenchaCon2013Demo.app.currentActivePanelIndex = loopIndex;
 				switch(SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex]) {
 				case 'Hourly':
@@ -991,10 +843,8 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 					Ext.get('addchartpanel'+loopIndex).show();
 					Ext.get('chart'+loopIndex+'Button').show();
 					Ext.get('chart'+loopIndex+'Image').show();
-				}				
-				//Ext.ComponentQuery.query('panel'+loopIndex)[0].setHtml('');
+				}
 				Ext.ComponentQuery.query('addchartpanel'+loopIndex)[0].setHtml('');
-				//this.clearCarousel();
 			}
 		}
 		this.changePanels();
@@ -1229,14 +1079,6 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 				}
 			}
 		}
-		
-		if (response.interestingMoments != undefined){
-			SenchaCon2013Demo.app.interestingMomentsPoints[SenchaCon2013Demo.app.currentActivePanelIndex] = response.interestingMoments;
-		}
-		
-		finishTime = new Date();
-		var loadingTime = finishTime - startTime;
-		console.info('Graph Loading/Decoding time for Panel' + SenchaCon2013Demo.app.currentActivePanelIndex +' is = '+loadingTime+'ms');
 		this.getApplication().getController('Playback').resetFunction();		
 	},
 	
@@ -1343,7 +1185,7 @@ Ext.define('SenchaCon2013Demo.controller.Gauge', {
 	xtype: 'gaugecontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 		},
 	},
@@ -1411,7 +1253,7 @@ Ext.define('SenchaCon2013Demo.controller.Pie', {
 	xtype: 'piecontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 		},
 	},
@@ -1462,7 +1304,7 @@ Ext.define('SenchaCon2013Demo.controller.HorizontalBar', {
 	xtype: 'horizontalbarcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 		},
 	},
@@ -1635,7 +1477,7 @@ Ext.define('SenchaCon2013Demo.controller.LineBar', {
 	xtype: 'linebarcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 		}
 	},
@@ -2285,7 +2127,7 @@ Ext.define('SenchaCon2013Demo.controller.Scatter', {
 	xtype: 'scattercontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 		},
 	},
@@ -2377,7 +2219,6 @@ Ext.define('SenchaCon2013Demo.controller.VerticalBar', {
 	xtype: 'verticalbarcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
 			'mainController': 'maincontroller',
 		},
 	},
@@ -2549,7 +2390,7 @@ Ext.define('SenchaCon2013Demo.controller.GlobalSync', {
 	xtype: 'globalsynccontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'slider0': 'slider0',
 			'slider1': 'slider1',
@@ -3505,7 +3346,7 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 	xtype: 'settingscontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'fourPanelLayout': 'fourpanellayout',
 			'settingsPanel': 'settingspanel',
@@ -3518,17 +3359,11 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			'yAxisSetting': 'selectfield[label=Y-Axis:]',
 			'groupBySetting': 'selectfield[label=Group By:]',
 			'granularitySetting': 'selectfield[label=Granularity:]',
-			'accumulateSetting': 'selectfield[label=Accumulate:]',
 			'numberActivePanelsSetting': 'selectfield[id=activepanelsfield]',
 			'chartTypeSetting': 'selectfield[label=Chart Type:]',
 			'startDateSetting': 'datepickerfield[label=Start Date:]',
 			'endDateSetting': 'datepickerfield[label=End Date:]',
-			'interestingMomentsSetting': 'selectfield[label=Interesting Moments:]',
-			'replaySpeedSettings': 'selectfield[id=replayspeedsetting]',
-			'imType3Setting': 'selectfield[id=imtype3setting]',
-			'imType4Setting': 'selectfield[id=imtype4setting]',
-			'imType1Setting': 'selectfield[id=imtype1setting]',
-			'imType2Setting': 'selectfield[id=imtype2setting]',
+			'playSpeedSettings': 'selectfield[id=playspeedsetting]',
 			'doneButtonSettings': 'button[id=settingsdonebutton]',
 			'cancelButtonSettings': 'button[id=settingscancelbutton]',
 			'clearPanelSettings': 'button[id=clearpanelbutton]',
@@ -3539,8 +3374,6 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			'addChart2Settings': 'button[id=chart2Button]',
 			'addChart3Settings': 'button[id=chart3Button]',
 			'addChart4Settings': 'button[id=chart4Button]',	
-			'filterSetting': 'selectfield[id=filtersettingtoggle]',
-			'replayCommentsSetting': 'selectfield[id=replaycommentstogglefield]',
 		},
 		control: {
 			'settingsButton' : {
@@ -3605,25 +3438,21 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 	showSettingsPanel1: function() {
 		this.getApplication().getController('Main').setFocusOnPanel1();
 		this.showSettingsPanel();
-		//this.manageDimensions();
 	},
 	
 	showSettingsPanel2: function() {
 		this.getApplication().getController('Main').setFocusOnPanel2();
 		this.showSettingsPanel();
-		//this.manageDimensions();
 	},
 	
 	showSettingsPanel3: function() {
 		this.getApplication().getController('Main').setFocusOnPanel3();
 		this.showSettingsPanel();
-		//this.manageDimensions();
 	},
 	
 	showSettingsPanel4: function() {
 		this.getApplication().getController('Main').setFocusOnPanel4();
 		this.showSettingsPanel();
-		//this.manageDimensions();
 	},
 	
 	manageDimensions: function() {	
@@ -3642,11 +3471,9 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			categoryFieldValuesWithTime = SenchaCon2013Demo.app.PanelCategoryFieldStoreWithTime[selectedPanel];
 		}		
 		this.getGranularitySetting().setOptions(granularityFieldValues);
-		//this.getGranularitySetting().setValue('None');
 		switch(this.getChartTypeSetting().getValue()) {
 		case 'scatter':
 			this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getGroupBySetting().hide();
@@ -3656,7 +3483,6 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			break;
 		case 'horizontalbar':
 			this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().show('fadeIn');
 			this.getYAxisSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getXAxisSetting().setOptions(dataFieldValues);
@@ -3665,7 +3491,6 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			break;
 		case 'verticalbar':
 			this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getYAxisSetting().setOptions(dataFieldValues);
@@ -3674,7 +3499,6 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			break;
 		case 'line':
 			this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getYAxisSetting().setOptions(dataFieldValues);
@@ -3683,7 +3507,6 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			break;
 		case 'area':
 			this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().show('fadeIn');
 			this.getXAxisSetting().setLabel('X-Axis:');
 			this.getYAxisSetting().show('fadeIn');
 			this.getYAxisSetting().setOptions(dataFieldValues);
@@ -3692,7 +3515,6 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			break;
 		case 'pie':
 			this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
 			this.getGroupBySetting().setOptions(categoryFieldValues);
@@ -3700,15 +3522,12 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			break;
 		case 'gauge':
 			this.getGroupBySetting().hide('fadeOut');
-			this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
-			//this.getGroupBySetting().setOptions(categoryFieldValues);
 			this.getXAxisSetting().setOptions(dataFieldValues);				
 			break;
 		case 'radar':
 			this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
 			this.getGroupBySetting().setOptions(categoryFieldValues);
@@ -3716,127 +3535,19 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			break;
 		case 'none':
 			this.getGroupBySetting().show('fadeIn');
-			//this.getAccumulateSetting().hide('fadeOut');
 			this.getXAxisSetting().setLabel('Data Value:');
 			this.getYAxisSetting().hide('fadeOut');
 			this.getGroupBySetting().setOptions(SenchaCon2013Demo.app.EmptyFieldStore);
 			this.getXAxisSetting().setOptions(SenchaCon2013Demo.app.EmptyFieldStore);	
 			this.getYAxisSetting().setOptions(SenchaCon2013Demo.app.EmptyFieldStore);
 		}
-		//this.getGroupBySetting().setValue('none');
-		//this.getXAxisSetting().setValue('none');
-		//this.getYAxisSetting().setValue('none');
 	},
 	
 	manageFieldValueChangeForyAxisField: function(){
-		/*if (this.getDatabaseSetting().getValue() == 'informance'){
-			if (this.getChartTypeSetting().getValue() == 'scatter'){
-				if(this.getXAxisSetting().getValue() == 'none' || this.getXAxisSetting().getValue == this.getYAxisSetting().getValue){
-					if(this.getYAxisSetting().getValue() == 'UptimeHours') {
-						this.getXAxisSetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Downtime Hours', value: 'DowntimeHours'}, {text: 'Downtime Events', value: 'DowntimeEvents'}, {text: 'Production Counts', value: 'ProductionCounts'}]);
-					} else if (this.getYAxisSetting().getValue() == 'DowntimeHours') {
-						this.getXAxisSetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Uptime Hours', value: 'UptimeHours'}, {text: 'Downtime Events', value: 'DowntimeEvents'}, {text: 'Production Counts', value: 'ProductionCounts'}]);
-					} else if (this.getYAxisSetting().getValue() == 'DowntimeEvents') {
-						this.getXAxisSetting().setOptions([{text: 'None Defined', value: 'none'},{text: 'Uptime Hours', value: 'UptimeHours'}, {text: 'Downtime Hours', value: 'DowntimeHours'}, {text: 'Production Counts', value: 'ProductionCounts'}]);
-					} else if (this.getYAxisSetting().getValue() == 'ProductionCounts') {
-						this.getXAxisSetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Uptime Hours', value: 'UptimeHours'}, {text: 'Downtime Hours', value: 'DowntimeHours'}, {text: 'Downtime Events', value: 'DowntimeEvents'},]);
-					}
-				} 
-			} else if (this.getChartTypeSetting().getValue() == 'horizontalbar') {
-				if(this.getYAxisSetting().getValue() == 'reason') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Set', value: 'set'}]);
-				} else if(this.getYAxisSetting().getValue() == 'User') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Reason', value: 'reason'}, {text: 'SKU', value: 'Part'}, {text: 'Set', value: 'set'}]);
-				} else if (this.getYAxisSetting().getValue() == 'Part') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'User', value: 'User'}, {text: 'Reason', value: 'reason'}, {text: 'Set', value: 'set'}]);
-				} else if(this.getYAxisSetting().getValue() == 'set') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Reason', value: 'reason'}]);
-				}
-			}
-		} else if (this.getDatabaseSetting().getValue() == 'infinity_qs'){
-			if (this.getChartTypeSetting().getValue() == 'scatter'){
-				if(this.getXAxisSetting().getValue() == 'none' || this.getXAxisSetting().getValue == this.getYAxisSetting().getValue){
-					//Need to Discuss.
-				} 
-			} else if (this.getChartTypeSetting().getValue() == 'horizontalbar') {
-				if(this.getYAxisSetting().getValue() == 'Process') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Test', value: 'Test'}, {text: 'Quality Performance Metrics', value: 'Quality Performance Metrics'}]);
-				} else if(this.getYAxisSetting().getValue() == 'User') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Process', value: 'Process'}, {text: 'SKU', value: 'Part'}, {text: 'Test', value: 'Test'}, {text: 'Quality Performance Metrics', value: 'Quality Performance Metrics'}]);
-				} else if (this.getYAxisSetting().getValue() == 'Part') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Process', value: 'Process'}, {text: 'User', value: 'User'}, {text: 'Test', value: 'Test'}, {text: 'Quality Performance Metrics', value: 'Quality Performance Metrics'}]);
-				} else if(this.getYAxisSetting().getValue() == 'Test') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Process', value: 'Process'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Quality Performance Metrics', value: 'Quality Performance Metrics'}]);
-				} else if(this.getYAxisSetting().getValue() == 'Quality Performance Metrics') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Process', value: 'Process'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Test', value: 'Test'}]);
-				}
-			} else if (this.getChartTypeSetting().getValue() == 'line' || this.getChartTypeSetting().getValue() == 'verticalbar') {
-				if(this.getYAxisSetting().getValue() == 'Percent Out Of Spec'){
-					this.getXAxisSetting().setOptions(SenchaCon2013Demo.app.InfinityQSCategoryFieldStoreWithTimeWithoutQPM);
-					this.getAccumulateSetting().hide('fadeOut');
-					this.getAccumulateSetting().setValue('Off');
-				} else if(this.getYAxisSetting().getValue() == 'Process Events'){
-					this.getXAxisSetting().setOptions(SenchaCon2013Demo.app.InfinityQSCategoryFieldStoreWithTime);
-					this.getAccumulateSetting().show('fadeIn');
-				}
-			}
-		}*/
 		this.manageGranularitySettings();
 	},
 	
 	manageFieldValueChangeForxAxisField: function(){
-		/*if (this.getDatabaseSetting().getValue() == 'informance'){
-			if(this.getChartTypeSetting().getValue() == 'scatter') {
-				if(this.getYAxisSetting().getValue() == 'none' || this.getXAxisSetting().getValue() == this.getYAxisSetting().getValue()) {
-					if(this.getXAxisSetting().getValue() == 'UptimeHours') {
-						this.getYAxisSetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Downtime Hours', value: 'DowntimeHours'}, {text: 'Downtime Events', value: 'DowntimeEvents'}, {text: 'Production Counts', value: 'ProductionCounts'}]);
-					} else if (this.getXAxisSetting().getValue() == 'DowntimeHours') {
-						this.getYAxisSetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Uptime Hours', value: 'UptimeHours'}, {text: 'Downtime Events', value: 'DowntimeEvents'}, {text: 'Production Counts', value: 'ProductionCounts'}]);
-					} else if (this.getXAxisSetting().getValue() == 'DowntimeEvents') {
-						this.getYAxisSetting().setOptions([{text: 'None Defined', value: 'none'},{text: 'Uptime Hours', value: 'UptimeHours'}, {text: 'Downtime Hours', value: 'DowntimeHours'}, {text: 'Production Counts', value: 'ProductionCounts'}]);
-					} else if (this.getXAxisSetting().getValue() == 'ProductionCounts') {
-						this.getYAxisSetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Uptime Hours', value: 'UptimeHours'}, {text: 'Downtime Hours', value: 'DowntimeHours'}, {text: 'Downtime Events', value: 'DowntimeEvents'},]);
-					}
-				}
-			} else if (this.getChartTypeSetting().getValue() == 'line' || this.getChartTypeSetting().getValue() == 'verticalbar') {
-				if(this.getXAxisSetting().getValue() == 'reason') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Set', value: 'set'}]);
-				} else if(this.getXAxisSetting().getValue() == 'User') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Reason', value: 'reason'}, {text: 'SKU', value: 'Part'}, {text: 'Set', value: 'set'}]);
-				} else if (this.getXAxisSetting().getValue() == 'Part') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'User', value: 'User'}, {text: 'Reason', value: 'reason'}, {text: 'Set', value: 'set'}]);
-				} else if(this.getXAxisSetting().getValue() == 'set') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Reason', value: 'reason'}]);
-				}
-			}
-		} else if (this.getDatabaseSetting().getValue() == 'infinity_qs'){
-			if (this.getChartTypeSetting().getValue() == 'scatter'){
-				if(this.getXAxisSetting().getValue() == 'none' || this.getXAxisSetting().getValue == this.getYAxisSetting().getValue){
-					//Need to Discuss.
-				} 
-			} else if (this.getChartTypeSetting().getValue() == 'line' || this.getChartTypeSetting().getValue() == 'verticalbar') {
-				if(this.getXAxisSetting().getValue() == 'Process') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Test', value: 'Test'}, {text: 'Quality Performance Metrics', value: 'Quality Performance Metrics'}]);
-				} else if(this.getXAxisSetting().getValue() == 'User') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Process', value: 'Process'}, {text: 'SKU', value: 'Part'}, {text: 'Test', value: 'Test'}, {text: 'Quality Performance Metrics', value: 'Quality Performance Metrics'}]);
-				} else if (this.getXAxisSetting().getValue() == 'Part') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Process', value: 'Process'}, {text: 'User', value: 'User'}, {text: 'Test', value: 'Test'}, {text: 'Quality Performance Metrics', value: 'Quality Performance Metrics'}]);
-				} else if(this.getXAxisSetting().getValue() == 'Test') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Process', value: 'Process'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Quality Performance Metrics', value: 'Quality Performance Metrics'}]);
-				} else if(this.getXAxisSetting().getValue() == 'Quality Performance Metrics') {
-					this.getGroupBySetting().setOptions([{text: 'None Defined', value: 'none'}, {text: 'Process', value: 'Process'}, {text: 'User', value: 'User'}, {text: 'SKU', value: 'Part'}, {text: 'Test', value: 'Test'}]);
-				}
-			} else if (this.getChartTypeSetting().getValue() == 'horizontalbar') {
-				if(this.getXAxisSetting().getValue() == 'Percent Out Of Spec'){
-					this.getYAxisSetting().setOptions(SenchaCon2013Demo.app.InfinityQSCategoryFieldStoreWithTimeWithoutQPM);
-					this.getAccumulateSetting().hide('fadeOut');
-					this.getAccumulateSetting().setValue('Off');
-				} else if(this.getXAxisSetting().getValue() == 'Process Events'){
-					this.getYAxisSetting().setOptions(SenchaCon2013Demo.app.InfinityQSCategoryFieldStoreWithTime);
-					this.getAccumulateSetting().show('fadeIn');
-				}
-			}
-		}*/	
 		this.manageGranularitySettings();
 	},	
 		
@@ -3860,7 +3571,7 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 		this.getNumberActivePanelsSetting().setValue(SenchaCon2013Demo.app.numberActivePanels);
 		this.getInterestingMomentsSetting().setValue(SenchaCon2013Demo.app.interestingMoments);
 		this.getReplayCommentsSetting().setValue(SenchaCon2013Demo.app.replayCommentsSetting);
-		this.getReplaySpeedSettings().setValue(SenchaCon2013Demo.app.replaySpeed);
+		this.getPlaySpeedSettings().setValue(SenchaCon2013Demo.app.playSpeed);
 		this.getImType3Setting().setValue(SenchaCon2013Demo.app.interestingMomentType3Setting);
 		this.getImType4Setting().setValue(SenchaCon2013Demo.app.interestingMomentType4Setting);
 		this.getImType1Setting().setValue(SenchaCon2013Demo.app.interestingMomentType1Setting);
@@ -3881,15 +3592,12 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 	showConfiguredSettingsPanel: function(){
 		this.getChartTypeSetting().setValue(SenchaCon2013Demo.app.chartTypes[SenchaCon2013Demo.app.currentActivePanelIndex]);
 		this.manageDimensions();
-		//this.getGraphTitleSetting().setValue(SenchaCon2013Demo.app.graphTitle[SenchaCon2013Demo.app.currentActivePanelIndex]);
 		this.getXAxisSetting().setValue(SenchaCon2013Demo.app.xs[SenchaCon2013Demo.app.currentActivePanelIndex]);
 		this.getYAxisSetting().setValue(SenchaCon2013Demo.app.ys[SenchaCon2013Demo.app.currentActivePanelIndex]);		
 		this.getGranularitySetting().setValue(SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex]);
 		this.getGroupBySetting().setValue(SenchaCon2013Demo.app.groupBys[SenchaCon2013Demo.app.currentActivePanelIndex]);
 		this.getStartDateSetting().setValue(SenchaCon2013Demo.app.startDate[SenchaCon2013Demo.app.currentActivePanelIndex]);
-		this.getEndDateSetting().setValue(SenchaCon2013Demo.app.currentEndDate[SenchaCon2013Demo.app.currentActivePanelIndex]);		
-		this.getAccumulateSetting().setValue(SenchaCon2013Demo.app.accumulate[SenchaCon2013Demo.app.currentActivePanelIndex]);		
-		this.getFilterSetting().setValue(SenchaCon2013Demo.app.filterToggle[SenchaCon2013Demo.app.currentActivePanelIndex]);
+		this.getEndDateSetting().setValue(SenchaCon2013Demo.app.currentEndDate[SenchaCon2013Demo.app.currentActivePanelIndex]);				
 		this.getSettingsPanel().show();		
 		this.manageGranularitySettings();
 	},
@@ -3940,53 +3648,24 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
         SenchaCon2013Demo.app.panelData[SenchaCon2013Demo.app.currentActivePanelIndex] = '';
         var chartIndex = SenchaCon2013Demo.app.currentActivePanelIndex;
         Ext.ComponentQuery.query('addchartpanel'+chartIndex)[0].setHtml('');
-		Ext.ComponentQuery.query('selectfield[label=Accumulate:]')[0].setValue('Off');
 		this.manageDimensions();
 		this.getApplication().getController('Main').checkForConfiguredGraphPanels();
 	},
 	
 	doneGlobalSettingsPanel: function(){
-		SenchaCon2013Demo.app.interestingMoments = this.getInterestingMomentsSetting().getValue();
-		SenchaCon2013Demo.app.replayCommentsSetting = this.getReplayCommentsSetting().getValue();
 		SenchaCon2013Demo.app.numberActivePanels = this.getNumberActivePanelsSetting().getValue();
-		SenchaCon2013Demo.app.replaySpeed = this.getReplaySpeedSettings().getValue();
-		var newIMType3Setting = this.getImType3Setting().getValue();
-		var newIMType4Setting = this.getImType4Setting().getValue();
-		var newIMType1Setting = this.getImType1Setting().getValue();
-		var newIMType2Setting = this.getImType2Setting().getValue();
-		var imSettingChanged = false;
-		if (newIMType3Setting != SenchaCon2013Demo.app.interestingMomentType3Setting ||
-				newIMType4Setting != SenchaCon2013Demo.app.interestingMomentType4Setting ||
-				newIMType1Setting != SenchaCon2013Demo.app.interestingMomentType1Setting ||
-				newIMType2Setting != SenchaCon2013Demo.app.interestingMomentType2Setting){
-			imSettingChanged = true;
-		}
-		SenchaCon2013Demo.app.interestingMomentType3Setting = this.getImType3Setting().getValue();
-		SenchaCon2013Demo.app.interestingMomentType4Setting = this.getImType4Setting().getValue();
-		SenchaCon2013Demo.app.interestingMomentType1Setting = this.getImType1Setting().getValue();
-		SenchaCon2013Demo.app.interestingMomentType2Setting = this.getImType2Setting().getValue();
+		SenchaCon2013Demo.app.playSpeed = this.getPlaySpeedSettings().getValue();
 		var globalStore;
-		globalStore = [{'NumberOfPanels': this.getNumberActivePanelsSetting().getValue(),'InterestingMoments': this.getInterestingMomentsSetting().getValue(),'ReplayComments':this.getReplayCommentsSetting().getValue(),'ReplaySpeed': this.getReplaySpeedSettings().getValue(), 'InterestingMomentType3Setting': this.getImType3Setting().getValue(), 'InterestingMomentType1Setting': this.getImType1Setting().getValue(), 'InterestingMomentType2Setting': this.getImType2Setting().getValue(), 'InterestingMomentType4Setting': this.getImType4Setting().getValue()}];
+		globalStore = [{'NumberOfPanels': this.getNumberActivePanelsSetting().getValue(),'PlaySpeed': this.getPlaySpeedSettings().getValue()}];
 		Ext.getStore('GlobalSettingsStore').setData(globalStore);
 		Ext.getStore('GlobalSettingsStore').sync();
 		this.getApplication().getController('Main').changePanels();
 		this.updateChartAnimationSettings();
 		this.cancelGlobalSettingsPanel();
-		if (imSettingChanged){
-			Ext.Msg.alert('SenchaCon2013Demo &#153;', 'Interesting Moment settings has been changed. Dashboard will need to be recalculated.', function(){
-				for ( i = 1; i <= SenchaCon2013Demo.app.numberActivePanels; i++ ){
-					//SenchaCon2013Demo.app.XmaxReceived[i] = false;
-					//SenchaCon2013Demo.app.YmaxReceived[i] = false;
-					SenchaCon2013Demo.app.chartCreated[i] = false;
-				}
-				settingsController.getApplication().getController('Main').loadStores();
-				//refreshPage();
-			});
-		}
 	},
 	
 	updateChartAnimationSettings: function(){
-		SenchaCon2013Demo.app.animateSpeed = SenchaCon2013Demo.app.replaySpeed - 100;
+		SenchaCon2013Demo.app.animateSpeed = SenchaCon2013Demo.app.playSpeed - 100;
 		for(i = 0; i < SenchaCon2013Demo.app.newChart.length; i++) {
 			if(SenchaCon2013Demo.app.newChart[i] != null) {
 				var series = SenchaCon2013Demo.app.newChart[i].getSeries();
@@ -4063,7 +3742,6 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 				Ext.get('chart4Image').hide();
 			}
 			SenchaCon2013Demo.app.databaseSetting[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getDatabaseSetting().getValue();
-			SenchaCon2013Demo.app.filterToggle[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getFilterSetting().getValue();
 			SenchaCon2013Demo.app.graphTitle[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getGraphTitleSetting().getValue();
 			SenchaCon2013Demo.app.xs[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getXAxisSetting().getValue();
 			SenchaCon2013Demo.app.ys[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getYAxisSetting().getValue();
@@ -4074,7 +3752,6 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			SenchaCon2013Demo.app.currentStartDate[SenchaCon2013Demo.app.currentActivePanelIndex] = new Date(this.getStartDateSetting().getValue());
 			SenchaCon2013Demo.app.currentDate[SenchaCon2013Demo.app.currentActivePanelIndex] = new Date(this.getStartDateSetting().getValue());
 			SenchaCon2013Demo.app.currentEndDate[SenchaCon2013Demo.app.currentActivePanelIndex] = new Date(this.getEndDateSetting().getValue());
-			SenchaCon2013Demo.app.accumulate[SenchaCon2013Demo.app.currentActivePanelIndex] = this.getAccumulateSetting().getValue();
 			SenchaCon2013Demo.app.XmaxReceived[SenchaCon2013Demo.app.currentActivePanelIndex] = false;
 			SenchaCon2013Demo.app.YmaxReceived[SenchaCon2013Demo.app.currentActivePanelIndex] = false;
 			switch(SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex]) {
@@ -4106,7 +3783,7 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 			else 
 			{				
 				var tempStore;
-				tempStore = [{'Database': this.getDatabaseSetting().getValue(),'GraphTitle': this.getGraphTitleSetting().getValue(),'XAxis':this.getXAxisSetting().getValue(),'YAxis':this.getYAxisSetting().getValue(),'GroupBy':this.getGroupBySetting().getValue(),'Granularity':this.getGranularitySetting().getValue(),'ChartType':this.getChartTypeSetting().getValue(),'StartDate':this.getStartDateSetting().getValue(),'EndDate':this.getEndDateSetting().getValue(),'InterestingMoments':this.getInterestingMomentsSetting().getValue(),'Accumulate':this.getAccumulateSetting().getValue(),'FilterToggle':this.getFilterSetting().getValue()}];
+				tempStore = [{'Database': this.getDatabaseSetting().getValue(),'GraphTitle': this.getGraphTitleSetting().getValue(),'XAxis':this.getXAxisSetting().getValue(),'YAxis':this.getYAxisSetting().getValue(),'GroupBy':this.getGroupBySetting().getValue(),'Granularity':this.getGranularitySetting().getValue(),'ChartType':this.getChartTypeSetting().getValue(),'StartDate':this.getStartDateSetting().getValue(),'EndDate':this.getEndDateSetting().getValue()}];
 				Ext.getStore('UserSettings'+SenchaCon2013Demo.app.currentActivePanelIndex).setData(tempStore);
 				Ext.getStore('UserSettings'+SenchaCon2013Demo.app.currentActivePanelIndex).sync();
 				this.getSettingsPanel().hide(true);
@@ -4123,7 +3800,7 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 	xtype: 'playbackcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'fourPanelLayout': 'fourpanellayout',
 			'resetBackwardButton': 'button[id=ResetBackwardButton]',
@@ -4403,7 +4080,7 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
             else { 	
                	clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]); 
             }
-		},SenchaCon2013Demo.app.replaySpeed);		
+		},SenchaCon2013Demo.app.playSpeed);		
 	},
 	
 	pauseFunction: function() {	
@@ -4439,7 +4116,7 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 	            else {
 					clearInterval(SenchaCon2013Demo.app.waitvariables[chartIndex]); 
 	            }
-			},SenchaCon2013Demo.app.replaySpeed);
+			},SenchaCon2013Demo.app.playSpeed);
 		}		
 	},
 	
@@ -4476,7 +4153,7 @@ Ext.define('SenchaCon2013Demo.controller.DatabaseTable', {
 	xtype: 'databasetablecontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'databaseSetting': 'selectfield[id=databaseselectfield]',
 			'chartTypeSetting': 'selectfield[label=Chart Type:]',
@@ -4654,7 +4331,7 @@ Ext.define('SenchaCon2013Demo.controller.DatabaseTable', {
 	            	hideLoadingMask();
 	        		var responseJSON = Ext.JSON.decode(response.responseText.trim());
 	        		SenchaCon2013Demo.app.CachedDatabaseTables = responseJSON;
-	        		loginController.showMainScreen();
+	        		initController.showMainScreen();
 	            },
 	            failure: function(response) {
                		hideLoadingMask();
@@ -4662,7 +4339,7 @@ Ext.define('SenchaCon2013Demo.controller.DatabaseTable', {
                },
 			});
 		} else {
-			loginController.showMainScreen();
+			initController.showMainScreen();
 		}
 	},
 });
@@ -4671,7 +4348,7 @@ Ext.define('SenchaCon2013Demo.controller.Radar', {
 	xtype: 'radarcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 		},
 	},
@@ -4748,7 +4425,7 @@ Ext.define('SenchaCon2013Demo.controller.AreaBar', {
 	xtype: 'areabarcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 		}
 	},
@@ -5066,12 +4743,6 @@ Ext.define('SenchaCon2013Demo.view.BottomPlaybackToolbar', {
 		        	xtype: 'container', 
 		        	id: 'daterangelabel',
 		        },
-		        /*{
-		        	xtype: 'button',
-		        	id: 'manualimbutton',
-		        	hidden:true,
-		        	iconCls: 'callout',
-		        },*/
 		        {
 		        	xtype: 'segmentedbutton',
 		        	id: 'globalsynctogglebutton',

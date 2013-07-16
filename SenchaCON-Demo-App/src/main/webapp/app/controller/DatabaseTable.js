@@ -5,7 +5,7 @@ Ext.define('SenchaCon2013Demo.controller.DatabaseTable', {
 	xtype: 'databasetablecontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 			'databaseSetting': 'selectfield[id=databaseselectfield]',
 			'chartTypeSetting': 'selectfield[label=Chart Type:]',
@@ -183,7 +183,7 @@ Ext.define('SenchaCon2013Demo.controller.DatabaseTable', {
 	            	hideLoadingMask();
 	        		var responseJSON = Ext.JSON.decode(response.responseText.trim());
 	        		SenchaCon2013Demo.app.CachedDatabaseTables = responseJSON;
-	        		loginController.showMainScreen();
+	        		initController.showMainScreen();
 	            },
 	            failure: function(response) {
                		hideLoadingMask();
@@ -191,7 +191,7 @@ Ext.define('SenchaCon2013Demo.controller.DatabaseTable', {
                },
 			});
 		} else {
-			loginController.showMainScreen();
+			initController.showMainScreen();
 		}
 	},
 });

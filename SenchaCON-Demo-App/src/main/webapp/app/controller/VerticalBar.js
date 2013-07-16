@@ -3,7 +3,6 @@ Ext.define('SenchaCon2013Demo.controller.VerticalBar', {
 	xtype: 'verticalbarcontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
 			'mainController': 'maincontroller',
 		},
 	},

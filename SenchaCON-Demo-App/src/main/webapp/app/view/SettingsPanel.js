@@ -77,34 +77,12 @@ Ext.define('SenchaCon2013Demo.view.SettingsPanel', {
 					options: [
 				        		{text: 'None Defined', value: 'none'},
 				        		]
-				},
-				{
-					xtype: 'selectfield',
-					id: 'filtersettingtoggle',
-					label: 'Filter:',
-					value: 'Off',
-					hidden: true,
-					options: [
-						{text: 'On', value: 'On'},
-						{text: 'Off', value: 'Off'}
-					]
 				},				
 				{
 					xtype:'selectfield',
 					id: 'granularityfield',
 					label: 'Granularity:',
-				},				
-				{
-					xtype: 'selectfield',
-					id: 'accumfield',
-					label: 'Accumulate:',
-					hidden: true,
-					value: 'On',
-					options: [
-						{text: 'On', value: 'On'},
-						{text: 'Off', value: 'Off'}
-					]
-				},			
+				},						
 				{
 					xtype: 'datepickerfield',
 					id: 'startdatefield',

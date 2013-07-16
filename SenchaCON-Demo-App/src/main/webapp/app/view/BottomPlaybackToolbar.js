@@ -92,12 +92,6 @@ Ext.define('SenchaCon2013Demo.view.BottomPlaybackToolbar', {
 		        	xtype: 'container', 
 		        	id: 'daterangelabel',
 		        },
-		        /*{
-		        	xtype: 'button',
-		        	id: 'manualimbutton',
-		        	hidden:true,
-		        	iconCls: 'callout',
-		        },*/
 		        {
 		        	xtype: 'segmentedbutton',
 		        	id: 'globalsynctogglebutton',

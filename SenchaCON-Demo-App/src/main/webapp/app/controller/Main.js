@@ -2,17 +2,7 @@ Ext.define('CachedResponse', {
 	responseText: 'Unknown',
 	status: '200'
 });
-
-
-
 var mainController;
-var startTime = new Date();
-var finishTime = new Date();
-var $lastGestureCalledTime = new Date();
-var loadingScreen = 'Loading...<div><img src="lib/images/ajax-loader3.gif" alt="Please wait"></div><br /><br />'
-	 + 'Taking too long to load? <button onclick="resetSettings();">Reset</button>';
-
-
 Ext.Ajax.on("beforerequest", function(conn, options){
 		var url = options.url;
 	    var myCookie = loadData(url);
@@ -51,12 +41,10 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 	extend : 'Ext.app.Controller',
 	xtype: 'maincontroller',
 	requires: [
-	       	//'Ext.chart.Panel',
 	        'Ext.chart.axis.Numeric',
 	        'Ext.chart.axis.Category',
 	        'Ext.chart.series.Scatter',
 	        'Ext.chart.series.Bar',
-	        //'Ext.draw.engine.ImageExporter',
 	        'Ext.util.Format',
 	        'Ext.MessageBox',
 	        'SenchaCon2013Demo.model.DataModel'
@@ -142,14 +130,8 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 		SenchaCon2013Demo.app.creatingGraphs = true;
 		Ext.getStore('GlobalSettingsStore').load();
 		if (Ext.getStore('GlobalSettingsStore').getData().items[0] != undefined){
-			SenchaCon2013Demo.app.interestingMoments = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMoments;
-			SenchaCon2013Demo.app.replayCommentsSetting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().ReplayComments;
-			SenchaCon2013Demo.app.replaySpeed = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().ReplaySpeed;
+			SenchaCon2013Demo.app.playSpeed = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().playSpeed;
 			SenchaCon2013Demo.app.numberActivePanels = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().NumberOfPanels;
-			SenchaCon2013Demo.app.interestingMomentType3Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType3Setting;
-			SenchaCon2013Demo.app.interestingMomentType4Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType4Setting;
-			SenchaCon2013Demo.app.interestingMomentType1Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType1Setting;
-			SenchaCon2013Demo.app.interestingMomentType2Setting = Ext.getStore('GlobalSettingsStore').getData().items[0].getData().InterestingMomentType2Setting;
 		}
 		this.getApplication().getController('Settings').updateChartAnimationSettings();
 		this.changePanels();
@@ -160,11 +142,9 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 				Ext.get('chart'+loopIndex+'Button').hide();
 				Ext.get('chart'+loopIndex+'Image').hide();
 				SenchaCon2013Demo.app.databaseSetting[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Database;
-				SenchaCon2013Demo.app.filterToggle[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().FilterToggle;
 				SenchaCon2013Demo.app.graphTitle[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().GraphTitle;
 				SenchaCon2013Demo.app.xs[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().XAxis;
 				SenchaCon2013Demo.app.ys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().YAxis;
-				SenchaCon2013Demo.app.sizeBys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().BubbleSize;
 				SenchaCon2013Demo.app.granularities[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Granularity;
 				SenchaCon2013Demo.app.chartTypes[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().ChartType;
 				SenchaCon2013Demo.app.groupBys[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().GroupBy;
@@ -172,7 +152,6 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 				SenchaCon2013Demo.app.currentStartDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
 				SenchaCon2013Demo.app.currentDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().StartDate);
 				SenchaCon2013Demo.app.currentEndDate[loopIndex] = new Date(Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().EndDate);
-				SenchaCon2013Demo.app.accumulate[loopIndex] = Ext.getStore('UserSettings'+loopIndex).getData().items[0].getData().Accumulate;
 				SenchaCon2013Demo.app.currentActivePanelIndex = loopIndex;
 				switch(SenchaCon2013Demo.app.granularities[SenchaCon2013Demo.app.currentActivePanelIndex]) {
 				case 'Hourly':
@@ -197,10 +176,8 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 					Ext.get('addchartpanel'+loopIndex).show();
 					Ext.get('chart'+loopIndex+'Button').show();
 					Ext.get('chart'+loopIndex+'Image').show();
-				}				
-				//Ext.ComponentQuery.query('panel'+loopIndex)[0].setHtml('');
+				}
 				Ext.ComponentQuery.query('addchartpanel'+loopIndex)[0].setHtml('');
-				//this.clearCarousel();
 			}
 		}
 		this.changePanels();
@@ -435,14 +412,6 @@ Ext.define('SenchaCon2013Demo.controller.Main', {
 				}
 			}
 		}
-		
-		if (response.interestingMoments != undefined){
-			SenchaCon2013Demo.app.interestingMomentsPoints[SenchaCon2013Demo.app.currentActivePanelIndex] = response.interestingMoments;
-		}
-		
-		finishTime = new Date();
-		var loadingTime = finishTime - startTime;
-		console.info('Graph Loading/Decoding time for Panel' + SenchaCon2013Demo.app.currentActivePanelIndex +' is = '+loadingTime+'ms');
 		this.getApplication().getController('Playback').resetFunction();		
 	},
 	

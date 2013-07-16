@@ -2,30 +2,13 @@ Ext.Loader.setConfig({enabled:true});
 Ext.application({
 	name : 'SenchaCon2013Demo',
 	stores : ['GlobalSettingsStore','UserSettings1','UserSettings2','UserSettings3','UserSettings4','TempStore'],
-	controllers: ['DatabaseTable', 'Pie','LineBar','Scatter','VerticalBar','HorizontalBar', 'Main', 'Login', 'GlobalSync', 'Playback', 'Settings','Radar', 'AreaBar', 'Gauge'],
+	controllers: ['DatabaseTable', 'Pie','LineBar','Scatter','VerticalBar','HorizontalBar', 'Main', 'Init', 'GlobalSync', 'Playback', 'Settings','Radar', 'AreaBar', 'Gauge'],
 	views: ['Main', 'SettingsPanel','GlobalSettingsPanel', 'AddChartPanel1', 'AddChartPanel2', 'AddChartPanel3', 'AddChartPanel4', 'Panel1', 'Panel2', 'Panel3', 'Panel4'],
     launch : function() {
     	this.creatingGraphs = false;
     	
     	this.panelSettings = new Array();
-    	for (i = 0; i < 5; i++){
-    		this.panelSettings[i] = '';
-		}
     	this.panelData = new Array();
-    	for (i = 0; i < 5; i++){
-    		this.panelData[i] = '';
-		}
-    	this.currentUploadingDataSource = undefined;
-    	this.currentDashboard = undefined;
-    	this.currentUserSession = undefined;
-    	this.userDashboards = new Array();
-    	this.userDashboardDetails = new Array();
-    	this.isDashboardEditMode = false;
-    	this.isDashboardShareMode = false;
-    	this.currentManualIMs = new Array();
-    	this.currentChartManualIMs = new Array();
-    	this.globalManualIMs = new Array();
-    	
     	this.CachedDatabaseTables = new Array();
     	
     	this.GranularityFieldStore = undefined;
@@ -37,7 +20,6 @@ Ext.application({
     	this.PanelCategoryFieldStoreWithTime = new Array();
     	
     	this.databaseSetting = new Array();
-    	this.filterToggle = new Array();
 		this.Panels = new Array();
 		this.charts = new Array();
 		this.fullStores = new Array();
@@ -56,9 +38,6 @@ Ext.application({
 			this.differentialMultiplier[i] = 1;
 		}
 		
-		this.redirect = false;
-		this.redirectUrl = undefined;
-		
 		this.startDate = new Array(); //Static start date, stays consistent as start date of range
 		this.currentDate = new Array(); //Dynamic date that increments through each time step in ajax requests
 		this.currentStartDate = new Array(); //Dynamic start date for global sync, changes as global synchronization arrays are generated.
@@ -69,14 +48,6 @@ Ext.application({
 		for(i = 0; i < 6; i++) {
 			this.dateSet[i] = false;
 		}
-		//Initialize size by data array (NOT IMPLEMENTED YET):
-		this.sizeByDataRecieved = new Array();
-		for(i = 0; i < 6; i++) {
-			this.sizeByDataRecieved[i] = false;
-		}
-		this.responseCount = 0; //Keeps track of number of responses received from size by requests (not implemented yet)
-		this.sizeByStoreGlobal = new Array();
-		this.sizeByStore = new Array();
 
 		this.chartCreated = new Array(); //Boolean array for if chart has been created.
 		this.newChart = new Array(); //Array for actual charts
@@ -89,27 +60,11 @@ Ext.application({
 		this.xs = new Array(); //X axis
 		this.ys = new Array(); //Y axis
 		this.groupBys = new Array();
-		this.sizeBys = new Array();
-		this.interestingMoments = 'Off';
-		this.replayCommentsSetting = 'Off';
 		this.graphTitle = new Array();
-		this.accumulate = new Array();
 		this.numberActivePanels = '4'; // SEtting for how many panels are currently displayed on the app
 		
 		this.dataFieldValues = new Array();
 		this.categoryFieldValues = new Array();
-
-		//InterestingMoments Variables
-		this.interestingMomentsPoints = new Array();
-		this.previousActivePanelIndex = '1';
-		this.interestingMomentType3Setting = '-1';
-		this.interestingMomentType4Setting = '-1';
-		this.interestingMomentType1Setting = '-1';
-		this.interestingMomentType2Setting = '-1';
-		this.isIMGraphRunning = false;
-		this.interestingMomentGraphIndex = 5;
-		this.activeIMPointIndex = 0;
-		this.allIMPointsAtCurrentIndex = new Array();
 
 		this.playbackTasks = new Array();
 		//Other internal working variables(Slider positions)
@@ -120,9 +75,9 @@ Ext.application({
 
 		// Single Global Setting Non Array Variables
 		this.currentActivePanelIndex = 1; //Keeps track of which panel is currently selected/tapped
-		this.replaySpeed = 500; //Value for speed of playing charts
+		this.playSpeed = 500; //Value for speed of playing charts
 		this.graphMaxValueMargin = .10;
-		this.animateSpeed = this.replaySpeed - 100;
+		this.animateSpeed = this.playSpeed - 100;
 
 		// Global Sync arrays and settings:
 		this.globalStartDate; //Start date for global sync
@@ -176,7 +131,6 @@ Ext.application({
 		this.setDefaultValues = function(){
 			for(i = 0; i < 6; i++) {
 				this.databaseSetting[i] = 'demo_data';
-				this.filterToggle[i] = 'Off';
 				this.granularities[i] = 'Daily';
 				this.valueGranularities[i] = 2;
 				this.chartTypes[i] = 'pie';
@@ -190,31 +144,16 @@ Ext.application({
 				this.currentEndDate[i] = new Date();
 				this.currentEndDate[i].setHours(0,0,0,0);
 				this.currentEndDate[i].setFullYear(this.currentEndDate[i].getFullYear() - 2);
-				this.accumulate[i] = 'Off';
 				this.graphTitle[i] = 'Title';
-				this.groupBys[i] = 'none';
 				this.XmaxReceived[i] = false;
 				this.YmaxReceived[i] = false;
 			}
-			this.interestingMoments = 'Off';
-			this.replayCommentsSetting = 'Off';
 			this.jsonstore = new Array(); 
-			this.interestingMomentType3Setting = '-1';
-			this.interestingMomentType4Setting = '-1';
-			this.interestingMomentType1Setting = '-1';
-			this.interestingMomentType2Setting = '-1';
 			this.numberActivePanels = '4';
 			this.currentActivePanelIndex = 1;
-			this.replaySpeed = 3200;
-			this.interestingMomentsPoints = new Array();
-			this.allIMPointsAtCurrentIndex = new Array();
-			this.currentManualIMs = new Array();
-	    	this.currentChartManualIMs = new Array();
-	    	this.panelData = new Array();
-	    	this.panelSettings = new Array();
+			this.playSpeed = 3200;
 	    	this.dataFieldValues = new Array();
 			this.categoryFieldValues = new Array();
-	    	this.currentSelectedFilterCategory = '';
 	    	
 	    	// Panel 1
 	    	this.granularities[1] = 'Daily';
@@ -275,11 +214,5 @@ Ext.application({
     	for (i = 0; i < 6; i++){
 			this.sliders[i] = Ext.ComponentQuery.query('slider'+i)[0];
 		}
-		
-		/*for(i = 0; i < 6; i++) {
-			this.maximumPositions[i] = Ext.ComponentQuery.query('slider'+i)[0].getMaxValue();
-			this.minimumPositions[i] = Ext.ComponentQuery.query('slider'+i)[0].getMinValue();
-			this.currentPositions[i] = this.minimumPositions[i];
-		}*/
 	}
 });

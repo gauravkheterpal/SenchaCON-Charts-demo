@@ -3,7 +3,7 @@ Ext.define('SenchaCon2013Demo.controller.Scatter', {
 	xtype: 'scattercontroller',
 	config: {
 		refs: {
-			'loginController': 'logincontroller',
+			'initController': 'initcontroller',
 			'mainController': 'maincontroller',
 		},
 	},
