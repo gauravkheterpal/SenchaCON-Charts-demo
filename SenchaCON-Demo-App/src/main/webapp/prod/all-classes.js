@@ -377,22 +377,6 @@ Ext.define('SenchaCon2013Demo.view.Slider3', {
     	thumbConfig: {draggable: {translatable: {easingX: {duration: 50, type: 'ease-out'}}}},
 	}
 });
-Ext.define('SenchaCon2013Demo.view.Slider5', {
-	extend: 'Ext.slider.Slider',
-	xtype: 'slider5',
-	requires: [
-	           'Ext.slider.Slider'
-	],
-	config: {
-		maxWidth: '600px',
-    	ui: 'timeline',
-    	maxValue: 31,
-    	minValue: 0,
-    	flex: 1,
-    	hidden: false,
-    	thumbConfig: {draggable: {translatable: {easingX: {duration: 50, type: 'ease-out'}}}},
-	}
-});
 Ext.define('SenchaCon2013Demo.view.AddChartPanel1', {
 	extend: 'Ext.Panel',
 	xtype: 'addchartpanel1',
@@ -3569,13 +3553,7 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 	
 	showGlobalSettingsPanel: function(){
 		this.getNumberActivePanelsSetting().setValue(SenchaCon2013Demo.app.numberActivePanels);
-		this.getInterestingMomentsSetting().setValue(SenchaCon2013Demo.app.interestingMoments);
-		this.getReplayCommentsSetting().setValue(SenchaCon2013Demo.app.replayCommentsSetting);
 		this.getPlaySpeedSettings().setValue(SenchaCon2013Demo.app.playSpeed);
-		this.getImType3Setting().setValue(SenchaCon2013Demo.app.interestingMomentType3Setting);
-		this.getImType4Setting().setValue(SenchaCon2013Demo.app.interestingMomentType4Setting);
-		this.getImType1Setting().setValue(SenchaCon2013Demo.app.interestingMomentType1Setting);
-		this.getImType2Setting().setValue(SenchaCon2013Demo.app.interestingMomentType2Setting);
 		this.getGlobalSettingsPanel().show();
 	},
 	
@@ -3815,7 +3793,6 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 			'slider2': 'slider2',
 			'slider3': 'slider3',
 			'slider4': 'slider4',
-			'slider5': 'slider5',
 		},
 		control: {
 			'resetBackwardButton': {
@@ -3856,10 +3833,6 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 				drag: 'sliderListenerFunctionDrag'	
 			},
 			'slider4': {
-				change: 'sliderListenerFunctionChange',
-				drag: 'sliderListenerFunctionDrag'	
-			},
-			'slider5':{
 				change: 'sliderListenerFunctionChange',
 				drag: 'sliderListenerFunctionDrag'	
 			},

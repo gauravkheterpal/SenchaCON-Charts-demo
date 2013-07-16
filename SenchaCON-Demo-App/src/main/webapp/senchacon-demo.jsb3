@@ -70,11 +70,6 @@
                     "path": "app/view/"
                 },
                 {
-                    "clsName": "SenchaCon2013Demo.view.Slider5",
-                    "name": "Slider5.js",
-                    "path": "app/view/"
-                },
-                {
                     "clsName": "SenchaCon2013Demo.view.AddChartPanel1",
                     "name": "AddChartPanel1.js",
                     "path": "app/view/"

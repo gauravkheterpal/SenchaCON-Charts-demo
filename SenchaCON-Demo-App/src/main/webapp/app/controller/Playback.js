@@ -19,7 +19,6 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 			'slider2': 'slider2',
 			'slider3': 'slider3',
 			'slider4': 'slider4',
-			'slider5': 'slider5',
 		},
 		control: {
 			'resetBackwardButton': {
@@ -60,10 +59,6 @@ Ext.define('SenchaCon2013Demo.controller.Playback', {
 				drag: 'sliderListenerFunctionDrag'	
 			},
 			'slider4': {
-				change: 'sliderListenerFunctionChange',
-				drag: 'sliderListenerFunctionDrag'	
-			},
-			'slider5':{
 				change: 'sliderListenerFunctionChange',
 				drag: 'sliderListenerFunctionDrag'	
 			},

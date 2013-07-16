@@ -227,13 +227,7 @@ Ext.define('SenchaCon2013Demo.controller.Settings', {
 	
 	showGlobalSettingsPanel: function(){
 		this.getNumberActivePanelsSetting().setValue(SenchaCon2013Demo.app.numberActivePanels);
-		this.getInterestingMomentsSetting().setValue(SenchaCon2013Demo.app.interestingMoments);
-		this.getReplayCommentsSetting().setValue(SenchaCon2013Demo.app.replayCommentsSetting);
 		this.getPlaySpeedSettings().setValue(SenchaCon2013Demo.app.playSpeed);
-		this.getImType3Setting().setValue(SenchaCon2013Demo.app.interestingMomentType3Setting);
-		this.getImType4Setting().setValue(SenchaCon2013Demo.app.interestingMomentType4Setting);
-		this.getImType1Setting().setValue(SenchaCon2013Demo.app.interestingMomentType1Setting);
-		this.getImType2Setting().setValue(SenchaCon2013Demo.app.interestingMomentType2Setting);
 		this.getGlobalSettingsPanel().show();
 	},
 	
